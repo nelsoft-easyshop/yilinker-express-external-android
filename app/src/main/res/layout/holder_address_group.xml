@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+        android:id="@+id/tv_addressGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:textSize="14sp"
+        android:textColor="@color/marigold"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:background="@drawable/bg_rounded_white_stroked_marigold"
+        app:fontName="Roboto-Regular.ttf"/>
+
+</LinearLayout>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <!-- Package Name Label -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/package_name"
+            android:textSize="14sp"
+            android:textColor="@color/greyish_brown"
+            android:textAllCaps="true"
+            android:gravity="left"
+            app:fontName="Roboto-Medium.ttf"/>
+
+        <!-- Input -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+            android:id="@+id/et_packagename"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColor="@color/warm_grey"
+            android:background="@drawable/bg_input"
+            app:fontName="Roboto-Light.ttf"/>
+
+        <!-- SKU Label -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/sku"
+            android:textSize="14sp"
+            android:textColor="@color/greyish_brown"
+            android:textAllCaps="true"
+            android:gravity="left"
+            app:fontName="Roboto-Medium.ttf"/>
+
+        <!-- Input -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+            android:id="@+id/et_sku"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:textColor="@color/warm_grey"
+            android:background="@drawable/bg_input"
+            app:fontName="Roboto-Light.ttf"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingEnd="5dp"
+                android:orientation="vertical">
+
+                <!-- Quantity Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/quantity"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Input -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@drawable/bg_input"
+                    app:fontName="Roboto-Light.ttf"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:orientation="vertical">
+
+                <!-- Image Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/image"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Number of images -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:id="@+id/et_imageCount"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:text="@string/default_image_count"
+                        android:textSize="14sp"
+                        android:textColor="@color/warm_grey"
+                        android:gravity="center"
+                        android:background="@drawable/bg_rounded_left_input"
+                        app:fontName="Roboto-Regular.ttf"/>
+
+                    <!-- Add image-->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                        android:id="@+id/btn_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/add"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:textAllCaps="true"
+                        android:background="@drawable/bg_rounded_right_orange_yellow"
+                        app:fontName="Roboto-Medium.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingEnd="5dp"
+                android:orientation="vertical">
+
+                <!-- Fragile Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/fragile"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/sc_fragile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingEnd="5dp"
+                android:orientation="vertical">
+
+                <!-- Paid By Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/paid_by_sender"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/sc_paidBySender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- Consume space -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Submit -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/submit"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+</LinearLayout>

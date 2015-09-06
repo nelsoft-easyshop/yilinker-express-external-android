@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#eeeeee">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_centerInParent="true">
+
+            <!-- Name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_fullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="26sp"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <!-- Contact Number -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_contactNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:textSize="22sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <!-- Membership -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gold_member"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="true"
+                android:background="@drawable/bg_rounded_marigold"
+                android:gravity="center"
+                app:fontName="Roboto-Regular.ttf"/>
+        </LinearLayout>
+
+        <!-- Go to my account -->
+        <ImageView
+            android:id="@+id/iv_myAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:orientation="vertical">
+
+        <!-- My Bookmarked Branches -->
+        <LinearLayout
+            android:id="@+id/ll_myBookmarkedBranches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/my_bookmarked_branches"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+
+        <!-- My Address Locations -->
+        <LinearLayout
+            android:id="@+id/ll_myAddressLocations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/my_address_locations"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+
+        <!-- My Recipients Locations -->
+        <LinearLayout
+            android:id="@+id/ll_myRecipientsLocations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/my_recipients_locations"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+    </LinearLayout>
+</LinearLayout>

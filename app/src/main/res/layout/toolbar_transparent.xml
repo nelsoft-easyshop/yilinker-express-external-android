@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/toolbar_top_padding"
+    android:minHeight="@dimen/abc_action_bar_default_height_material"
+    android:background="@android:color/transparent"
+    android:gravity="center_vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Back -->
+        <ImageView
+            android:id="@+id/toolbar_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_back"/>
+
+        <!-- Toolbar title -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <!-- Avatar -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/toolbar_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_default_avatar_offline"/>
+    </FrameLayout>
+
+</android.support.v7.widget.Toolbar>

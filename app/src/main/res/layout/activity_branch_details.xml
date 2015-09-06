@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yilinker.expresspublic.modules.common.customviews.BranchRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Background Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_branch"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <!-- Branch Name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_branchName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textSize="23sp"
+                android:textColor="@android:color/white"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <!-- Branch Address -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_branchAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                app:fontName="Roboto-Light.ttf"/>
+        </LinearLayout>
+    </com.yilinker.expresspublic.modules.common.customviews.BranchRelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_rect_marigold">
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Track A Delivery -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_service_black_pick_up"
+                    android:background="@drawable/bg_circle_white"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pick_up_service"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    app:fontName="Roboto-Light.ttf"/>
+            </LinearLayout>
+
+            <!-- Book Delivery -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_service_black_cash_collection"
+                    android:background="@drawable/bg_circle_white"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cash_collection"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    app:fontName="Roboto-Light.ttf"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Find Branch -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_service_black_express_delivery"
+                    android:background="@drawable/bg_circle_white"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/express_delivery"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    app:fontName="Roboto-Light.ttf"/>
+            </LinearLayout>
+
+            <!-- My Shipment -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_service_black_free_packaging"
+                    android:background="@drawable/bg_circle_white"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/free_packaging"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/white"
+                    app:fontName="Roboto-Light.ttf"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Clock Icon -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_clock"/>
+
+        <!-- Operating Hours -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_operatingHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Address Icon -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_location"/>
+
+        <!-- Address -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Contact Number Icon -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_phone"/>
+
+        <!-- Operating Hours -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_contactNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+    <!-- Bookmark Branch -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_bookmarkBranch"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/bookmark_branch"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_sky_blue"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+
+</LinearLayout>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:id="@+id/sv_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- [START] FULL NAME -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/full_name"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Full name -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_fullName"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] FULL NAME -->
+
+            <!-- [START] CONTACT NO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_no"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Contact Number -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_contactNumber"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] CONTACT NO -->
+
+            <!-- [START] GROUP -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Address Group List -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_addressGroupList"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white" />
+
+                <!-- Add group -->
+                <ImageButton
+                    android:id="@+id/ibtn_addAddressGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_plus"
+                    android:background="@drawable/bg_rounded_white_stroked_marigold"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] GROUP -->
+
+            <!-- [START] UNIT/FLOOR NO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unit_floor_no"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Unit/Floor No -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_unitFloorNo"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] UNIT/FLOOR NO -->
+
+            <!-- [START] BUILDING NAME -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/building_name"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Building Name -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_buildingName"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] BUILDING NAME -->
+
+            <!-- [START] STREET NO-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/street_no"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Street Number -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_streetNumber"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] STREET NO -->
+
+            <!-- [START] STREET NAME-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/street_name"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Street Name -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_streetName"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] STREET NAME -->
+
+            <!-- [START] SUBDIVISION/VILLAGE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subdivision_village"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Subdivision/Village -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_subdivisionVillage"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] SUBDIVISION/VILLAGE -->
+
+            <!-- [START] BARANGAY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/barangay"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Barangay-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_barangay"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] BARANGAY -->
+
+            <!-- [START] CITY -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/city"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- City -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_city"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] CITY -->
+
+            <!-- [START] PROVINCE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/province"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Province -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_province"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
+            <!-- [END] PROVINCE -->
+
+            <!-- [START] ZIP CODE -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zip_code"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Zip Code -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_zipCode"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+            <!-- [END] ZIP CODE-->
+
+            <!-- Map Container -->
+            <com.yilinker.expresspublic.modules.common.customviews.SquareFrameLayout
+                android:id="@+id/sfl_googleMapContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- Google Map -->
+                <fragment
+                    class="com.yilinker.expresspublic.modules.common.customviews.SubMapFragment"
+                    android:id="@+id/googleMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.yilinker.expresspublic.modules.common.customviews.SquareFrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Submit -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/submit"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+</LinearLayout>

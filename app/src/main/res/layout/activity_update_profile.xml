@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/full_name"
+                android:textSize="14sp"
+                android:textAllCaps="true"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <!-- Full name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_oldPassword"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:inputType="textCapWords"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                android:background="@null"
+                app:fontName="Roboto-Medium.ttf"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/birthdate"
+                android:textSize="14sp"
+                android:textAllCaps="true"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <!-- Full name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_birthdate"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                android:background="@null"
+                app:fontName="Roboto-Medium.ttf"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="14sp"
+                android:textAllCaps="true"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <!-- Full name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_gender"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                android:background="@null"
+                app:fontName="Roboto-Medium.ttf"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textSize="14sp"
+                android:textAllCaps="true"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <!-- Full name -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_email"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="48dp"
+                android:inputType="textEmailAddress"
+                android:textSize="18sp"
+                android:textColor="@color/warm_grey"
+                android:background="@null"
+                app:fontName="Roboto-Medium.ttf"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+    </LinearLayout>
+
+    <!-- Consume Space -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Submit and Update -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_submitAndUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/submit_and_update"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+</LinearLayout>

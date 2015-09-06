@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_rounded_white_stroked_divider">
+
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_branchName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="15dp"
+            android:textSize="20sp"
+            android:textColor="@color/greyish_brown"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+
+            <!-- Pick Up -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_service_white_pick_up"/>
+
+            <!-- Cash Collection -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_service_white_cash_collection" />
+
+            <!-- Express Delivery -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_service_white_express_delivery" />
+
+            <!-- Free Packaging -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_service_white_free_packaging" />
+
+        </LinearLayout>
+
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_branchAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingBottom="15dp"
+            android:paddingEnd="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Light.ttf"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                android:id="@+id/btn_direction"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/direction"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_rounded_bottom_left_orange_yellow"
+                android:gravity="center"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                android:id="@+id/btn_call"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/call"
+                android:textSize="20sp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:background="@drawable/bg_rounded_bottom_right_marigold"
+                android:gravity="center"
+                app:fontName="Roboto-Regular.ttf"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,8 +1,39 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Base application theme without actionbar. -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set color of the ToolBar -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- Set color of the StatusBar -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Set color of the Accent -->
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- App theme no action bar -->
+    <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
+    </style>
+
+    <!-- App alert dialog theme -->
+    <style name="AppAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- App Design Tab Layout -->
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/orange_yellow</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabBackground">@android:color/white</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/greyish_brown</item>
+    </style>
+
+    <!-- Tab Text Appearance -->
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/greyish_brown</item>
+        <item name="textAllCaps">false</item>
     </style>
 
 </resources>

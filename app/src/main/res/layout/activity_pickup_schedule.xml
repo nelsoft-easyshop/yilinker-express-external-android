@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/divider">
+
+        <!-- Select Area -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+            android:id="@+id/btn_selectDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_rounded_left_orange_red"
+            app:fontName="Roboto-Medium.ttf"/>
+
+        <!-- Schedule field -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_date"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:textColor="@color/warm_grey"
+            android:gravity="center"
+            android:background="@drawable/bg_rounded_right_white"
+            app:fontName="Roboto-Regular.ttf"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_scheduleList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>
