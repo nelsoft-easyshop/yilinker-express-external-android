@@ -20,6 +20,7 @@ public class RequestCode
     public static final int RCR_UNBOOKMARK                          = 5400;
     public static final int RCR_SEARCH_BRANCHES_BY_CITY             = 5401;
     public static final int RCR_SEARCH_BRANCHES_BY_KEYWORD          = 5402;
+    public static final int RCR_GET_BOOKMARKED_BRANCHES             = 5403;
     // Track API
     public static final int RCR_TRACK_ONGOING                       = 5500;
     public static final int RCR_TRACK_DELIVERED                     = 5600;

@@ -170,7 +170,6 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
         {
             case RequestCode.RCR_SEARCH_BRANCHES_BY_CITY:
             case RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD:
-                ((RecyclerView) findViewById(R.id.rv_branchList)).setVisibility(View.VISIBLE);
                 branchList.clear();
                 branchAdapter.notifyDataSetChanged();
                 break;
@@ -178,6 +177,8 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
             default:
                 break;
         }
+
+        ((RecyclerView) findViewById(R.id.rv_branchList)).setVisibility(View.VISIBLE);
     }
 
     private void populateList(List<Branch> tempBranchList)

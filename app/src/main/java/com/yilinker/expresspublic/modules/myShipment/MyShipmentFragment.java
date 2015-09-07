@@ -84,11 +84,8 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
         rv_deliveryPackageList.setAdapter(deliveryPackageAdapter);
         rv_deliveryPackageList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        //String accessToken = OAuthPrefHelper.getAccessToken(getActivity());
+        String accessToken = OAuthPrefHelper.getAccessToken(getActivity());
 
-        String accessToken = "MgLxx6HgGgJ62uzFSbtFbZCbg8eK4iIxjt1qSqeH";
-
-        logger.severe("access token: " + accessToken);
         if(shipmentType == ShipmentType.DELIVERED)
         {
             Request request = TrackApi.delivered(accessToken, RequestCode.RCR_TRACK_DELIVERED, this);

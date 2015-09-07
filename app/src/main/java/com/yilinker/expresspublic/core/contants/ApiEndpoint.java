@@ -26,6 +26,8 @@ public class ApiEndpoint
     public static final String BRANCH_UNBOOKMARK                        = "unfollow";
     public static final String BRANCH_AREA                              = "area";
     public static final String BRANCH_SEARCH                            = "search";
+    public static final String BRANCH_BOOKMARKED                        = "followed";
+    public static final String BRANCH_ME                                = "me";
     /*******************************************************************************
      * Track Endpoint
      ******************************************************************************/

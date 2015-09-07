@@ -25,6 +25,7 @@
     <string name="title_update_profile">Update Profile</string>
     <string name="title_change_password">Change Password</string>
     <string name="title_my_profile">My Profile</string>
+    <string name="title_bookmarked_branches">Bookmarked Branches</string>
 
     <!-- Hints -->
     <string name="hint_email">Email</string>

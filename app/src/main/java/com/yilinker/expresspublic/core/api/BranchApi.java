@@ -195,4 +195,37 @@ public class BranchApi
 
         return gsonRequest;
     }
+
+    /**
+     * TODO
+     * @param accessToken
+     * @param requestCode
+     * @param handler
+     * @return
+     */
+    public static Request getBookmarkedBranches(String accessToken, final int requestCode, final ResponseHandler handler)
+    {
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.BRANCH_API + "/"
+                + ApiEndpoint.BRANCH_ME + "/"
+                + ApiEndpoint.BRANCH_BOOKMARKED;
+
+        // Build request
+        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvBranchListResp.class,
+                new GsonRequest.GsonResponseListener<EvBranchListResp>() {
+                    @Override
+                    public void onResponse(EvBranchListResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });
+
+        return gsonRequest;
+    }
 }
