@@ -33,13 +33,14 @@ public class TrackApi
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.TRACK_API + "/"
+                + ApiEndpoint.TRACK_PACKAGE + "/"
                 + ApiEndpoint.TRACK_ONGOING;
 
         // Build request
-        GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvBaseResp.class,
-                new GsonRequest.GsonResponseListener<EvBaseResp>() {
+        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvDeliveryPackageListResp.class,
+                new GsonRequest.GsonResponseListener<EvDeliveryPackageListResp>() {
                     @Override
-                    public void onResponse(EvBaseResp object) {
+                    public void onResponse(EvDeliveryPackageListResp object) {
                         handler.onResponse(requestCode, object);
                     }
                 },
@@ -65,13 +66,14 @@ public class TrackApi
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.TRACK_API + "/"
+                + ApiEndpoint.TRACK_PACKAGE + "/"
                 + ApiEndpoint.TRACK_DELIVERED;
 
         // Build request
-        GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvBaseResp.class,
-                new GsonRequest.GsonResponseListener<EvBaseResp>() {
+        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvDeliveryPackageListResp.class,
+                new GsonRequest.GsonResponseListener<EvDeliveryPackageListResp>() {
                     @Override
-                    public void onResponse(EvBaseResp object) {
+                    public void onResponse(EvDeliveryPackageListResp object) {
                         handler.onResponse(requestCode, object);
                     }
                 },

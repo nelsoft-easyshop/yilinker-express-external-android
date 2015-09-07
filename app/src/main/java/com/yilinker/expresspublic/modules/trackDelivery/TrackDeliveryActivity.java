@@ -162,6 +162,8 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
             default:
                 break;
         }
+
+        ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -169,7 +171,6 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
         switch (requestCode)
         {
             case RequestCode.RCR_SEARCH_TRACKING_NUMBER:
-                ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
                 deliveryPackageList.clear();
                 deliveryPackageAdapter.notifyDataSetChanged();
                 break;
@@ -177,6 +178,8 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
             default:
                 break;
         }
+
+        ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
     }
 
     private void volleySearchTrackingNumber(String trackingNumber)
@@ -195,8 +198,6 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
             deliveryPackageList.clear();
             deliveryPackageList.add(deliveryPackage);
             deliveryPackageAdapter.notifyDataSetChanged();
-
-            ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
         }
     }
 }

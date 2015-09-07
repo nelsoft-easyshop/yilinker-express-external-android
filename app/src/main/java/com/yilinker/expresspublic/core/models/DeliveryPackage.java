@@ -23,7 +23,7 @@ public class DeliveryPackage
     private String status;
     @SerializedName(ApiKey.STATUS_REMARKS)
     private String statusRemarks;
-    @SerializedName(ApiKey.RIDE_VEHICLE)
+    @SerializedName(ApiKey.RIDER_VEHICLE)
     private String riderDetails;
     @SerializedName(ApiKey.PICKUP_DATE)
     private Date deliveryDate;

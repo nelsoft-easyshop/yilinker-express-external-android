@@ -41,7 +41,7 @@ public class ApiKey
     public static final String SHIPPING_TYPE                            = "shipping_type";
     public static final String STATUS                                   = "status";
     public static final String STATUS_REMARKS                           = "status_remarks";
-    public static final String RIDE_VEHICLE                             = "ride_vehicle";
+    public static final String RIDER_VEHICLE                            = "rider_vehicle";
     public static final String PICKUP_DATE                              = "pickup_date";
     public static final String POUCH_TYPE                               = "pouch_type";
     public static final String ETA                                      = "eta";
