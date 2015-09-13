@@ -135,6 +135,43 @@ public class UserApi
     /**
      * TODO
      * @param accessToken
+     * @param newContactNumber
+     * @param requestCode
+     * @param handler
+     * @return
+     */
+    public static Request verifyMobile(String accessToken, String newContactNumber, final int requestCode, final ResponseHandler handler)
+    {
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.USER_API + "/"
+                + ApiEndpoint.USER_VERIFY_MOBILE;
+
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.NEW_CONTACT_NUMBER, newContactNumber);
+
+        // Build request
+        GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBaseResp.class,
+                new GsonRequest.GsonResponseListener<EvBaseResp>() {
+                    @Override
+                    public void onResponse(EvBaseResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });
+
+        return gsonRequest;
+    }
+
+    /**
+     * TODO
+     * @param accessToken
      * @param oldPassword
      * @param password
      * @param passwordConfirmation

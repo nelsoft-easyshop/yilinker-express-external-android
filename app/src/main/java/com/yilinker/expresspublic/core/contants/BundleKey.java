@@ -16,4 +16,7 @@ public class BundleKey
     public static final String PACKAGE_CONTAINER                                = "package_container";
     public static final String PACKAGE_CONTAINER_UI                             = "package_container_ui";
     public static final String WEIGHT_UI                                        = "weight_ui";
+    public static final String PICKUP_DATE                                      = "pickup_date";
+    public static final String PACKAGE_PICKUP_SCHEDULE                          = "package_pickup_schedule";
+    public static final String ADDRESS_TYPE                                     = "address_type";
 }

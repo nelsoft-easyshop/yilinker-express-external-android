@@ -1,4 +1,4 @@
-package com.yilinker.expresspublic.modules.account;
+package com.yilinker.expresspublic.modules.profile;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.core.models.User;
 import com.yilinker.expresspublic.core.responses.EvMeResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
+import com.yilinker.expresspublic.modules.account.MyAccountActivity;
 
 import java.util.logging.Logger;
 
@@ -68,6 +69,11 @@ public class MyProfileActivity extends BaseActivity implements ResponseHandler, 
         return null;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateUi();
+    }
 
     @Override
     public void onClick(View v) {
@@ -168,14 +174,17 @@ public class MyProfileActivity extends BaseActivity implements ResponseHandler, 
     }
 
     private void startMyBookedmarkBranchesActivity() {
-
+        Intent intent = new Intent(this, BookmarkedBranchesActivity.class);
+        startActivity(intent);
     }
 
     private void startMyAddressLocationsActivity() {
-
+        Intent intent = new Intent(this, MyAddressLocationsActivity.class);
+        startActivity(intent);
     }
 
     private void startMyRecipientLocationsActivity() {
-
+        Intent intent = new Intent(this, MyRecipientsLocationsActivity.class);
+        startActivity(intent);
     }
 }

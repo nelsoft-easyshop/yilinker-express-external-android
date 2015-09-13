@@ -20,6 +20,7 @@ import com.yilinker.expresspublic.core.helpers.DialogHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.OAuth;
 import com.yilinker.expresspublic.core.responses.EvRegisterResp;
+import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 import com.yilinker.expresspublic.core.utilities.InputValidator;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
@@ -95,7 +96,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         switch (requestCode)
         {
             case RequestCode.RCR_REGISTER:
-                EvRegisterResp evRegisterResp = (EvRegisterResp) object;
+                EvBaseResp evBaseResp = (EvBaseResp) object;
                 volleyToken(currentEmailAddress, currentPassword);
                 break;
 

@@ -203,7 +203,7 @@ public class InputValidator
 
         if (province.trim().isEmpty())
         {
-            errorMessage = "Province should not be empty.";
+            errorMessage = "ProvinceWithCity should not be empty.";
         }
 
         return errorMessage;

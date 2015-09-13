@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.RequestCode;
@@ -20,7 +19,7 @@ import com.yilinker.expresspublic.core.services.gcm.RegistrationIntentService;
 import com.yilinker.expresspublic.core.helpers.CommonPrefHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
-import com.yilinker.expresspublic.modules.account.MyProfileActivity;
+import com.yilinker.expresspublic.modules.profile.MyProfileActivity;
 import com.yilinker.expresspublic.modules.home.HomeActivity;
 import com.yilinker.expresspublic.modules.login.LogInActivity;
 

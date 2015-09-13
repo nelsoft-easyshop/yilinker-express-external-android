@@ -1,6 +1,7 @@
 package com.yilinker.expresspublic.modules.bookDelivery;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +14,12 @@ import com.google.gson.GsonBuilder;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
-import com.yilinker.expresspublic.core.deserializer.DateDeserializer;
+import com.yilinker.expresspublic.core.models.PickUpSchedule;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
-import com.yilinker.expresspublic.core.serializer.DateSerializer;
+import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
+
+import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.Observable;
@@ -97,8 +100,14 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     protected void initListeners() {
         // Set onclick listener for FROM group
         findViewById(R.id.ll_from).setOnClickListener(this);
-        // Set onclick lister for PACKAGE SIZE group
+        // Set onclick listener for TO group
+        findViewById(R.id.ll_to).setOnClickListener(this);
+        // Set onclick listener for PACKAGE DETAILS
+        findViewById(R.id.ll_packageDetails).setOnClickListener(this);
+        // Set onclick listener for PACKAGE SIZE group
         findViewById(R.id.ll_packageSize).setOnClickListener(this);
+        // Set onclick listener for PICKUP SCHEDULE
+        findViewById(R.id.ll_pickupSchedule).setOnClickListener(this);
 
         /**
          * TODO REMOVE THIS
@@ -115,7 +124,7 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     public void update(Observable observable, Object data) {
         Button btn_submitBooking = (Button) findViewById(R.id.btn_submitBooking);
         btn_submitBooking.setBackgroundResource(R.drawable.bg_rect_marigold);
-        btn_submitBooking.setTextColor(getColor(android.R.color.white));
+        btn_submitBooking.setTextColor(Color.parseColor("#FFFFFF"));
         // Set onclick listener for Submit Booking
         findViewById(R.id.btn_submitBooking).setOnClickListener(this);
     }
@@ -125,11 +134,23 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         switch (v.getId())
         {
             case R.id.ll_from:
-                selectSenderAddressLocation();
+                startSenderAddressLocationActivity();
+                break;
+
+            case R.id.ll_to:
+                startRecipientLocationActivity();
+                break;
+
+            case R.id.ll_packageDetails:
+                startPackageDetailsActivity();
                 break;
 
             case R.id.ll_packageSize:
                 startDimensionAndWeightActivity();
+                break;
+
+            case R.id.ll_pickupSchedule:
+                startPickUpScheduleActivity();
                 break;
 
             case R.id.btn_submitBooking:
@@ -141,7 +162,22 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         }
     }
 
-    private void selectSenderAddressLocation() {
+    private void startRecipientLocationActivity() {
+//        Intent intent = new Intent(this, Reci.class);
+//        startActivityForResult(intent, RequestCode.RCA_PICKUP_SCHEDULE);
+    }
+
+    private void startPackageDetailsActivity() {
+        Intent intent = new Intent(this, PackageDetailsActivity.class);
+        startActivityForResult(intent, RequestCode.RCA_PACKAGE_DETAILS);
+    }
+
+    private void startPickUpScheduleActivity() {
+        Intent intent = new Intent(this, PickUpScheduleActivity.class);
+        startActivityForResult(intent, RequestCode.RCA_PICKUP_SCHEDULE);
+    }
+
+    private void startSenderAddressLocationActivity() {
         Intent intent = new Intent(this, AddressLocationListActiviy.class);
         startActivityForResult(intent, RequestCode.RCA_SENDER_ADDRESS_LOCATION);
     }
@@ -164,6 +200,24 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void handlePickupSchedule(Intent data) {
         bookingSyncModel.setIsPickUpScheduleReady(true);
+
+        Bundle bundle = data.getExtras();
+
+        Date pickUpDate = (Date) bundle.getSerializable(BundleKey.PICKUP_DATE);
+        String pickUpScheduleRaw = bundle.getString(BundleKey.PACKAGE_PICKUP_SCHEDULE);
+
+        Gson gson = new GsonBuilder().create();
+        PickUpSchedule pickUpSchedule = gson.fromJson(pickUpScheduleRaw, PickUpSchedule.class);
+
+        evBookDeliveryReq.setPickUpDate(pickUpDate);
+        evBookDeliveryReq.setPackagePickupScheduleId(pickUpSchedule.getId());
+
+        // Update UI
+        ((TextView) findViewById(R.id.tv_pickUpDate)).setText(DateUtils.displayDateAsReadable(pickUpDate));
+        ((TextView) findViewById(R.id.tv_pickUpTime)).setText(pickUpSchedule.getSchedule());
+        findViewById(R.id.tv_pickupScheduleLabelMessage).setVisibility(View.GONE);
+        findViewById(R.id.ll_pickupScheduleContainer).setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.iv_pickupScheduleCheckStatus)).setImageResource(R.drawable.ic_check);
     }
 
     private void handlePackageSize(Intent data) {

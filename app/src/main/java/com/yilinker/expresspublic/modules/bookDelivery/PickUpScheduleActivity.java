@@ -11,10 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.DeliveryApi;
+import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.interfaces.PickUpScheduleListener;
 import com.yilinker.expresspublic.core.models.PickUpSchedule;
@@ -24,6 +27,7 @@ import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -52,6 +56,11 @@ public class PickUpScheduleActivity extends BaseActivity implements View.OnClick
      */
     private int dayCheckedItem;
 
+    /**
+     * Selected pickup schedule
+     */
+    private PickUpSchedule selectedPickUpSchedule;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +78,6 @@ public class PickUpScheduleActivity extends BaseActivity implements View.OnClick
         rv_scheduleList.setHasFixedSize(true);
         rv_scheduleList.setAdapter(pickUpScheduleAdapter);
         rv_scheduleList.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
     @Override
@@ -95,7 +102,28 @@ public class PickUpScheduleActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected Intent resultIntent() {
-        return null;
+
+        if(resultCode == RESULT_OK)
+        {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(yearCheckedItem, monthCheckedItem, dayCheckedItem, 0, 0, 0);
+
+            Gson gson = new GsonBuilder().create();
+            String pickupScheduleRaw = gson.toJson(selectedPickUpSchedule);
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(BundleKey.PICKUP_DATE, calendar.getTime());
+            bundle.putString(BundleKey.PACKAGE_PICKUP_SCHEDULE, pickupScheduleRaw);
+
+            Intent intent = new Intent();
+            intent.putExtras(bundle);
+
+            return intent;
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override
@@ -140,9 +168,9 @@ public class PickUpScheduleActivity extends BaseActivity implements View.OnClick
 
     @Override
     public void onPickUpScheduleSelected(PickUpSchedule pickUpSchedule) {
-        /**
-         * TODO make request
-         */
+        selectedPickUpSchedule = pickUpSchedule;
+        resultCode = RESULT_OK;
+        finish();
     }
 
     @Override

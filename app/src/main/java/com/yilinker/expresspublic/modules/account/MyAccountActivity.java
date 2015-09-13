@@ -6,11 +6,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.core.models.User;
 import com.yilinker.expresspublic.modules.BaseActivity;
-
-import org.w3c.dom.Text;
+import com.yilinker.expresspublic.modules.profile.UpdateProfileActivity;
 
 import java.util.logging.Logger;
 
@@ -48,8 +48,11 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
     @Override
     protected void initListeners() {
+        // Set onclick listener for contact number
         findViewById(R.id.ll_updateContactNumber).setOnClickListener(this);
+        // Set onclick listener for update profile
         findViewById(R.id.ll_updateProfile).setOnClickListener(this);
+        // Set onclick listener for update password
         findViewById(R.id.ll_updatePassword).setOnClickListener(this);
     }
 
@@ -59,11 +62,38 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == RequestCode.RCA_UPDATE_MOBILE)
+        {
+            User user = UserPrefHelper.getUser(this);
+            ((TextView) findViewById(R.id.tv_contactNumber)).setText(user.getContactNumber());
+            ((TextView) findViewById(R.id.tv_fullname)).setText(user.getFullname());
+            ((TextView) findViewById(R.id.tv_password)).setText("Password");
+        }
+        else if(requestCode == RequestCode.RCA_UPDATE_PROFILE)
+        {
+            User user = UserPrefHelper.getUser(this);
+            ((TextView) findViewById(R.id.tv_contactNumber)).setText(user.getContactNumber());
+            ((TextView) findViewById(R.id.tv_fullname)).setText(user.getFullname());
+            ((TextView) findViewById(R.id.tv_password)).setText("Password");
+        }
+        else if(requestCode == RequestCode.RCA_UPDATE_PASSWORD)
+        {
+            User user = UserPrefHelper.getUser(this);
+            ((TextView) findViewById(R.id.tv_contactNumber)).setText(user.getContactNumber());
+            ((TextView) findViewById(R.id.tv_fullname)).setText(user.getFullname());
+            ((TextView) findViewById(R.id.tv_password)).setText("Password");
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId())
         {
             case R.id.ll_updateContactNumber:
-                startUpdateContactNumberActivity();
+                startChangeBindingMobileActivity();
                 break;
 
             case R.id.ll_updateProfile:
@@ -81,15 +111,16 @@ public class MyAccountActivity extends BaseActivity implements View.OnClickListe
 
     private void startUpdatePasswordActivity() {
         Intent intent = new Intent(this, ChangePasswordActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, RequestCode.RCA_UPDATE_PASSWORD);
     }
 
     private void startUpdateProfileActivity() {
         Intent intent = new Intent(this, UpdateProfileActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, RequestCode.RCA_UPDATE_PROFILE);
     }
 
-    private void startUpdateContactNumberActivity() {
-
+    private void startChangeBindingMobileActivity() {
+        Intent intent = new Intent(this, ChangeBindingMobileActivity.class);
+        startActivityForResult(intent, RequestCode.RCA_UPDATE_MOBILE);
     }
 }

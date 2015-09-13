@@ -10,6 +10,7 @@ public class ApiEndpoint
     public static final String USER_UPDATE_PROFILE                      = "update_profile";
     public static final String USER_UPDATE_PASSWORD                     = "update_password";
     public static final String USER_UPDATE_MOBILE                       = "update_mobile";
+    public static final String USER_VERIFY_MOBILE                       = "verify_mobile";
     /*******************************************************************************
      * OAuth Endpoint
      ******************************************************************************/
@@ -22,11 +23,11 @@ public class ApiEndpoint
      ******************************************************************************/
     public static final String BRANCH_API                               = "branch";
     // Method
-    public static final String BRANCH_BOOKMARK                          = "follow";
-    public static final String BRANCH_UNBOOKMARK                        = "unfollow";
+    public static final String BRANCH_BOOKMARK                          = "bookmark";
+    public static final String BRANCH_UNBOOKMARK                        = "unbookmark";
     public static final String BRANCH_AREA                              = "area";
     public static final String BRANCH_SEARCH                            = "search";
-    public static final String BRANCH_BOOKMARKED                        = "followed";
+    public static final String BRANCH_BOOKMARKED                        = "bookmarked";
     public static final String BRANCH_ME                                = "me";
     /*******************************************************************************
      * Track Endpoint
@@ -42,6 +43,15 @@ public class ApiEndpoint
     public static final String LOCATION_API                             = "location";
     // Method
     public static final String LOCATION_AREA                            = "area";
+    public static final String LOCATION_SENDER_ADDRESS                  = "sender_address";
+    public static final String LOCATION_RECIPIENT_ADDRESS               = "recipient_address";
+    public static final String LOCATION_ADDRESS                         = "address";
+    public static final String LOCATION_ADDRESS_GROUP                   = "address_group";
+    public static final String LOCATION_GROUP                           = "group";
+    public static final String LOCATION_STORE                           = "store";
+    public static final String LOCATION_PROVINCE                        = "province";
+    public static final String LOCATION_CITY                            = "city";
+    public static final String LOCATION_BARANGAY                        = "barangay";
     /*******************************************************************************
      * Delivery Endpoint
      ******************************************************************************/

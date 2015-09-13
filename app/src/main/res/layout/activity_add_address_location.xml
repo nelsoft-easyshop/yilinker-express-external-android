@@ -111,7 +111,8 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <!-- Address Group List -->
                 <android.support.v7.widget.RecyclerView
@@ -119,6 +120,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
+                    android:gravity="center_vertical"
                     android:background="@android:color/white" />
 
                 <!-- Add group -->
@@ -163,7 +165,7 @@
 
                 <!-- Unit/Floor No -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-                    android:id="@+id/et_unitFloorNo"
+                    android:id="@+id/et_unitNumber"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -308,7 +310,7 @@
                 android:background="@color/divider"/>
             <!-- [END] STREET NAME -->
 
-            <!-- [START] SUBDIVISION/VILLAGE -->
+            <!-- [START] VILLAGE -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -323,15 +325,15 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/subdivision_village"
+                    android:text="@string/village"
                     android:textSize="14sp"
                     android:textColor="@color/greyish_brown"
                     android:textAllCaps="true"
                     app:fontName="Roboto-Medium.ttf"/>
 
-                <!-- Subdivision/Village -->
+                <!-- Village -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-                    android:id="@+id/et_subdivisionVillage"
+                    android:id="@+id/et_village"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -348,9 +350,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@color/divider"/>
-            <!-- [END] SUBDIVISION/VILLAGE -->
+            <!-- [END] VILLAGE -->
 
-            <!-- [START] BARANGAY -->
+            <!-- [START] PROVINCE -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -365,15 +367,15 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/barangay"
+                    android:text="@string/provinceWithCity"
                     android:textSize="14sp"
                     android:textColor="@color/greyish_brown"
                     android:textAllCaps="true"
                     app:fontName="Roboto-Medium.ttf"/>
 
-                <!-- Barangay-->
+                <!-- ProvinceWithCity
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-                    android:id="@+id/et_barangay"
+                    android:id="@+id/et_province"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -382,6 +384,12 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
+-->
+                <Spinner
+                    android:id="@+id/sp_province"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -390,7 +398,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@color/divider"/>
-            <!-- [END] BARANGAY -->
+            <!-- [END] PROVINCE -->
 
             <!-- [START] CITY -->
             <LinearLayout
@@ -413,7 +421,7 @@
                     android:textAllCaps="true"
                     app:fontName="Roboto-Medium.ttf"/>
 
-                <!-- City -->
+                <!-- City
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
                     android:id="@+id/et_city"
                     android:layout_width="0dp"
@@ -424,6 +432,12 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
+-->
+                <Spinner
+                    android:id="@+id/sp_city"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -434,7 +448,7 @@
                 android:background="@color/divider"/>
             <!-- [END] CITY -->
 
-            <!-- [START] PROVINCE -->
+            <!-- [START] BARANGAY -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -449,15 +463,15 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@string/province"
+                    android:text="@string/barangay"
                     android:textSize="14sp"
                     android:textColor="@color/greyish_brown"
                     android:textAllCaps="true"
                     app:fontName="Roboto-Medium.ttf"/>
 
-                <!-- Province -->
+                <!-- Barangay
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-                    android:id="@+id/et_province"
+                    android:id="@+id/et_barangay"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
@@ -466,6 +480,12 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
+-->
+                <Spinner
+                    android:id="@+id/sp_barangay"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -474,7 +494,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="@color/divider"/>
-            <!-- [END] PROVINCE -->
+            <!-- [END] BARANGAY -->
 
             <!-- [START] ZIP CODE -->
             <LinearLayout
@@ -510,7 +530,35 @@
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
             </LinearLayout>
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/divider"/>
             <!-- [END] ZIP CODE-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <!-- Label-->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_location"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
 
             <!-- Map Container -->
             <com.yilinker.expresspublic.modules.common.customviews.SquareFrameLayout

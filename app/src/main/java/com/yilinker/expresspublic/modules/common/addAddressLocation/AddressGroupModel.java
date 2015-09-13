@@ -6,14 +6,16 @@ package com.yilinker.expresspublic.modules.common.addAddressLocation;
 public class AddressGroupModel
 {
     private boolean isSelected;
-    private String addressGroupName;
+    private Long id;
+    private String name;
 
     public AddressGroupModel() {
     }
 
-    public AddressGroupModel(boolean isSelected, String addressGroupName) {
+    public AddressGroupModel(boolean isSelected, Long id, String name) {
         this.isSelected = isSelected;
-        this.addressGroupName = addressGroupName;
+        this.id = id;
+        this.name = name;
     }
 
     public boolean isSelected() {
@@ -24,11 +26,19 @@ public class AddressGroupModel
         this.isSelected = isSelected;
     }
 
-    public String getAddressGroupName() {
-        return addressGroupName;
+    public Long getId() {
+        return id;
     }
 
-    public void setAddressGroupName(String addressGroupName) {
-        this.addressGroupName = addressGroupName;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

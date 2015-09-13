@@ -8,21 +8,21 @@ import java.util.Comparator;
 /**
  * Created by Jeico.
  */
-public class City
+public class Barangay
 {
     @SerializedName(ApiKey.ID)
     private Long id;
-    @SerializedName(ApiKey.PROVINCE_ID)
-    private Long provinceId;
+    @SerializedName(ApiKey.CITY_ID)
+    private Long cityId;
     @SerializedName(ApiKey.NAME)
     private String name;
 
-    public City() {
+    public Barangay() {
     }
 
-    public City(Long id, Long provinceId, String name) {
+    public Barangay(Long id, Long cityId, String name) {
         this.id = id;
-        this.provinceId = provinceId;
+        this.cityId = cityId;
         this.name = name;
     }
 
@@ -34,12 +34,12 @@ public class City
         this.id = id;
     }
 
-    public Long getProvinceId() {
-        return provinceId;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setProvinceId(Long provinceId) {
-        this.provinceId = provinceId;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
     public String getName() {
@@ -58,10 +58,10 @@ public class City
     /**
      * Sort name ascending
      */
-    public static Comparator<City> sortNameAsc = new Comparator<City>()
+    public static Comparator<Barangay> sortNameAsc = new Comparator<Barangay>()
     {
         @Override
-        public int compare(City lhs, City rhs)
+        public int compare(Barangay lhs, Barangay rhs)
         {
             return lhs.getName().compareTo(rhs.getName());
         }

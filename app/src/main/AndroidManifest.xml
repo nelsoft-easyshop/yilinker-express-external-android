@@ -97,7 +97,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".modules.account.MyProfileActivity"
+            android:name=".modules.profile.MyProfileActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -109,12 +109,30 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".modules.account.UpdateProfileActivity"
+            android:name=".modules.profile.UpdateProfileActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".modules.profile.BookmarkedBranchesActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".modules.profile.MyAddressLocationsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".modules.profile.MyRecipientsLocationsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".modules.account.ChangeBindingMobileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
             android:name=".modules.common.addAddressLocation.AddAddressLocationActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
         </activity>
 
         <!-- [BEGIN] Google -->

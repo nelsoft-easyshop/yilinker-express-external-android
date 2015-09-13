@@ -1,29 +1,41 @@
 package com.yilinker.expresspublic.core.requests;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Jeico.
  */
 public class EvBookDeliveryReq
 {
+    // Sender Details
     private Long senderConsumerId;
-    private Long recipientConsumerId;
     private Long senderAddressId;
-    private Long recipientAddressId;
     private Long senderConsumerAddressId;
+
+    // Recipient Details
+    private Long recipientConsumerId;
+    private Long recipientAddressId;
     private Long recipientConsumerAddressId;
-    private Long packagePickupScheduleId;
-    private Long branchId;
+
+    // Package Details
     private String packageName;
+    private String sku;
     private Integer quantity;
-    private String fragile;
+    private List<String> images;
+    private Boolean fragile;
     private String paidBy;
-    private Date pickUpDate;
+
+    // Dimension and Weight
     private String length;
     private String height;
     private String width;
     private String weight;
+
+    // Pickup Schedule
+    private Date pickUpDate;
+    private Long packagePickupScheduleId;
+
 
     public EvBookDeliveryReq() {
     }
@@ -36,28 +48,12 @@ public class EvBookDeliveryReq
         this.senderConsumerId = senderConsumerId;
     }
 
-    public Long getRecipientConsumerId() {
-        return recipientConsumerId;
-    }
-
-    public void setRecipientConsumerId(Long recipientConsumerId) {
-        this.recipientConsumerId = recipientConsumerId;
-    }
-
     public Long getSenderAddressId() {
         return senderAddressId;
     }
 
     public void setSenderAddressId(Long senderAddressId) {
         this.senderAddressId = senderAddressId;
-    }
-
-    public Long getRecipientAddressId() {
-        return recipientAddressId;
-    }
-
-    public void setRecipientAddressId(Long recipientAddressId) {
-        this.recipientAddressId = recipientAddressId;
     }
 
     public Long getSenderConsumerAddressId() {
@@ -68,28 +64,28 @@ public class EvBookDeliveryReq
         this.senderConsumerAddressId = senderConsumerAddressId;
     }
 
+    public Long getRecipientConsumerId() {
+        return recipientConsumerId;
+    }
+
+    public void setRecipientConsumerId(Long recipientConsumerId) {
+        this.recipientConsumerId = recipientConsumerId;
+    }
+
+    public Long getRecipientAddressId() {
+        return recipientAddressId;
+    }
+
+    public void setRecipientAddressId(Long recipientAddressId) {
+        this.recipientAddressId = recipientAddressId;
+    }
+
     public Long getRecipientConsumerAddressId() {
         return recipientConsumerAddressId;
     }
 
     public void setRecipientConsumerAddressId(Long recipientConsumerAddressId) {
         this.recipientConsumerAddressId = recipientConsumerAddressId;
-    }
-
-    public Long getPackagePickupScheduleId() {
-        return packagePickupScheduleId;
-    }
-
-    public void setPackagePickupScheduleId(Long packagePickupScheduleId) {
-        this.packagePickupScheduleId = packagePickupScheduleId;
-    }
-
-    public Long getBranchId() {
-        return branchId;
-    }
-
-    public void setBranchId(Long branchId) {
-        this.branchId = branchId;
     }
 
     public String getPackageName() {
@@ -100,6 +96,14 @@ public class EvBookDeliveryReq
         this.packageName = packageName;
     }
 
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
     public Integer getQuantity() {
         return quantity;
     }
@@ -108,11 +112,19 @@ public class EvBookDeliveryReq
         this.quantity = quantity;
     }
 
-    public String getFragile() {
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public Boolean getFragile() {
         return fragile;
     }
 
-    public void setFragile(String fragile) {
+    public void setFragile(Boolean fragile) {
         this.fragile = fragile;
     }
 
@@ -122,14 +134,6 @@ public class EvBookDeliveryReq
 
     public void setPaidBy(String paidBy) {
         this.paidBy = paidBy;
-    }
-
-    public Date getPickUpDate() {
-        return pickUpDate;
-    }
-
-    public void setPickUpDate(Date pickUpDate) {
-        this.pickUpDate = pickUpDate;
     }
 
     public String getLength() {
@@ -162,5 +166,21 @@ public class EvBookDeliveryReq
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    public Date getPickUpDate() {
+        return pickUpDate;
+    }
+
+    public void setPickUpDate(Date pickUpDate) {
+        this.pickUpDate = pickUpDate;
+    }
+
+    public Long getPackagePickupScheduleId() {
+        return packagePickupScheduleId;
+    }
+
+    public void setPackagePickupScheduleId(Long packagePickupScheduleId) {
+        this.packagePickupScheduleId = packagePickupScheduleId;
     }
 }

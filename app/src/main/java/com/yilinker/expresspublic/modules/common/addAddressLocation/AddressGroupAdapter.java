@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.core.models.AddressGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -45,7 +47,7 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
     public void onBindViewHolder(AddressGroupViewHolder holder, int position) {
         AddressGroupModel addressGroupModel = addressGroupModelList.get(position);
 
-        holder.tv_addressGroup.setText(addressGroupModel.getAddressGroupName());
+        holder.tv_addressGroup.setText(addressGroupModel.getName());
 
         if(addressGroupModel.isSelected())
         {
@@ -62,6 +64,25 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
     @Override
     public int getItemCount() {
         return addressGroupModelList.size();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public List<Long> getSelectedIds()
+    {
+        List<Long> selectedIds = new ArrayList<>();
+
+        for (AddressGroupModel addressGroupModel : addressGroupModelList )
+        {
+            if(addressGroupModel.isSelected())
+            {
+                selectedIds.add(addressGroupModel.getId());
+            }
+        }
+
+        return selectedIds;
     }
 
     class AddressGroupViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

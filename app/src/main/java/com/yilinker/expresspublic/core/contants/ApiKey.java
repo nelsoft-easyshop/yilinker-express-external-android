@@ -11,7 +11,8 @@ public class ApiKey
     public static final String USERNAME                                 = "username";
     public static final String EMAIL_ADDRESS                            = "email_address";
     public static final String CONTACT_NUMBER                           = "contact_number";
-    public static final String FULL_NAME                                 = "full_name";
+    public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
+    public static final String FULL_NAME                                = "full_name";
     public static final String DATE_ADDED                               = "date_added";
     public static final String LAST_DATE_MODIFIED                       = "last_date_modified";
     public static final String PASSWORD                                 = "password";
@@ -59,4 +60,19 @@ public class ApiKey
     public static final String TIME_FROM                                = "time_from";
     public static final String TIME_TO                                  = "time_to";
     public static final String SCHEDULE                                 = "schedule";
+    public static final String CITY_ID                                  = "city_id";
+    public static final String TYPE                                     = "type";
+    public static final String UNIT                                     = "unit";
+    public static final String BUILDING                                 = "building";
+    public static final String STREET_NUMBER                            = "street_number";
+    public static final String STREET                                   = "street";
+    public static final String VILLAGE                                  = "village";
+    public static final String BARANGAY_ID                              = "barangay_id";
+    public static final String ZIPCODE                                  = "zipcode";
+    public static final String ADDRESS_TYPE                             = "address_type";
+    public static final String ADDRESS_ID                               = "address_id";
+    public static final String CONSUMER_ID                              = "consumer_id";
+    public static final String CONTACT_PERSON                           = "contact_person";
+    public static final String CONTACT_PERSON_NUMBER                    = "contact_person_number";
+    public static final String IS_PRIMARY                               = "is_primary";
 }

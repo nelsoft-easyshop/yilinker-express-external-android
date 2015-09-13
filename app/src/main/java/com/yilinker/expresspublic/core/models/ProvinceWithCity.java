@@ -3,24 +3,27 @@ package com.yilinker.expresspublic.core.models;
 import com.google.gson.annotations.SerializedName;
 import com.yilinker.expresspublic.core.contants.ApiKey;
 
-import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Jeico.
  */
-public class Province
+public class ProvinceWithCity
 {
     @SerializedName(ApiKey.ID)
     private Long id;
     @SerializedName(ApiKey.NAME)
     private String name;
+    @SerializedName(ApiKey.CITY)
+    private List<City> cityList;
 
-    public Province() {
+    public ProvinceWithCity() {
     }
 
-    public Province(Long id, String name) {
+    public ProvinceWithCity(Long id, String name, List<City> cityList) {
         this.id = id;
         this.name = name;
+        this.cityList = cityList;
     }
 
     public Long getId() {
@@ -39,20 +42,11 @@ public class Province
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return this.name;
+    public List<City> getCityList() {
+        return cityList;
     }
 
-    /**
-     * Sort name ascending
-     */
-    public static Comparator<Province> sortNameAsc = new Comparator<Province>()
-    {
-        @Override
-        public int compare(Province lhs, Province rhs)
-        {
-            return lhs.getName().compareTo(rhs.getName());
-        }
-    };
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
+    }
 }

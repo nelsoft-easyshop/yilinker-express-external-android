@@ -15,7 +15,7 @@ import com.yilinker.expresspublic.core.api.LocationApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.models.City;
-import com.yilinker.expresspublic.core.models.Province;
+import com.yilinker.expresspublic.core.models.ProvinceWithCity;
 import com.yilinker.expresspublic.core.responses.EvGetAllProvinceAndCityResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
@@ -98,18 +98,18 @@ public class SelectAreaCityActivity extends BaseActivity implements ResponseHand
 
         List<ProvinceModel> provinceModelList = new ArrayList<>();
 
-        List<Province> provinceList = evGetAllProvinceAndCityResp.data;
-        for(Province province : provinceList)
+        List<ProvinceWithCity> provinceWithCityList = evGetAllProvinceAndCityResp.data;
+        for(ProvinceWithCity provinceWithCity : provinceWithCityList)
         {
             List<Object> cityList = new ArrayList<>();
-            for(City city : province.getCityList())
+            for(City city : provinceWithCity.getCityList())
             {
                 cityList.add(city);
                 cityList.add(city);
                 cityList.add(city);
             }
 
-            ProvinceModel provinceModel = new ProvinceModel(province.getId(), province.getName(), cityList);
+            ProvinceModel provinceModel = new ProvinceModel(provinceWithCity.getId(), provinceWithCity.getName(), cityList);
             provinceModelList.add(provinceModel);
         }
 

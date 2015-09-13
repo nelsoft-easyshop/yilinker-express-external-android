@@ -1,17 +1,27 @@
 package com.yilinker.expresspublic.modules.common.addAddressLocation;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,7 +29,23 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.ResponseHandler;
+import com.yilinker.expresspublic.core.api.LocationApi;
+import com.yilinker.expresspublic.core.contants.BundleKey;
+import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.enums.AddressType;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
+import com.yilinker.expresspublic.core.models.AddressGroup;
+import com.yilinker.expresspublic.core.models.Barangay;
+import com.yilinker.expresspublic.core.models.City;
+import com.yilinker.expresspublic.core.models.Province;
+import com.yilinker.expresspublic.core.responses.EvAddressGroupListResp;
+import com.yilinker.expresspublic.core.responses.EvBarangayListResp;
+import com.yilinker.expresspublic.core.responses.EvCityListResp;
+import com.yilinker.expresspublic.core.responses.EvProvinceListResp;
+import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 import com.yilinker.expresspublic.modules.common.customviews.SubMapFragment;
 
@@ -27,11 +53,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.xml.transform.Result;
+
 /**
  * Created by Jeico.
  */
-public class AddAddressLocationActivity extends BaseActivity implements OnMapReadyCallback {
+public class AddAddressLocationActivity extends BaseActivity implements OnMapReadyCallback, ResponseHandler, View.OnClickListener {
     private static final Logger logger = Logger.getLogger(AddAddressLocationActivity.class.getSimpleName());
+
+    private AddressType addressType;
 
     private GoogleMap googleMap;
 
@@ -45,22 +75,25 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
     private AddressGroupAdapter addressGroupAdapter;
 
+    private ProgressDialog progressDialog;
+
+    private ArrayAdapter<Province> provinceArrayAdapter;
+    private ArrayAdapter<City> cityArrayAdapter;
+    private ArrayAdapter<Barangay> barangayArrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        progressDialog = new ProgressDialog(this);
+
+        Bundle bundle = getIntent().getExtras();
+        addressType = (AddressType) bundle.getSerializable(BundleKey.ADDRESS_TYPE);
+
         sv_parent = (ScrollView) findViewById(R.id.sv_parent);
 
-
+        // Setup address group
         addressGroupModelList = new ArrayList<>();
-        addressGroupModelList.add(new AddressGroupModel(false, "Home"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Office"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Others"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Home"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Office"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Others"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Office"));
-        addressGroupModelList.add(new AddressGroupModel(false, "Others"));
 
         addressGroupAdapter = new AddressGroupAdapter(this, addressGroupModelList);
 
@@ -70,8 +103,6 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-        //addressGroupAdapter.notifyDataSetChanged();
 
         /**
          * Get reference to google map
@@ -84,6 +115,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 sv_parent.requestDisallowInterceptTouchEvent(true);
             }
         });
+
+        volleyGetAddressGroup();
     }
 
     @Override
@@ -103,12 +136,85 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
     @Override
     protected void initListeners() {
+        // Set onclick listener for adding address group
+        findViewById(R.id.ibtn_addAddressGroup).setOnClickListener(this);
+        // Set onclick listener for volleySubmit
+        findViewById(R.id.btn_submit).setOnClickListener(this);
 
+        // Set up province
+        provinceArrayAdapter = new ArrayAdapter<Province>(this, android.R.layout.simple_spinner_dropdown_item);
+        Spinner sp_province = (Spinner) findViewById(R.id.sp_province);
+        sp_province.setAdapter(provinceArrayAdapter);
+        sp_province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                cityArrayAdapter.clear();
+                barangayArrayAdapter.clear();
+
+                Province province = provinceArrayAdapter.getItem(position);
+                volleyGetCityList(province.getId());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        // Set up city
+        cityArrayAdapter = new ArrayAdapter<City>(this, android.R.layout.simple_spinner_dropdown_item);
+        Spinner sp_city = (Spinner) findViewById(R.id.sp_city);
+        sp_city.setAdapter(cityArrayAdapter);
+        sp_city.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                barangayArrayAdapter.clear();
+
+                City city = cityArrayAdapter.getItem(position);
+                volleyGetBarangayList(city.getId());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        // Set up barangay
+        barangayArrayAdapter = new ArrayAdapter<Barangay>(this, android.R.layout.simple_spinner_dropdown_item);
+        Spinner sp_barangay = (Spinner) findViewById(R.id.sp_barangay);
+        sp_barangay.setAdapter(barangayArrayAdapter);
+        sp_barangay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
     protected Intent resultIntent() {
         return null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.ibtn_addAddressGroup:
+                showAddAddressGroupDialog();
+                break;
+
+            case R.id.btn_submit:
+                volleySubmit();
+                break;
+
+            default:
+                break;
+        }
     }
 
     @Override
@@ -179,5 +285,249 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         rlp.addRule(RelativeLayout.ALIGN_PARENT_TOP, 0);
         rlp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
         rlp.setMargins(0, 0, 30, 30);
+    }
+
+    @Override
+    public void onResponse(int requestCode, Object object) {
+        if(progressDialog.isShowing())
+        {
+            progressDialog.dismiss();
+        }
+
+        switch (requestCode)
+        {
+            case RequestCode.RCR_GET_ADDRESS_GROUP:
+                EvAddressGroupListResp getAddressGroupResp = (EvAddressGroupListResp) object;
+                populateAddressGroup(getAddressGroupResp.data);
+                volleyGetProvinceList();
+                break;
+
+            case RequestCode.RCR_ADD_ADDRESS_GROUP:
+                EvAddressGroupListResp addAddressGroupResp = (EvAddressGroupListResp) object;
+                populateAddressGroup(addAddressGroupResp.data);
+                break;
+
+            case RequestCode.RCR_GET_PROVINCE_LIST:
+                EvProvinceListResp evProvinceListResp = (EvProvinceListResp) object;
+                provinceArrayAdapter.addAll(evProvinceListResp.data);
+                break;
+
+            case RequestCode.RCR_GET_CITY_LIST:
+                EvCityListResp evCityListResp = (EvCityListResp) object;
+                cityArrayAdapter.addAll(evCityListResp.data);
+                break;
+
+            case RequestCode.RCR_GET_BARANGAY_LIST:
+                EvBarangayListResp evBarangayListResp = (EvBarangayListResp) object;
+                barangayArrayAdapter.addAll(evBarangayListResp.data);
+                break;
+
+            case RequestCode.RCR_ADD_ADDRESS_LOCATION:
+                EvBaseResp evBaseResp = (EvBaseResp) object;
+                Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
+                resultCode = RESULT_OK;
+                finish();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onErrorResponse(int requestCode, String message) {
+        if(progressDialog.isShowing())
+        {
+            progressDialog.dismiss();
+        }
+
+        switch (requestCode)
+        {
+            case RequestCode.RCR_GET_ADDRESS_GROUP:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            case RequestCode.RCR_ADD_ADDRESS_GROUP:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            case RequestCode.RCR_GET_PROVINCE_LIST:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            case RequestCode.RCR_GET_CITY_LIST:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            case RequestCode.RCR_GET_BARANGAY_LIST:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            case RequestCode.RCR_ADD_ADDRESS_LOCATION:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void volleyGetAddressGroup() {
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_getting_address_group));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // Request for address group
+        Request request = LocationApi.getAddressGroup(OAuthPrefHelper.getAccessToken(this),
+                RequestCode.RCR_GET_ADDRESS_GROUP, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void volleyGetProvinceList()
+    {
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_getting_provinces));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // Request for address group
+        Request request = LocationApi.getProvinceList(RequestCode.RCR_GET_PROVINCE_LIST, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void volleyGetCityList(Long provinceId)
+    {
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_getting_cities));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // Request for address group
+        Request request = LocationApi.getCityList(provinceId, RequestCode.RCR_GET_CITY_LIST, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void volleyGetBarangayList(Long cityId)
+    {
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_getting_barangays));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // Request for address group
+        Request request = LocationApi.getBarangayList(cityId, RequestCode.RCR_GET_BARANGAY_LIST, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void populateAddressGroup(List<AddressGroup> addressGroupList) {
+
+        if(addressGroupList != null)
+        {
+            addressGroupModelList.clear();
+
+            for (AddressGroup addressGroup : addressGroupList)
+            {
+                AddressGroupModel addressGroupModel = new AddressGroupModel(false,
+                        addressGroup.getId(), addressGroup.getName()
+                );
+
+                addressGroupModelList.add(addressGroupModel);
+            }
+
+            addressGroupAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void showAddAddressGroupDialog() {
+        View view = getLayoutInflater().inflate(R.layout.dialog_add_address_group, null);
+        final EditText et_addressGroup = (EditText) view.findViewById(R.id.et_addressGroup);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(getString(R.string.add_address_group))
+                .setView(view)
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.add), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = et_addressGroup.getText().toString().trim();
+                        validateAddressGroup(name);
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        builder.create().show();
+    }
+
+    private void validateAddressGroup(String name) {
+        if(TextUtils.isEmpty(name))
+        {
+            Toast.makeText(this, getString(R.string.error_invalid_address_group_name), Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            volleyAddAddressGroup(name);
+        }
+    }
+
+    private void volleyAddAddressGroup(String name) {
+
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_adding_address_group));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        Request request = LocationApi.addAddressGroup(OAuthPrefHelper.getAccessToken(this), name, RequestCode.RCR_ADD_ADDRESS_GROUP, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void volleySubmit()
+    {
+        // Show loading
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_adding_address_location));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        String fullName = ((EditText) findViewById(R.id.et_fullName)).getText().toString().trim();
+        String contactNumber = ((EditText) findViewById(R.id.et_contactNumber)).getText().toString().trim();
+        List<Long> addressGroup = addressGroupAdapter.getSelectedIds();
+        String unitNumber = ((EditText) findViewById(R.id.et_unitNumber)).getText().toString().trim();
+        String buildingName = ((EditText) findViewById(R.id.et_buildingName)).getText().toString().trim();
+        String streetNumber = ((EditText) findViewById(R.id.et_streetNumber)).getText().toString().trim();
+        String streetName = ((EditText) findViewById(R.id.et_streetName)).getText().toString().trim();
+        String village = ((EditText) findViewById(R.id.et_village)).getText().toString().trim();
+
+        Province province = (Province) ((Spinner) findViewById(R.id.sp_province)).getSelectedItem();
+        Long provinceId = province.getId();
+        City city = (City) ((Spinner) findViewById(R.id.sp_city)).getSelectedItem();
+        Long cityId = city.getId();
+        Barangay barangay = (Barangay) ((Spinner) findViewById(R.id.sp_barangay)).getSelectedItem();
+        Long barangayId = barangay.getId();
+
+        String zipCode = ((EditText) findViewById(R.id.et_zipCode)).getText().toString().trim();
+
+        Double latitude = null;
+        Double longitude = null;
+        if(addressMarker != null)
+        {
+            latitude = addressMarker.getPosition().latitude;
+            longitude = addressMarker.getPosition().longitude;
+        }
+
+
+        Request request = LocationApi.addAddressLocation(OAuthPrefHelper.getAccessToken(this), fullName, contactNumber,
+                addressGroup, unitNumber, buildingName, streetNumber, streetName, village, provinceId,
+                cityId, barangayId, zipCode, latitude, longitude, addressType.getValue(), RequestCode.RCR_ADD_ADDRESS_LOCATION, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
     }
 }

@@ -1,4 +1,4 @@
-package com.yilinker.expresspublic.modules.account;
+package com.yilinker.expresspublic.modules.profile;
 
 import android.content.Intent;
 import android.os.Bundle;

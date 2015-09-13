@@ -116,6 +116,204 @@
                 android:background="@color/divider"/>
             <!-- [END] From -->
 
+            <!-- [START] TO -->
+            <LinearLayout
+                android:id="@+id/ll_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- To Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/to"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- To Group -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- To Label Message -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:id="@+id/tv_toLabelMessage"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_message_to"
+                        android:textSize="14sp"
+                        android:textColor="@color/orange_yellow"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- To Container -->
+                    <LinearLayout
+                        android:id="@+id/ll_toContainer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <!-- Recipient Name -->
+                            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                                android:id="@+id/tv_recipientName"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:textSize="20sp"
+                                android:textColor="@color/orange_yellow"
+                                app:fontName="Roboto-Regular.ttf"/>
+
+                            <!-- Recipient Contact Number -->
+                            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                                android:id="@+id/tv_recipientContactNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="@color/greyish_brown"
+                                app:fontName="Roboto-Regular.ttf"/>
+                        </LinearLayout>
+
+                        <!-- Recipient Address -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_recipientAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/warm_grey"
+                            app:fontName="Roboto-Light.ttf"/>
+                    </LinearLayout>
+
+                    <!-- Checked Icon -->
+                    <ImageView
+                        android:id="@+id/iv_recipientCheckStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_unchecked"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"/>
+            <!-- [END] TO -->
+
+            <!-- [START] PACKAGE DETAILS -->
+            <LinearLayout
+                android:id="@+id/ll_packageDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Package Details Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/package_details"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Package Details Group -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- Package Details Label Message -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:id="@+id/tv_packageDetailsLabelMessage"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_message_package_details"
+                        android:textSize="14sp"
+                        android:textColor="@color/orange_yellow"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- Package Details Container -->
+                    <LinearLayout
+                        android:id="@+id/ll_packageDetailsContainer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Package Name -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_packageName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/orange_yellow"
+                            app:fontName="Roboto-Regular.ttf"/>
+
+                        <!-- SKU -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_sku"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:textColor="@color/greyish_brown"
+                            app:fontName="Roboto-Regular.ttf"/>
+
+                        <!-- Number of image uploaded -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_imageCount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/warm_grey"
+                            app:fontName="Roboto-Light.ttf"/>
+
+                        <!-- Paid By -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_paidBy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/warm_grey"
+                            app:fontName="Roboto-Light.ttf"/>
+                    </LinearLayout>
+
+                    <!-- Checked Icon -->
+                    <ImageView
+                        android:id="@+id/iv_packageDetailsCheckStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_unchecked"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"/>
+            <!-- [END] PACKAGE DETAILS -->
+
             <!-- [START] PACKAGE SIZE -->
             <LinearLayout
                 android:id="@+id/ll_packageSize"
@@ -197,6 +395,89 @@
                 android:layout_height="1dp"
                 android:background="@color/divider"/>
             <!-- [END] PACKAGE SIZE -->
+
+            <!-- [START] PICKUP SCHEDULE -->
+            <LinearLayout
+                android:id="@+id/ll_pickupSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Pickup Schedule Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/pickup_schedule"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    android:gravity="left"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Pickup Schedule Group -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:orientation="horizontal">
+
+                    <!-- Pickup Schedule Label Message -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:id="@+id/tv_pickupScheduleLabelMessage"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_message_pick_up_schedule"
+                        android:textSize="14sp"
+                        android:textColor="@color/orange_yellow"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- Pickup Schedule Container -->
+                    <LinearLayout
+                        android:id="@+id/ll_pickupScheduleContainer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <!-- Pickup Date Container -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_pickUpDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/orange_yellow"
+                            app:fontName="Roboto-Regular.ttf"/>
+
+                        <!-- Pickup Time -->
+                        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                            android:id="@+id/tv_pickUpTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:textColor="@color/warm_grey"
+                            app:fontName="Roboto-Light.ttf"/>
+                    </LinearLayout>
+
+                    <!-- Checked Icon -->
+                    <ImageView
+                        android:id="@+id/iv_pickupScheduleCheckStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_unchecked"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"/>
+            <!-- [END] PICKUP SCHEDULE -->
+
 
         </LinearLayout>
     </ScrollView>

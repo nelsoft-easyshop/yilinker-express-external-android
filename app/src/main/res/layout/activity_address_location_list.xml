@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@color/divider">
+        android:background="@color/divider"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +59,7 @@
             android:visibility="gone"/>
     </RelativeLayout>
 
-    <!-- Submit Booking -->
+    <!-- New Sender Detail -->
     <com.yilinker.expresspublic.modules.common.customviews.CustomButton
         android:id="@+id/btn_newSenderDetail"
         android:layout_width="match_parent"

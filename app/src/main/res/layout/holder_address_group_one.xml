@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:orientation="vertical">
 
+    <!-- Address group name -->
     <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-        android:id="@+id/tv_addressGroup"
+        android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:textSize="14sp"
-        android:textColor="@color/marigold"
-        android:textAllCaps="true"
-        android:gravity="center"
-        android:background="@drawable/bg_rounded_white_stroked_marigold"
+        android:textColor="@color/greyish_brown"
+        android:background="@drawable/bg_rounded_divider"
         app:fontName="Roboto-Regular.ttf"/>
-
 </LinearLayout>

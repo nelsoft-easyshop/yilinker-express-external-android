@@ -26,13 +26,20 @@
     <string name="title_change_password">Change Password</string>
     <string name="title_my_profile">My Profile</string>
     <string name="title_bookmarked_branches">Bookmarked Branches</string>
+    <string name="title_pickup_schedule">Pickup Schedule</string>
+    <string name="title_my_recipients_locations">My Recipients Locations</string>
+    <string name="title_change_binding_mobile">Change Binding Mobile</string>
 
     <!-- Hints -->
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
+    <string name="hint_enter_your_new_mobile_number">Enter your new mobile number</string>
 
     <!-- Error -->
     <string name="error">Error</string>
+    <string name="error_invalid_address_group_name">Invalid address group name.</string>
+    <string name="error_invalid_verification_code">Invalid verification code.</string>
+    <string name="error_invalid_mobile_number">Invalid mobile number.</string>
 
     <!-- Loading messages -->
     <string name="loading_registration">Registering&#8230;</string>
@@ -44,6 +51,14 @@
     <string name="loading_getting_package_container">Getting package container&#8230;</string>
     <string name="loading_account_information">Loading account information&#8230;</string>
     <string name="loading_changing_password">Changing password&#8230;</string>
+    <string name="loading_getting_address_group">Getting address group&#8230;</string>
+    <string name="loading_adding_address_group">Adding address group&#8230;</string>
+    <string name="loading_getting_provinces">Loading provinces&#8230;</string>
+    <string name="loading_getting_cities">Loading cities&#8230;</string>
+    <string name="loading_getting_barangays">Loading barangays&#8230;</string>
+    <string name="loading_adding_address_location">Adding address location&#8230;</string>
+    <string name="loading_requesting_verification_code">Requesting verification code&#8230;</string>
+    <string name="loading_updating_mobile">Updating mobile&#8230;</string>
 
     <!-- Label Message -->
     <string name="label_message_from">Please enter sender\'s full name and complete address</string>
@@ -59,7 +74,7 @@
     <string name="contact">CONTACT</string>
     <string name="password">PASSWORD</string>
     <string name="submit_and_update">Submit and Update</string>
-    <string name="regsitration">Registration</string>
+    <string name="registration">Registration</string>
     <string name="back_to_home">Back to Home</string>
     <string name="sign_in">Sign In</string>
     <string name="register">Register</string>
@@ -101,7 +116,7 @@
     <string name="subdivision_village">Subdivision</string>
     <string name="barangay">Barangay</string>
     <string name="city">City</string>
-    <string name="province">Province</string>
+    <string name="provinceWithCity">Province</string>
     <string name="zip_code">Zip Code</string>
     <string name="submit">Submit</string>
     <string name="enter_tracking_code">Enter tracking code</string>
@@ -131,10 +146,23 @@
     <string name="new_password">New Password</string>
     <string name="confirm">Confirm</string>
     <string name="select_schedule">Select Schedule</string>
-    <string name="title_pickup_schedule">Pickup Schedule</string>
     <string name="select_date">Select Date</string>
     <string name="select_pickup_schedule">Select Pick Up Schedule</string>
     <string name="birthdate">Birthdate</string>
     <string name="gender">Gender</string>
+    <string name="add_address_location">Add Address Location</string>
+    <string name="add_address_group">Add Address Group</string>
+    <string name="enter_group_name">Enter group name</string>
+    <string name="select_province">Select Province</string>
+    <string name="select_location">Select Location</string>
+    <string name="village">Village</string>
+    <string name="country_code">Country Code</string>
+    <string name="old_mobile">Old Mobile</string>
+    <string name="philippines_country_code">Philippines +63</string>
+    <string name="new_mobile">New Mobile</string>
+    <string name="confirm_entries">Confirm Entries</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="enter_verification_code_message">A verification code has been sent to your mobile number.</string>
+    <string name="resend_verification_code">Resend Verification Code</string>
 
 </resources>

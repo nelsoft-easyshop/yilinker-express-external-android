@@ -6,19 +6,19 @@ import com.yilinker.expresspublic.core.contants.ApiKey;
 public class User
 {
     @SerializedName(ApiKey.ID)
-    public Long id;
+    private Long id;
     @SerializedName(ApiKey.USERNAME)
-    public String username;
+    private String username;
     @SerializedName(ApiKey.FIRST_NAME)
-    public String firstname;
+    private String firstname;
     @SerializedName(ApiKey.LAST_NAME)
-    public String lastname;
+    private String lastname;
     @SerializedName(ApiKey.FULL_NAME)
-    public String fullname;
+    private String fullname;
     @SerializedName(ApiKey.EMAIL)
-    public String email;
+    private String email;
     @SerializedName(ApiKey.CONTACT_NUMBER)
-    public String contactNumber;
+    private String contactNumber;
 
     public User() {
     }

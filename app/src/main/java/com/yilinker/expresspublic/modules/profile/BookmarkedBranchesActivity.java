@@ -1,4 +1,4 @@
-package com.yilinker.expresspublic.modules.account;
+package com.yilinker.expresspublic.modules.profile;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -117,8 +117,7 @@ public class BookmarkedBranchesActivity extends BaseActivity implements BranchLi
     public void onResponse(int requestCode, Object object) {
         switch (requestCode)
         {
-            case RequestCode.RCR_SEARCH_BRANCHES_BY_CITY:
-            case RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD:
+            case RequestCode.RCR_GET_BOOKMARKED_BRANCHES:
                 EvBranchListResp evBranchListResp = (EvBranchListResp) object;
                 populateList(evBranchListResp.data);
                 break;
@@ -134,8 +133,7 @@ public class BookmarkedBranchesActivity extends BaseActivity implements BranchLi
     public void onErrorResponse(int requestCode, String message) {
         switch (requestCode)
         {
-            case RequestCode.RCR_SEARCH_BRANCHES_BY_CITY:
-            case RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD:
+            case RequestCode.RCR_GET_BOOKMARKED_BRANCHES:
                 branchList.clear();
                 branchAdapter.notifyDataSetChanged();
                 break;
@@ -151,10 +149,12 @@ public class BookmarkedBranchesActivity extends BaseActivity implements BranchLi
     {
         if(tempBranchList != null)
         {
+            logger.severe("clear branch");
             branchList.clear();
 
             for(Branch branch : tempBranchList)
             {
+                logger.severe("add branch");
                 branchList.add(branch);
             }
 
