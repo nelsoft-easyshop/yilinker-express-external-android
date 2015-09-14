@@ -28,10 +28,10 @@
 
         <!-- Input -->
         <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-            android:id="@+id/et_packagename"
+            android:id="@+id/et_packageName"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:inputType="text"
+            android:inputType="textCapWords"
             android:textSize="16sp"
             android:textColor="@color/warm_grey"
             android:background="@drawable/bg_input"
@@ -55,7 +55,7 @@
             android:id="@+id/et_sku"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:inputType="number"
+            android:inputType="textCapCharacters"
             android:textSize="16sp"
             android:textColor="@color/warm_grey"
             android:background="@drawable/bg_input"
@@ -91,7 +91,7 @@
                     android:id="@+id/et_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:textSize="16sp"
                     android:textColor="@color/warm_grey"
                     android:background="@drawable/bg_input"
@@ -124,7 +124,7 @@
 
                     <!-- Number of images -->
                     <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-                        android:id="@+id/et_imageCount"
+                        android:id="@+id/tv_imageCount"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="match_parent"
@@ -179,6 +179,7 @@
                     android:id="@+id/sc_fragile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:background="@null"/>
             </LinearLayout>
 
@@ -205,6 +206,7 @@
                     android:id="@+id/sc_paidBySender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:background="@null"/>
             </LinearLayout>
         </LinearLayout>

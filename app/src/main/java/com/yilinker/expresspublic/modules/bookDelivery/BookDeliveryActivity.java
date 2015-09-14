@@ -7,13 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.yilinker.expresspublic.BuildConfig;
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.core.BookDeliveryRequest;
+import com.yilinker.expresspublic.core.contants.ApiEndpoint;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.Address;
 import com.yilinker.expresspublic.core.models.PickUpSchedule;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
@@ -21,7 +24,9 @@ import com.yilinker.expresspublic.core.utilities.CommonUtils;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Logger;
@@ -35,6 +40,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     private BookingSyncModel bookingSyncModel;
 
     private EvBookDeliveryReq evBookDeliveryReq;
+
+    private BookDeliveryRequest bookDeliveryRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -195,10 +202,12 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         /**
          * TODO
          */
-        Toast.makeText(this, "Submit Booking clicked!", Toast.LENGTH_SHORT).show();
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.DELIVERY_API + "/"
+                + ApiEndpoint.DELIVERY_BOOK;
 
-        Intent intent = new Intent(this, PickUpScheduleActivity.class);
-        startActivity(intent);
+        bookDeliveryRequest = new BookDeliveryRequest(this, endpoint, OAuthPrefHelper.getAccessToken(this), evBookDeliveryReq);
+        bookDeliveryRequest.execute();
     }
 
     private void handlePickupSchedule(Intent data) {
@@ -250,6 +259,36 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void handlePackageDetails(Intent data) {
         bookingSyncModel.setIsPackageDetailsReady(true);
+
+        Bundle bundle = data.getExtras();
+
+        String packageName = bundle.getString(BundleKey.PACKAGE_NAME);
+        String sku = bundle.getString(BundleKey.SKU);
+        int quantity = bundle.getInt(BundleKey.QUANTITY);
+        String paidBy = bundle.getString(BundleKey.PAID_BY);
+        boolean isFragile = bundle.getBoolean(BundleKey.IS_FRAGILE);
+        List<String> photoFilepathList = bundle.getStringArrayList(BundleKey.PHOTO_FILEPATH_LIST);
+        if(photoFilepathList == null)
+        {
+            photoFilepathList = new ArrayList<>();
+        }
+
+        evBookDeliveryReq.setPackageName(packageName);
+        evBookDeliveryReq.setSku(sku);
+        evBookDeliveryReq.setQuantity(quantity);
+        evBookDeliveryReq.setImages(photoFilepathList);
+        evBookDeliveryReq.setFragile(isFragile);
+        evBookDeliveryReq.setPaidBy(paidBy);
+
+        // Update UI
+        ((TextView) findViewById(R.id.tv_packageName)).setText(packageName);
+        ((TextView) findViewById(R.id.tv_sku)).setText("SKU " + sku);
+        ((TextView) findViewById(R.id.tv_imageCount)).setText(photoFilepathList.size() + " Images uploaded");
+        ((TextView) findViewById(R.id.tv_paidBy)).setText("Paid by " + paidBy);
+        ((ImageView) findViewById(R.id.iv_packageDetailsCheckStatus)).setImageResource(R.drawable.ic_check);
+
+        findViewById(R.id.tv_packageDetailsLabelMessage).setVisibility(View.GONE);
+        findViewById(R.id.ll_packageDetailsContainer).setVisibility(View.VISIBLE);
     }
 
     private void handleRecipientAddressLocation(Intent data) {

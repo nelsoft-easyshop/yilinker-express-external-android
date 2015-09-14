@@ -20,4 +20,10 @@ public class BundleKey
     public static final String PACKAGE_PICKUP_SCHEDULE                          = "package_pickup_schedule";
     public static final String ADDRESS_TYPE                                     = "address_type";
     public static final String ADDRESS                                          = "address";
+    public static final String PACKAGE_NAME                                     = "package_name";
+    public static final String SKU                                              = "sku";
+    public static final String QUANTITY                                         = "quantity";
+    public static final String PAID_BY                                          = "paid_by";
+    public static final String IS_FRAGILE                                       = "is_fragile";
+    public static final String PHOTO_FILEPATH_LIST                              = "photo_filepath_list";
 }

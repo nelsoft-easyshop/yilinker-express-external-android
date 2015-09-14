@@ -35,7 +35,7 @@ public class MediaHelper
      * @param context
      * @param requestCode
      */
-    private void actionTakePhoto(Context context, int requestCode)
+    public static void actionTakePhoto(Context context, int requestCode)
     {
         /**
          * Check camera availability
@@ -75,7 +75,7 @@ public class MediaHelper
      * @param photoFile
      * @param requestCode
      */
-    private void actionTakePhoto(Context context, File photoFile, int requestCode)
+    public static void actionTakePhoto(Context context, File photoFile, int requestCode)
     {
         /**
          * Check camera availability
@@ -341,5 +341,75 @@ public class MediaHelper
         matrix.postRotate(rotation);
 
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+    }
+
+    /**
+     * TODO
+     * @param bitmap
+     * @return
+     */
+    public static Bitmap cropToSquare(Bitmap bitmap)
+    {
+        int width  = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        int newWidth = (height > width) ? width : height;
+        int newHeight = (height > width)? height - ( height - width) : height;
+        int cropW = (width - height) / 2;
+        cropW = (cropW < 0)? 0: cropW;
+        int cropH = (height - width) / 2;
+        cropH = (cropH < 0)? 0: cropH;
+        Bitmap cropImg = Bitmap.createBitmap(bitmap, cropW, cropH, newWidth, newHeight);
+
+        return cropImg;
+    }
+
+    public static Bitmap loadFromFile(String filename) {
+        try {
+            File f = new File(filename);
+            if (!f.exists()) { return null; }
+            Bitmap tmp = BitmapFactory.decodeFile(filename);
+            return tmp;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    public static Bitmap loadFromCacheFile() {
+        return loadFromFile(getCacheFilename());
+    }
+    public static void saveToCacheFile(Bitmap bmp) {
+        saveToFile(getCacheFilename(),bmp);
+    }
+    public static void saveToFile(String filename,Bitmap bmp) {
+        try {
+            FileOutputStream out = new FileOutputStream(filename);
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+            out.flush();
+            out.close();
+        } catch(Exception e) {}
+    }
+
+    public static boolean hasSDCard() { // SD????????
+        String status = Environment.getExternalStorageState();
+        return status.equals(Environment.MEDIA_MOUNTED);
+    }
+    public static String getSDCardPath() {
+        File path = Environment.getExternalStorageDirectory();
+        return path.getAbsolutePath();
+    }
+
+    public static String getCacheFilename() {
+        File f = getSavePath();
+        return f.getAbsolutePath() + "/cache.png";
+    }
+
+    public static File getSavePath() {
+        File path;
+        if (hasSDCard()) { // SD card
+            path = new File(getSDCardPath() + "/Tegaky/");
+            path.mkdir();
+        } else {
+            path = Environment.getDataDirectory();
+        }
+        return path;
     }
 }

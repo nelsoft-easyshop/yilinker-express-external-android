@@ -29,6 +29,7 @@
     <string name="title_pickup_schedule">Pickup Schedule</string>
     <string name="title_my_recipients_locations">My Recipients Locations</string>
     <string name="title_change_binding_mobile">Change Binding Mobile</string>
+    <string name="title_booking_successful">Booking Successful</string>
 
     <!-- Hints -->
     <string name="hint_email">Email</string>
@@ -40,6 +41,7 @@
     <string name="error_invalid_address_group_name">Invalid address group name.</string>
     <string name="error_invalid_verification_code">Invalid verification code.</string>
     <string name="error_invalid_mobile_number">Invalid mobile number.</string>
+    <string name="error_maximum_photo_upload">Already reached maximum photo upload.</string>
 
     <!-- Loading messages -->
     <string name="loading_registration">Registering&#8230;</string>

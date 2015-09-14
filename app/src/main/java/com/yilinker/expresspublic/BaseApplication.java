@@ -1,12 +1,10 @@
 package com.yilinker.expresspublic;
 
 import android.app.Application;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.yilinker.expresspublic.core.utilities.LruBitmapCache;
@@ -37,6 +35,13 @@ public class BaseApplication extends Application
         super.onCreate();
         // Initialize singleton instance of BaseApplication
         sBaseApplication = this;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base)
+    {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     /**

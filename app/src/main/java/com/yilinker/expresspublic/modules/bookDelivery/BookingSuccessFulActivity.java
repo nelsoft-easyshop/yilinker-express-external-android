@@ -3,6 +3,7 @@ package com.yilinker.expresspublic.modules.bookDelivery;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.util.logging.Logger;
@@ -20,17 +21,17 @@ public class BookingSuccessFulActivity extends BaseActivity {
 
     @Override
     protected int getBaseLayout() {
-        return 0;
+        return R.layout.activity_base_ll;
     }
 
     @Override
     protected int getToolbarTitle() {
-        return 0;
+        return R.string.title_booking_successful;
     }
 
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.activity_booking_successful;
     }
 
     @Override
