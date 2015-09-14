@@ -53,4 +53,6 @@ public class RequestCode
     public static final int RCR_UPDATE_PROFILE                      = 6300;
     public static final int RCR_UPDATE_MOBILE                       = 6400;
     public static final int RCR_VERIFY_MOBILE                       = 6500;
+    // Home API
+    public static final int RCR_GET_SLIDER_LIST                     = 7000;
 }

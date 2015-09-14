@@ -3,6 +3,10 @@ package com.yilinker.expresspublic.core.contants;
 public class ApiEndpoint
 {
     /*******************************************************************************
+     * Home Endpoint
+     ******************************************************************************/
+    public static final String HOME_API                                 = "home";
+    /*******************************************************************************
      * User Endpoint
      ******************************************************************************/
     public static final String USER_API                                 = "me";

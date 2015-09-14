@@ -10,11 +10,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Background Image -->
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/bg_home"
             android:scaleType="centerCrop"/>
+
+        <!-- ViewPager -->
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vp_slider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/abc_action_bar_default_height_material"/>
+
+        <!-- ViewPager Indicator -->
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/cpi_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/abc_action_bar_default_height_material"
+            android:padding="8dp"
+            app:fillColor="@color/orange_red"
+            app:pageColor="@android:color/white"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="0dp"
+            app:radius="4dp"/>
 
     </com.yilinker.expresspublic.modules.common.customviews.HomeRelativeLayout>
 

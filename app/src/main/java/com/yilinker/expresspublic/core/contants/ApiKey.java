@@ -75,4 +75,6 @@ public class ApiKey
     public static final String CONTACT_PERSON                           = "contact_person";
     public static final String CONTACT_PERSON_NUMBER                    = "contact_person_number";
     public static final String IS_PRIMARY                               = "is_primary";
+    public static final String TITLE                                    = "title";
+    public static final String CONTENT                                  = "content";
 }
