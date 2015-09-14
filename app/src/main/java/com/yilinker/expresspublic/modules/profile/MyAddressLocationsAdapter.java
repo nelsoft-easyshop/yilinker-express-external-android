@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.models.AddressGroup;
-import com.yilinker.expresspublic.core.models.AddressLocation;
+import com.yilinker.expresspublic.core.models.Address;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -41,7 +41,7 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return myAddressLocationModelList.get(groupPosition).getAddressLocationList().size();
+        return myAddressLocationModelList.get(groupPosition).getAddressList().size();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return myAddressLocationModelList.get(groupPosition).getAddressLocationList().get(childPosition);
+        return myAddressLocationModelList.get(groupPosition).getAddressList().get(childPosition);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return myAddressLocationModelList.get(groupPosition).getAddressLocationList().get(childPosition).getId();
+        return myAddressLocationModelList.get(groupPosition).getAddressList().get(childPosition).getId();
     }
 
     @Override
@@ -107,11 +107,11 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
             addressLocationHolder = (AddressLocationHolder) convertView.getTag();
         }
 
-        AddressLocation addressLocation = (AddressLocation) getChild(groupPosition, childPosition);
+        Address address = (Address) getChild(groupPosition, childPosition);
 
-        addressLocationHolder.tv_address.setText(addressLocation.getAddress());
+        addressLocationHolder.tv_address.setText(address.getAddress());
 
-        if(addressLocation.getIsPrimary() == 1)
+        if(address.getIsPrimary() == 1)
         {
             addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_check);
         }

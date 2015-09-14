@@ -1,7 +1,7 @@
 package com.yilinker.expresspublic.modules.profile;
 
 import com.yilinker.expresspublic.core.models.AddressGroup;
-import com.yilinker.expresspublic.core.models.AddressLocation;
+import com.yilinker.expresspublic.core.models.Address;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
 public class MyAddressLocationModel
 {
     private AddressGroup addressGroup;
-    private List<AddressLocation> addressLocationList;
+    private List<Address> addressList;
 
     public MyAddressLocationModel() {
     }
 
-    public MyAddressLocationModel(AddressGroup addressGroup, List<AddressLocation> addressLocationList) {
+    public MyAddressLocationModel(AddressGroup addressGroup, List<Address> addressList) {
         this.addressGroup = addressGroup;
-        this.addressLocationList = addressLocationList;
+        this.addressList = addressList;
     }
 
     public AddressGroup getAddressGroup() {
@@ -29,11 +29,11 @@ public class MyAddressLocationModel
         this.addressGroup = addressGroup;
     }
 
-    public List<AddressLocation> getAddressLocationList() {
-        return addressLocationList;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddressLocationList(List<AddressLocation> addressLocationList) {
-        this.addressLocationList = addressLocationList;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
     }
 }

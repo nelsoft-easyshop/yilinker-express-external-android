@@ -6,7 +6,7 @@ import com.yilinker.expresspublic.core.contants.ApiKey;
 /**
  * Created by Jeico.
  */
-public class AddressLocation
+public class Address
 {
     @SerializedName(ApiKey.ID)
     private Long id;
@@ -23,10 +23,10 @@ public class AddressLocation
     @SerializedName(ApiKey.IS_PRIMARY)
     private Integer isPrimary;
 
-    public AddressLocation() {
+    public Address() {
     }
 
-    public AddressLocation(Long id, Long addressId, Long consumerId, String contactPerson, String contactPersonNumber, String address, Integer isPrimary) {
+    public Address(Long id, Long addressId, Long consumerId, String contactPerson, String contactPersonNumber, String address, Integer isPrimary) {
         this.id = id;
         this.addressId = addressId;
         this.consumerId = consumerId;

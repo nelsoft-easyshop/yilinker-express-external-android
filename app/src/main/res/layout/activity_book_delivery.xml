@@ -495,5 +495,6 @@
         android:textAllCaps="false"
         android:background="@drawable/bg_rect_divider"
         android:gravity="center"
+        android:enabled="false"
         app:fontName="Roboto-Regular.ttf"/>
 </LinearLayout>

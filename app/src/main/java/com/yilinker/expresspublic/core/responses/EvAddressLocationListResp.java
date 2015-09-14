@@ -1,6 +1,6 @@
 package com.yilinker.expresspublic.core.responses;
 
-import com.yilinker.expresspublic.core.models.AddressLocation;
+import com.yilinker.expresspublic.core.models.Address;
 import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 
 import java.util.List;
@@ -10,5 +10,5 @@ import java.util.List;
  */
 public class EvAddressLocationListResp extends EvBaseResp
 {
-    public List<AddressLocation> data;
+    public List<Address> data;
 }

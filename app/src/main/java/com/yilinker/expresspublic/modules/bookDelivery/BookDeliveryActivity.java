@@ -14,12 +14,12 @@ import com.google.gson.GsonBuilder;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.models.Address;
 import com.yilinker.expresspublic.core.models.PickUpSchedule;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
+import com.yilinker.expresspublic.core.utilities.CommonUtils;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.Date;
 import java.util.Observable;
@@ -98,6 +98,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     @Override
     protected void initListeners() {
+        // Set onclick listener for Submit Booking
+        findViewById(R.id.btn_submitBooking).setOnClickListener(this);
         // Set onclick listener for FROM group
         findViewById(R.id.ll_from).setOnClickListener(this);
         // Set onclick listener for TO group
@@ -125,8 +127,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         Button btn_submitBooking = (Button) findViewById(R.id.btn_submitBooking);
         btn_submitBooking.setBackgroundResource(R.drawable.bg_rect_marigold);
         btn_submitBooking.setTextColor(Color.parseColor("#FFFFFF"));
-        // Set onclick listener for Submit Booking
-        findViewById(R.id.btn_submitBooking).setOnClickListener(this);
+        btn_submitBooking.setEnabled(true);
+        int padding = CommonUtils.convertDpToPixels(this, 24);
+        btn_submitBooking.setPadding(0, padding, 0, padding);
     }
 
     @Override
@@ -163,8 +166,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     }
 
     private void startRecipientLocationActivity() {
-//        Intent intent = new Intent(this, Reci.class);
-//        startActivityForResult(intent, RequestCode.RCA_PICKUP_SCHEDULE);
+        Intent intent = new Intent(this, RecipientLocationListActivity.class);
+        startActivityForResult(intent, RequestCode.RCA_RECIPIENT_ADDRESS_LOCATION);
     }
 
     private void startPackageDetailsActivity() {
@@ -240,9 +243,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         // Update UI
         ((TextView) findViewById(R.id.tv_packageContainer)).setText(packageContainerUI);
         ((TextView) findViewById(R.id.tv_weight)).setText(weightUI);
+        ((ImageView) findViewById(R.id.iv_packageSizeCheckStatus)).setImageResource(R.drawable.ic_check);
         findViewById(R.id.tv_packageSizeLabelMessage).setVisibility(View.GONE);
         findViewById(R.id.ll_packageSizeContainer).setVisibility(View.VISIBLE);
-        ((ImageView) findViewById(R.id.iv_packageSizeCheckStatus)).setImageResource(R.drawable.ic_check);
     }
 
     private void handlePackageDetails(Intent data) {
@@ -251,9 +254,43 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void handleRecipientAddressLocation(Intent data) {
         bookingSyncModel.setIsRecipientReady(true);
+
+        Bundle bundle = data.getExtras();
+
+        String addressJson = bundle.getString(BundleKey.ADDRESS);
+        Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
+
+        evBookDeliveryReq.setRecipientConsumerId(address.getConsumerId());
+        evBookDeliveryReq.setRecipientAddressId(address.getAddressId());
+        evBookDeliveryReq.setRecipientConsumerAddressId(address.getId());
+
+        // Update UI
+        ((TextView) findViewById(R.id.tv_recipientName)).setText(address.getContactPerson());
+        ((TextView) findViewById(R.id.tv_recipientContactNumber)).setText(address.getContactPersonNumber());
+        ((TextView) findViewById(R.id.tv_recipientAddress)).setText(address.getAddress());
+        ((ImageView) findViewById(R.id.iv_recipientCheckStatus)).setImageResource(R.drawable.ic_check);
+        findViewById(R.id.tv_toLabelMessage).setVisibility(View.GONE);
+        findViewById(R.id.ll_toContainer).setVisibility(View.VISIBLE);
     }
 
     private void handleSenderAddressLocation(Intent data) {
         bookingSyncModel.setIsSenderReady(true);
+
+        Bundle bundle = data.getExtras();
+
+        String addressJson = bundle.getString(BundleKey.ADDRESS);
+        Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
+
+        evBookDeliveryReq.setSenderConsumerId(address.getConsumerId());
+        evBookDeliveryReq.setSenderAddressId(address.getAddressId());
+        evBookDeliveryReq.setSenderConsumerAddressId(address.getId());
+
+        // Update UI
+        ((TextView) findViewById(R.id.tv_senderName)).setText(address.getContactPerson());
+        ((TextView) findViewById(R.id.tv_senderContactNumber)).setText(address.getContactPersonNumber());
+        ((TextView) findViewById(R.id.tv_senderAddress)).setText(address.getAddress());
+        ((ImageView) findViewById(R.id.iv_senderCheckStatus)).setImageResource(R.drawable.ic_check);
+        findViewById(R.id.tv_fromLabelMessage).setVisibility(View.GONE);
+        findViewById(R.id.ll_fromContainer).setVisibility(View.VISIBLE);
     }
 }

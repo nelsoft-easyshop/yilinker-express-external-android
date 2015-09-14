@@ -19,4 +19,5 @@ public class BundleKey
     public static final String PICKUP_DATE                                      = "pickup_date";
     public static final String PACKAGE_PICKUP_SCHEDULE                          = "package_pickup_schedule";
     public static final String ADDRESS_TYPE                                     = "address_type";
+    public static final String ADDRESS                                          = "address";
 }

@@ -36,8 +36,9 @@ import java.util.logging.Logger;
 /**
  * Created by Jeico.
  */
-public class AddressLocationListActiviy extends BaseActivity implements View.OnClickListener, ResponseHandler, AddressListener {
-    private static final Logger logger = Logger.getLogger(AddressLocationListActiviy.class.getSimpleName());
+public class RecipientLocationListActivity extends BaseActivity implements View.OnClickListener, ResponseHandler, AddressListener
+{
+    private static final Logger logger = Logger.getLogger(RecipientLocationListActivity.class.getSimpleName());
 
     private List<Address> masterAddressList;
     private List<Address> addressList;
@@ -55,12 +56,12 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
         addressList = new ArrayList<>();
         addressAdapter = new AddressAdapter(this, addressList, this);
 
-        RecyclerView rv_myAddressLocationList = (RecyclerView) findViewById(R.id.rv_myAddressLocationList);
-        rv_myAddressLocationList.setHasFixedSize(true);
-        rv_myAddressLocationList.setAdapter(addressAdapter);
-        rv_myAddressLocationList.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView rv_myRecipientLocationList = (RecyclerView) findViewById(R.id.rv_myRecipientLocationList);
+        rv_myRecipientLocationList.setHasFixedSize(true);
+        rv_myRecipientLocationList.setAdapter(addressAdapter);
+        rv_myRecipientLocationList.setLayoutManager(new LinearLayoutManager(this));
 
-        volleyGetMyAddressLocations();
+        volleyGetMyRecipientsLocations();
     }
 
     @Override
@@ -70,12 +71,12 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
 
     @Override
     protected int getToolbarTitle() {
-        return R.string.title_my_address_locations;
+        return R.string.title_my_recipients_locations;
     }
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.activity_address_location_list;
+        return R.layout.activity_recipient_location_list;
     }
 
     @Override
@@ -156,7 +157,7 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
         {
             if(requestCode == RequestCode.RCA_ADD_ADDRESS_LOCATION)
             {
-                volleyGetMyAddressLocations();
+                volleyGetMyRecipientsLocations();
             }
         }
         else
@@ -190,7 +191,7 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
     public void onResponse(int requestCode, Object object) {
         switch (requestCode)
         {
-            case RequestCode.RCR_GET_MY_ADDRESS_LOCATIONS:
+            case RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS:
                 EvAddressLocationListResp evAddressLocationListResp = (EvAddressLocationListResp) object;
                 populateList(evAddressLocationListResp.data);
                 filterAddress(keyword);
@@ -200,28 +201,28 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
                 break;
         }
 
-        findViewById(R.id.rv_myAddressLocationList).setVisibility(View.VISIBLE);
+        findViewById(R.id.rv_myRecipientLocationList).setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onErrorResponse(int requestCode, String message) {
         switch (requestCode)
         {
-            case RequestCode.RCR_GET_MY_ADDRESS_LOCATIONS:
-                Toast.makeText(AddressLocationListActiviy.this, message, Toast.LENGTH_SHORT).show();
+            case RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS:
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
                 break;
 
             default:
                 break;
         }
 
-        findViewById(R.id.rv_myAddressLocationList).setVisibility(View.VISIBLE);
+        findViewById(R.id.rv_myRecipientLocationList).setVisibility(View.VISIBLE);
     }
 
     private void handleNewSenderDetail() {
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable(BundleKey.ADDRESS_TYPE, AddressType.SENDER);
+        bundle.putSerializable(BundleKey.ADDRESS_TYPE, AddressType.RECIPIENT);
 
         Intent intent = new Intent(this, AddAddressLocationActivity.class);
         intent.putExtras(bundle);
@@ -229,11 +230,11 @@ public class AddressLocationListActiviy extends BaseActivity implements View.OnC
         startActivityForResult(intent, RequestCode.RCA_ADD_ADDRESS_LOCATION);
     }
 
-    private void volleyGetMyAddressLocations()
+    private void volleyGetMyRecipientsLocations()
     {
-        findViewById(R.id.rv_myAddressLocationList).setVisibility(View.GONE);
+        findViewById(R.id.rv_myRecipientLocationList).setVisibility(View.GONE);
 
-        Request request = LocationApi.getMyAddressLocations(OAuthPrefHelper.getAccessToken(this), RequestCode.RCR_GET_MY_ADDRESS_LOCATIONS, this);
+        Request request = LocationApi.getMyRecipientLocations(OAuthPrefHelper.getAccessToken(this), RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 

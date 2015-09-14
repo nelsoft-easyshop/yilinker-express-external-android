@@ -16,7 +16,7 @@ import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.enums.AddressType;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.AddressGroup;
-import com.yilinker.expresspublic.core.models.AddressLocation;
+import com.yilinker.expresspublic.core.models.Address;
 import com.yilinker.expresspublic.core.responses.EvMyAddressLocationModelListResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 import com.yilinker.expresspublic.modules.common.addAddressLocation.AddAddressLocationActivity;
@@ -157,11 +157,11 @@ public class MyAddressLocationsActivity extends BaseActivity implements Response
         for (EvMyAddressLocationModelListResp.Data data : dataList)
         {
             AddressGroup addressGroup = data.group;
-            List<AddressLocation> addressLocationList = data.address;
+            List<Address> addressList = data.address;
 
             MyAddressLocationModel myAddressLocationModel = new MyAddressLocationModel();
             myAddressLocationModel.setAddressGroup(addressGroup);
-            myAddressLocationModel.setAddressLocationList(addressLocationList);
+            myAddressLocationModel.setAddressList(addressList);
 
             myAddressLocationModelList.add(myAddressLocationModel);
         }

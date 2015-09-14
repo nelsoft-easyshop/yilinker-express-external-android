@@ -22,7 +22,6 @@ import com.yilinker.expresspublic.core.responses.EvMyAddressLocationModelListRes
 import com.yilinker.expresspublic.core.responses.EvProvinceListResp;
 import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -170,7 +169,7 @@ public class LocationApi
      * @param handler
      * @return
      */
-    public static Request getRecipientLocations(String accessToken, final int requestCode, final ResponseHandler handler)
+    public static Request getMyRecipientLocations(String accessToken, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
