@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -199,15 +200,39 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     }
 
     private void handleSubmitBooking() {
-        /**
-         * TODO
-         */
+
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.DELIVERY_API + "/"
                 + ApiEndpoint.DELIVERY_BOOK;
 
-        bookDeliveryRequest = new BookDeliveryRequest(this, endpoint, OAuthPrefHelper.getAccessToken(this), evBookDeliveryReq);
+        bookDeliveryRequest = new BookDeliveryRequest(
+                this,
+                endpoint,
+                OAuthPrefHelper.getAccessToken(this),
+                evBookDeliveryReq,
+                new BookDeliveryRequest.BookingDeliveryListener() {
+                    @Override
+                    public void onBookingSuccessful(String response) {
+                        handleBookDeliveryResponse(response);
+                    }
+
+                    @Override
+                    public void onBookingFailed(String message) {
+                        Toast.makeText(BookDeliveryActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+        });
         bookDeliveryRequest.execute();
+    }
+
+    private void handleBookDeliveryResponse(String response) {
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.BOOK_DELIVERY_RESPONSE, response);
+
+        Intent intent = new Intent(this, BookingSuccessFulActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+        finish();
     }
 
     private void handlePickupSchedule(Intent data) {

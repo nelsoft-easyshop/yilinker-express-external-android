@@ -4,7 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
+import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -24,7 +28,7 @@ import java.util.logging.Logger;
 /**
  * Created by Jeico.
  */
-public class BookDeliveryRequest extends AsyncTask<Void, Void, Void>
+public class BookDeliveryRequest extends AsyncTask<Void, Void, String>
 {
     private static final Logger logger = Logger.getLogger(BookDeliveryRequest.class.getSimpleName());
 
@@ -38,20 +42,21 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, Void>
 
     private EvBookDeliveryReq evBookDeliveryReq;
 
+    private BookingDeliveryListener listener;
+
     public interface BookingDeliveryListener
     {
-
+        void onBookingSuccessful(String response);
+        void onBookingFailed(String message);
     }
 
-    public BookDeliveryRequest(Context context, String endpoint, String accessToken, EvBookDeliveryReq evBookDeliveryReq)
+    public BookDeliveryRequest(Context context, String endpoint, String accessToken, EvBookDeliveryReq evBookDeliveryReq, BookingDeliveryListener listener)
     {
         this.context = context;
         this.endpoint = endpoint;
         this.accessToken = accessToken;
         this.evBookDeliveryReq = evBookDeliveryReq;
-
-        logger.severe("endpoint: " + endpoint);
-        logger.severe("accessToken: " + accessToken);
+        this.listener = listener;
     }
 
     @Override
@@ -59,14 +64,15 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, Void>
         super.onPreExecute();
 
         progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Booking delivery...");
+        progressDialog.setMessage(context.getString(R.string.loading_booking_delivery));
         progressDialog.setCancelable(false);
         progressDialog.show();
     }
 
     @Override
-    protected Void doInBackground(Void... params) {
+    protected String doInBackground(Void... params) {
 
+        String response = null;
         try
         {
             MultipartEntity form = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
@@ -76,7 +82,6 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, Void>
             for (int i = 0; i < photoFilepathList.size(); i++)
             {
                 form.addPart("images["+i+"]", new FileBody(new File(photoFilepathList.get(i))));
-                logger.severe("add image: " + photoFilepathList.get(i));
             }
 
             // Sender Details
@@ -98,40 +103,49 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, Void>
             form.addPart("height", new StringBody(evBookDeliveryReq.getHeight()));
             form.addPart("width", new StringBody(evBookDeliveryReq.getWidth()));
             form.addPart("weight", new StringBody(evBookDeliveryReq.getWeight()));
-//            form.addPart("branch_id", new StringBody(Long.toString(evBookDeliveryReq.getbra)));
             // Pickup Schedule
             form.addPart("pickup_date", new StringBody(evBookDeliveryReq.getPickUpDate().toString()));
             form.addPart("package_pickup_schedule_id", new StringBody(Long.toString(evBookDeliveryReq.getPackagePickupScheduleId())));
 
 
             HttpPost httpPost = new HttpPost(endpoint);
-//            httpPost.addHeader("Content-Type", "multipart/form-data");
             httpPost.addHeader("Authorization", "Bearer " + accessToken);
             httpPost.setEntity(form);
 
             HttpClient httpClient = new DefaultHttpClient();
             HttpResponse httpResponse = httpClient.execute(httpPost);
 
-            String response = EntityUtils.toString(httpResponse.getEntity());
-            logger.severe("Response: " + response);
+            response = EntityUtils.toString(httpResponse.getEntity());
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
 
-
-        return null;
+        return response;
     }
 
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+    protected void onPostExecute(String response) {
+        super.onPostExecute(response);
 
         if(progressDialog.isShowing())
         {
             progressDialog.dismiss();
+        }
+
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+
+        EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
+        if(evBookDeliveryResponse.success)
+        {
+            listener.onBookingSuccessful(response);
+        }
+        else
+        {
+            listener.onBookingFailed(evBookDeliveryResponse.message);
         }
     }
 }

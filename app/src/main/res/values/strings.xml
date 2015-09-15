@@ -61,6 +61,7 @@
     <string name="loading_adding_address_location">Adding address location&#8230;</string>
     <string name="loading_requesting_verification_code">Requesting verification code&#8230;</string>
     <string name="loading_updating_mobile">Updating mobile&#8230;</string>
+    <string name="loading_booking_delivery">Booking delivery&#8230;</string>
 
     <!-- Label Message -->
     <string name="label_message_from">Please enter sender\'s full name and complete address</string>
@@ -68,6 +69,14 @@
     <string name="label_message_package_details">Please enter your package details</string>
     <string name="label_message_package_size">Please enter your package size and weight</string>
     <string name="label_message_pick_up_schedule">Please enter desired pickup schedule</string>
+    <string name="label_booking_number">Booking Number</string>
+
+    <!-- Label -->
+    <string name="label_from">From</string>
+    <string name="label_to">To</string>
+    <string name="label_package_details">Package Details</string>
+    <string name="label_package_size">Package Size</string>
+    <string name="label_pickup_schedule">Pickup Schedule</string>
 
     <!-- Common -->
     <string name="firstname">FIRST NAME</string>
@@ -101,11 +110,6 @@
     <string name="cash_collection">Cash Collection</string>
     <string name="express_delivery">Express Delivery</string>
     <string name="free_packaging">Free Packaging</string>
-    <string name="from">From</string>
-    <string name="to">To</string>
-    <string name="package_details">Package Details</string>
-    <string name="package_size">Package Size</string>
-    <string name="pickup_schedule">Pickup Schedule</string>
     <string name="submit_booking">Submit Booking</string>
     <string name="new_sender_detail">New Sender Detail</string>
     <string name="title_new_sender_detail">New Sender Detail</string>
@@ -166,5 +170,7 @@
     <string name="enter_verification_code">Enter Verification Code</string>
     <string name="enter_verification_code_message">A verification code has been sent to your mobile number.</string>
     <string name="resend_verification_code">Resend Verification Code</string>
+    <string name="success_booking">Success Booking!</string>
+    <string name="view_ongoing_list">View Ongoing List</string>
 
 </resources>

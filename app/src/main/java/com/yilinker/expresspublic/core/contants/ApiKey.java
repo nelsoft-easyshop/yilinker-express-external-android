@@ -77,4 +77,6 @@ public class ApiKey
     public static final String IS_PRIMARY                               = "is_primary";
     public static final String TITLE                                    = "title";
     public static final String CONTENT                                  = "content";
+    public static final String BOOKING_NUMBER                           = "booking_number";
+    public static final String QR_IMAGE                                 = "qr_image";
 }
