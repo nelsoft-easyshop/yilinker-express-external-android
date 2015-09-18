@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.core.deserializer.BookingDateDeserializer;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
 import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 
@@ -22,6 +23,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -135,8 +137,9 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, String>
             progressDialog.dismiss();
         }
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new BookingDateDeserializer())
+                .create();
 
         EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
         if(evBookDeliveryResponse.success)

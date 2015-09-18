@@ -116,7 +116,13 @@
                     android:textColor="@color/warm_grey"
                     app:fontName="Roboto-Regular.ttf"/>
             </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
             <!-- QR Image -->
             <ImageView
                 android:id="@+id/iv_qrImage"
@@ -145,10 +151,9 @@
         android:paddingBottom="24dp"
         android:text="@string/view_ongoing_list"
         android:textSize="22sp"
-        android:textColor="@color/warm_grey"
+        android:textColor="@android:color/white"
         android:textAllCaps="false"
-        android:background="@drawable/bg_rect_divider"
+        android:background="@drawable/bg_rect_marigold"
         android:gravity="center"
-        android:enabled="false"
         app:fontName="Roboto-Regular.ttf"/>
 </LinearLayout>

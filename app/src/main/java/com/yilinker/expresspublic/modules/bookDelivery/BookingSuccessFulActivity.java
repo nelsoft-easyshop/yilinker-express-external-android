@@ -12,11 +12,13 @@ import com.google.gson.GsonBuilder;
 import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.BundleKey;
+import com.yilinker.expresspublic.core.deserializer.BookingDateDeserializer;
 import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
 import com.yilinker.expresspublic.modules.myShipment.MyShipmentActivity;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 /**
@@ -32,8 +34,9 @@ public class BookingSuccessFulActivity extends BaseActivity implements View.OnCl
         Bundle bundle = getIntent().getExtras();
         String response = bundle.getString(BundleKey.BOOK_DELIVERY_RESPONSE);
 
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new BookingDateDeserializer())
+                .create();
         EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
 
         // Setup UI
