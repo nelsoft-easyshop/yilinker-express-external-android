@@ -25,11 +25,11 @@ import com.yilinker.expresspublic.modules.registration.RegistrationActivity;
 
 import java.util.logging.Logger;
 
-public class LogInActivity
+public class LoginActivity
         extends BaseActivity
         implements View.OnClickListener, ResponseHandler
 {
-    private static final Logger logger = Logger.getLogger(LogInActivity.class.getSimpleName());
+    private static final Logger logger = Logger.getLogger(LoginActivity.class.getSimpleName());
 
     private ProgressDialog progressDialog;
 

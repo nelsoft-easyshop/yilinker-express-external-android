@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modules.login.LogInActivity"
+            android:name=".modules.login.LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity

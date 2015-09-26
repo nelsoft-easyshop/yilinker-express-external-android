@@ -20,7 +20,7 @@ import com.yilinker.expresspublic.core.helpers.CommonPrefHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.modules.home.HomeActivity;
-import com.yilinker.expresspublic.modules.login.LogInActivity;
+import com.yilinker.expresspublic.modules.login.LoginActivity;
 
 import java.util.logging.Logger;
 
@@ -100,7 +100,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity
                 else
                 {
                     // Redirect to login page if user is not logged in
-                    Intent intent = new Intent(BaseFragmentActivity.this, LogInActivity.class);
+                    Intent intent = new Intent(BaseFragmentActivity.this, LoginActivity.class);
                     startActivityForResult(intent, RequestCode.RCA_LOGIN);
                 }
             }

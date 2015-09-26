@@ -21,7 +21,7 @@ import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.modules.profile.MyProfileActivity;
 import com.yilinker.expresspublic.modules.home.HomeActivity;
-import com.yilinker.expresspublic.modules.login.LogInActivity;
+import com.yilinker.expresspublic.modules.login.LoginActivity;
 
 import java.util.logging.Logger;
 
@@ -101,7 +101,7 @@ public abstract class BaseActivity extends AppCompatActivity
                 else
                 {
                     // Redirect to login page if user is not logged in
-                    Intent intent = new Intent(BaseActivity.this, LogInActivity.class);
+                    Intent intent = new Intent(BaseActivity.this, LoginActivity.class);
                     startActivityForResult(intent, RequestCode.RCA_LOGIN);
                 }
             }

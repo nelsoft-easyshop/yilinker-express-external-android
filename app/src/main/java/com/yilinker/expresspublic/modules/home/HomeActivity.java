@@ -21,7 +21,7 @@ import com.yilinker.expresspublic.core.responses.EvSliderListResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 import com.yilinker.expresspublic.modules.bookDelivery.BookDeliveryActivity;
 import com.yilinker.expresspublic.modules.findBranch.SearchBranchesActivity;
-import com.yilinker.expresspublic.modules.login.LogInActivity;
+import com.yilinker.expresspublic.modules.login.LoginActivity;
 import com.yilinker.expresspublic.modules.myShipment.MyShipmentActivity;
 import com.yilinker.expresspublic.modules.trackDelivery.TrackDeliveryActivity;
 
@@ -166,7 +166,7 @@ public class HomeActivity
         }
         else
         {
-            Intent intent = new Intent(this, LogInActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
@@ -180,7 +180,7 @@ public class HomeActivity
         }
         else
         {
-            Intent intent = new Intent(this, LogInActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
@@ -194,7 +194,7 @@ public class HomeActivity
         }
         else
         {
-            Intent intent = new Intent(this, LogInActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
@@ -208,7 +208,7 @@ public class HomeActivity
         }
         else
         {
-            Intent intent = new Intent(this, LogInActivity.class);
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
