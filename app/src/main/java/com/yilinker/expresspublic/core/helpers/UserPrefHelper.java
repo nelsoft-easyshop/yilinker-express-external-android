@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.yilinker.expresspublic.core.models.User;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 public class UserPrefHelper
@@ -19,6 +20,8 @@ public class UserPrefHelper
     private static final String USERNAME                                = "username";
     private static final String EMAIL                                   = "email";
     private static final String CONTACT_NUMBER                          = "contact_number";
+    private static final String BIRTHDATE                               = "birthdate";
+    private static final String GENDER                                  = "gender";
 
     /**
      * TODO
@@ -35,8 +38,10 @@ public class UserPrefHelper
         String username = sharedPreferences.getString(USERNAME, "");
         String emailAddress = sharedPreferences.getString(EMAIL, "");
         String contactNumber = sharedPreferences.getString(CONTACT_NUMBER, "");
+        Long birthdate = sharedPreferences.getLong(BIRTHDATE, 0);
+        String gender = sharedPreferences.getString(GENDER, "");
 
-        return new User(id, username, firstname, lastname, fullname, emailAddress, contactNumber);
+        return new User(id, username, firstname, lastname, fullname, emailAddress, contactNumber, new Date(birthdate), gender);
     }
 
     /**
@@ -55,6 +60,8 @@ public class UserPrefHelper
         editor.putString(USERNAME, user.getUsername());
         editor.putString(EMAIL, user.getEmail());
         editor.putString(CONTACT_NUMBER, user.getContactNumber());
+        editor.putLong(BIRTHDATE, user.getBirthdate().getTime());
+        editor.putString(GENDER, user.getGender());
         editor.apply();
     }
 

@@ -175,5 +175,6 @@
     <string name="resend_verification_code">Resend Verification Code</string>
     <string name="success_booking">Success Booking!</string>
     <string name="view_ongoing_list">View Ongoing List</string>
+    <string name="select_gender">Select Gender</string>
 
 </resources>

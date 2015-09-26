@@ -8,9 +8,7 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.GsonRequest;
 import com.yilinker.expresspublic.core.contants.ApiEndpoint;
 import com.yilinker.expresspublic.core.contants.ApiKey;
-import com.yilinker.expresspublic.core.enums.GrantType;
 import com.yilinker.expresspublic.core.helpers.VolleyErrorHelper;
-import com.yilinker.expresspublic.core.responses.EvBranchListResp;
 import com.yilinker.expresspublic.core.responses.EvMeResp;
 import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 
@@ -57,12 +55,15 @@ public class UserApi
      * @param accessToken
      * @param firstname
      * @param lastname
-     * @param emailAddress
+     * @param birthdate
+     * @param gender
+     * @param email
      * @param requestCode
      * @param handler
      * @return
      */
-    public static Request updateProfile(String accessToken, String firstname, String lastname, String emailAddress, final int requestCode, final ResponseHandler handler)
+    public static Request updateProfile(String accessToken, String firstname, String lastname, String birthdate, String gender,
+                                        String email, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
@@ -73,7 +74,9 @@ public class UserApi
         Map<String, String> params = new HashMap<>();
         params.put(ApiKey.FIRST_NAME, firstname);
         params.put(ApiKey.LAST_NAME, lastname);
-        params.put(ApiKey.EMAIL_ADDRESS, emailAddress);
+        params.put(ApiKey.BIRTHDATE, birthdate);
+        params.put(ApiKey.GENDER, gender);
+        params.put(ApiKey.EMAIL_ADDRESS, email);
 
         // Build request
         GsonRequest<EvMeResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvMeResp.class,

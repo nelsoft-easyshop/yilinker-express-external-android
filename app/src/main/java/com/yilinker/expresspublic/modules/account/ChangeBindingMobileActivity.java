@@ -27,14 +27,18 @@ import java.util.logging.Logger;
 /**
  * Created by Jeico.
  */
-public class ChangeBindingMobileActivity extends BaseActivity implements View.OnClickListener, ResponseHandler {
+public class ChangeBindingMobileActivity
+        extends BaseActivity
+        implements View.OnClickListener, ResponseHandler
+{
 
     private static final Logger logger = Logger.getLogger(ChangeBindingMobileActivity.class.getSimpleName());
 
     private ProgressDialog progressDialog;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         progressDialog = new ProgressDialog(this);
@@ -45,22 +49,26 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
     }
 
     @Override
-    protected int getBaseLayout() {
+    protected int getBaseLayout()
+    {
         return R.layout.activity_base_ll;
     }
 
     @Override
-    protected int getToolbarTitle() {
+    protected int getToolbarTitle()
+    {
         return R.string.title_change_binding_mobile;
     }
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayoutResource()
+    {
         return R.layout.activity_change_binding_mobile;
     }
 
     @Override
-    protected void initListeners() {
+    protected void initListeners()
+    {
         // Set onclick listener for confirm entries
         findViewById(R.id.btn_confirmEntries).setOnClickListener(this);
         // Set onclick listener for resend verification code
@@ -70,12 +78,14 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
     }
 
     @Override
-    protected Intent resultIntent() {
+    protected Intent resultIntent()
+    {
         return null;
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
             case R.id.btn_confirmEntries:
@@ -96,8 +106,9 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
     }
 
     @Override
-    public void onResponse(int requestCode, Object object) {
-        if(progressDialog.isShowing())
+    public void onResponse(int requestCode, Object object)
+    {
+        if (progressDialog.isShowing())
         {
             progressDialog.dismiss();
         }
@@ -119,8 +130,9 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
     }
 
     @Override
-    public void onErrorResponse(int requestCode, String message) {
-        if(progressDialog.isShowing())
+    public void onErrorResponse(int requestCode, String message)
+    {
+        if (progressDialog.isShowing())
         {
             progressDialog.dismiss();
         }
@@ -140,7 +152,8 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
         }
     }
 
-    private void volleyGetVerificationCode() {
+    private void volleyGetVerificationCode()
+    {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_requesting_verification_code));
         progressDialog.setCancelable(false);
@@ -153,7 +166,8 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private void handleVerifyMobileResp() {
+    private void handleVerifyMobileResp()
+    {
         findViewById(R.id.btn_confirmEntries).setVisibility(View.GONE);
         findViewById(R.id.ll_enterVerificationCode).setVisibility(View.VISIBLE);
 
@@ -167,10 +181,11 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
         btn_submitAndUpdate.setPadding(0, padding, 0, padding);
     }
 
-    private void handleSubmitAndUpdate() {
+    private void handleSubmitAndUpdate()
+    {
         String verificationCode = ((EditText) findViewById(R.id.et_verificationCode)).getText().toString().trim();
 
-        if(TextUtils.isEmpty(verificationCode))
+        if (TextUtils.isEmpty(verificationCode))
         {
             Toast.makeText(this, getString(R.string.error_invalid_verification_code), Toast.LENGTH_LONG).show();
         }
@@ -180,7 +195,8 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
         }
     }
 
-    private void handleUpdateMobileResp(User user, String message) {
+    private void handleUpdateMobileResp(User user, String message)
+    {
         UserPrefHelper.setUser(this, user);
         Toast.makeText(ChangeBindingMobileActivity.this, message, Toast.LENGTH_SHORT).show();
         finish();
@@ -203,12 +219,13 @@ public class ChangeBindingMobileActivity extends BaseActivity implements View.On
     }
 
 
-    private void handleConfirmEntries() {
+    private void handleConfirmEntries()
+    {
 
         // Get new contact number
         String newContactNumber = ((EditText) findViewById(R.id.et_newMobile)).getText().toString().trim();
 
-        if(TextUtils.isEmpty(newContactNumber))
+        if (TextUtils.isEmpty(newContactNumber))
         {
             Toast.makeText(ChangeBindingMobileActivity.this, getString(R.string.error_invalid_mobile_number), Toast.LENGTH_SHORT).show();
         }
