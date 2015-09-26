@@ -25,11 +25,17 @@ import com.yilinker.expresspublic.modules.login.LogInActivity;
 import com.yilinker.expresspublic.modules.myShipment.MyShipmentActivity;
 import com.yilinker.expresspublic.modules.trackDelivery.TrackDeliveryActivity;
 
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class HomeActivity extends BaseActivity implements View.OnClickListener, ResponseHandler {
+public class HomeActivity
+        extends BaseActivity
+        implements View.OnClickListener, ResponseHandler
+{
     private static final Logger logger = Logger.getLogger(HomeActivity.class.getSimpleName());
 
     private ViewPager vp_slider;
@@ -61,10 +67,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         cpi_indicator.setViewPager(vp_slider);
 
         volleyGetSliderList();
+
+        checkForUpdates();
     }
 
     @Override
-    protected int getBaseLayout() {
+    protected int getBaseLayout()
+    {
         return R.layout.activity_base_rl;
     }
 
@@ -81,7 +90,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    protected void initListeners() {
+    protected void initListeners()
+    {
         findViewById(R.id.fab_trackADelivery).setOnClickListener(this);
         findViewById(R.id.fab_findBranch).setOnClickListener(this);
         findViewById(R.id.fab_bookDelivery).setOnClickListener(this);
@@ -89,12 +99,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    protected Intent resultIntent() {
+    protected Intent resultIntent()
+    {
         return null;
     }
 
     @Override
-    public void onClick(View v) {
+    protected void onPause()
+    {
+        super.onPause();
+        UpdateManager.unregister();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    @Override
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
             case R.id.fab_trackADelivery:
@@ -118,9 +144,22 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
+    private void checkForCrashes()
+    {
+        CrashManager.register(this, getString(R.string.hockeyapp_app_id));
+    }
+
+    private void checkForUpdates()
+    {
+        /**
+         * TODO Remove this for store / production builds!
+         */
+        UpdateManager.register(this, getString(R.string.hockeyapp_app_id));
+    }
+
     private void handleMyShipment()
     {
-        if(CommonPrefHelper.isUserLoggedIn(this))
+        if (CommonPrefHelper.isUserLoggedIn(this))
         {
             Intent intent = new Intent(this, MyShipmentActivity.class);
             startActivity(intent);
@@ -134,7 +173,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void handleBookDelivery()
     {
-        if(CommonPrefHelper.isUserLoggedIn(this))
+        if (CommonPrefHelper.isUserLoggedIn(this))
         {
             Intent intent = new Intent(this, BookDeliveryActivity.class);
             startActivity(intent);
@@ -148,7 +187,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void handleFindBranch()
     {
-        if(CommonPrefHelper.isUserLoggedIn(this))
+        if (CommonPrefHelper.isUserLoggedIn(this))
         {
             Intent intent = new Intent(this, SearchBranchesActivity.class);
             startActivity(intent);
@@ -162,7 +201,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void handleTrackADelivery()
     {
-        if(CommonPrefHelper.isUserLoggedIn(this))
+        if (CommonPrefHelper.isUserLoggedIn(this))
         {
             Intent intent = new Intent(this, TrackDeliveryActivity.class);
             startActivity(intent);
@@ -175,7 +214,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onResponse(int requestCode, Object object) {
+    public void onResponse(int requestCode, Object object)
+    {
         switch (requestCode)
         {
             case RequestCode.RCR_GET_SLIDER_LIST:
@@ -189,7 +229,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     }
 
     @Override
-    public void onErrorResponse(int requestCode, String message) {
+    public void onErrorResponse(int requestCode, String message)
+    {
         switch (requestCode)
         {
             case RequestCode.RCR_GET_SLIDER_LIST:
@@ -208,7 +249,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void handleSliderListResp(List<Slider> sliderList)
     {
-        if(sliderList != null)
+        if (sliderList != null)
         {
             sliderFragmentList.clear();
 

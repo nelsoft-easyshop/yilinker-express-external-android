@@ -143,6 +143,10 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
 
+        <!-- [BEGIN] HockeyApp -->
+        <activity android:name="net.hockeyapp.android.UpdateActivity" />
+        <!-- [END] HockeyApp -->
+
         <!-- [BEGIN] Google -->
         <meta-data
             android:name="com.google.android.gms.version"
@@ -151,6 +155,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_api_key" />
         <!-- [END] Google -->
+
         <!-- [START gcm_receiver] -->
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
@@ -172,6 +177,7 @@
             </intent-filter>
         </service>
         <!-- [END gcm_listener] -->
+
         <!-- [START instanceId_listener] -->
         <service
             android:name=".core.services.gcm.MyInstanceIDListenerService"
