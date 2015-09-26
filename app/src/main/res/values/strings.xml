@@ -176,5 +176,6 @@
     <string name="success_booking">Success Booking!</string>
     <string name="view_ongoing_list">View Ongoing List</string>
     <string name="select_gender">Select Gender</string>
+    <string name="new_recipient_detail">New Recipient Detail</string>
 
 </resources>

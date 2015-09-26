@@ -82,7 +82,7 @@ public class RecipientLocationListActivity extends BaseActivity implements View.
     @Override
     protected void initListeners() {
         // Set onclick listener for new sender detail
-        findViewById(R.id.btn_newSenderDetail).setOnClickListener(this);
+        findViewById(R.id.btn_newRecipientDetail).setOnClickListener(this);
 
         EditText et_searchField = (EditText) findViewById(R.id.et_searchField);
         et_searchField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -170,8 +170,8 @@ public class RecipientLocationListActivity extends BaseActivity implements View.
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.btn_newSenderDetail:
-                handleNewSenderDetail();
+            case R.id.btn_newRecipientDetail:
+                handleNewRecipientDetail();
                 break;
 
             default:
@@ -219,7 +219,7 @@ public class RecipientLocationListActivity extends BaseActivity implements View.
         findViewById(R.id.rv_myRecipientLocationList).setVisibility(View.VISIBLE);
     }
 
-    private void handleNewSenderDetail() {
+    private void handleNewRecipientDetail() {
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(BundleKey.ADDRESS_TYPE, AddressType.RECIPIENT);

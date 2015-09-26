@@ -58,14 +58,14 @@
             android:visibility="gone"/>
     </RelativeLayout>
 
-    <!-- New Sender Detail -->
+    <!-- New Recipient Detail -->
     <com.yilinker.expresspublic.modules.common.customviews.CustomButton
-        android:id="@+id/btn_newSenderDetail"
+        android:id="@+id/btn_newRecipientDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
-        android:text="@string/new_sender_detail"
+        android:text="@string/new_recipient_detail"
         android:textSize="22sp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"
