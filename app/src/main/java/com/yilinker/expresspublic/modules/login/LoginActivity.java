@@ -25,7 +25,10 @@ import com.yilinker.expresspublic.modules.registration.RegistrationActivity;
 
 import java.util.logging.Logger;
 
-public class LogInActivity extends BaseActivity implements View.OnClickListener, ResponseHandler {
+public class LogInActivity
+        extends BaseActivity
+        implements View.OnClickListener, ResponseHandler
+{
     private static final Logger logger = Logger.getLogger(LogInActivity.class.getSimpleName());
 
     private ProgressDialog progressDialog;
@@ -45,39 +48,45 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    protected int getBaseLayout() {
+    protected int getBaseLayout()
+    {
         return R.layout.activity_base_rl;
     }
 
     @Override
-    protected int getToolbarTitle() {
+    protected int getToolbarTitle()
+    {
         return R.string.title_login;
     }
 
     @Override
-    protected int getLayoutResource() {
+    protected int getLayoutResource()
+    {
         return R.layout.activity_login;
     }
 
     @Override
-    protected void initListeners() {
+    protected void initListeners()
+    {
         findViewById(R.id.btn_signIn).setOnClickListener(this);
         findViewById(R.id.btn_register).setOnClickListener(this);
         findViewById(R.id.btn_backToHome).setOnClickListener(this);
     }
 
     @Override
-    protected Intent resultIntent() {
+    protected Intent resultIntent()
+    {
         return null;
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK)
+        if (resultCode == RESULT_OK)
         {
-            if(requestCode == RequestCode.RCA_REGISTRATION)
+            if (requestCode == RequestCode.RCA_REGISTRATION)
             {
                 // Successful registration
                 this.resultCode = RESULT_OK;
@@ -87,7 +96,8 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v)
+    {
         switch (v.getId())
         {
             case R.id.btn_signIn:
@@ -109,8 +119,9 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void onResponse(int requestCode, Object object) {
-        if(progressDialog.isShowing())
+    public void onResponse(int requestCode, Object object)
+    {
+        if (progressDialog.isShowing())
         {
             progressDialog.dismiss();
         }
@@ -134,8 +145,9 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void onErrorResponse(int requestCode, String message) {
-        if(progressDialog.isShowing())
+    public void onErrorResponse(int requestCode, String message)
+    {
+        if (progressDialog.isShowing())
         {
             progressDialog.dismiss();
         }
@@ -151,13 +163,14 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-    private void handleSignin() {
+    private void handleSignin()
+    {
         String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
         String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
 
         String errorMessage = validateUserInput(emailAddress, password);
 
-        if(errorMessage != null)
+        if (errorMessage != null)
         {
             AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
             alertDialog.show();
@@ -186,7 +199,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
         // Check email
         String errorMessage = InputValidator.isEmailValid(emailAddress);
 
-        if(errorMessage != null)
+        if (errorMessage != null)
         {
             return errorMessage;
         }
@@ -194,7 +207,7 @@ public class LogInActivity extends BaseActivity implements View.OnClickListener,
         // Check password
         errorMessage = InputValidator.isPasswordValid(password);
 
-        if(errorMessage != null)
+        if (errorMessage != null)
         {
             return errorMessage;
         }

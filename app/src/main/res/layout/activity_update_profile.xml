@@ -32,7 +32,7 @@
 
             <!-- Full name -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-                android:id="@+id/et_oldPassword"
+                android:id="@+id/et_fullName"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="48dp"
@@ -66,7 +66,7 @@
                 android:textColor="@color/greyish_brown"
                 app:fontName="Roboto-Medium.ttf"/>
 
-            <!-- Full name -->
+            <!-- Birthdate -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
                 android:id="@+id/et_birthdate"
                 android:layout_width="0dp"
@@ -102,7 +102,7 @@
                 android:textColor="@color/greyish_brown"
                 app:fontName="Roboto-Medium.ttf"/>
 
-            <!-- Full name -->
+            <!-- Gender -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
                 android:id="@+id/et_gender"
                 android:layout_width="0dp"
@@ -138,7 +138,7 @@
                 android:textColor="@color/greyish_brown"
                 app:fontName="Roboto-Medium.ttf"/>
 
-            <!-- Full name -->
+            <!-- Email -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
                 android:id="@+id/et_email"
                 android:layout_width="0dp"
