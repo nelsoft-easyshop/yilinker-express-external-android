@@ -72,6 +72,8 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
         findViewById(R.id.btn_add).setOnClickListener(this);
         // Set onclick listener for submit
         findViewById(R.id.btn_submit).setOnClickListener(this);
+        //Set onclick listener for view image
+        findViewById(R.id.tv_imageCount).setOnClickListener(this);
     }
 
     @Override
@@ -218,9 +220,20 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
                 handleSubmit();
                 break;
 
+            case R.id.tv_imageCount:
+                handleImageCount();
+                break;
+
             default:
                 break;
         }
+    }
+
+    private void handleImageCount() {
+
+        Intent intent = new Intent(this, PackageDetailsImagesActivity.class);
+        startActivityForResult(intent, RequestCode.RCA_PACKAGE_IMAGES);
+
     }
 
     private void handleSubmit() {
