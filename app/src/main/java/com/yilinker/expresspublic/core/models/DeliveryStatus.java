@@ -15,13 +15,17 @@ public class DeliveryStatus
     private String message;
     @SerializedName(ApiKey.DATE)
     private Date date;
+    /***added new key/s*/
+    @SerializedName(ApiKey.PACKAGE_STATUS)
+    private String packageStatus;
 
     public DeliveryStatus() {
     }
 
-    public DeliveryStatus(String message, Date date) {
+    public DeliveryStatus(String message, Date date, String packageStatus) {
         this.message = message;
         this.date = date;
+        this.packageStatus = packageStatus;
     }
 
     public String getMessage() {
@@ -38,6 +42,15 @@ public class DeliveryStatus
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    /** added getter and setter for package status**/
+    public String getPackageStatus() {
+        return packageStatus;
+    }
+
+    public void setPackageStatus(String packageStatus) {
+        this.packageStatus = packageStatus;
     }
 
     /**
