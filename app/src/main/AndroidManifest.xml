@@ -53,6 +53,14 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".modules.bookDelivery.PackageDetailsActivity2"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".modules.bookDelivery.PackageDetailsImagesActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".modules.bookDelivery.DimensionAndWeightActivity"
             android:screenOrientation="portrait" >
         </activity>
