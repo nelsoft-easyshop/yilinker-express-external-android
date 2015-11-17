@@ -16,6 +16,7 @@ public class RequestCode
     public static final int RCA_UPDATE_MOBILE                       = 2000;
     public static final int RCA_UPDATE_PROFILE                      = 2100;
     public static final int RCA_UPDATE_PASSWORD                     = 2200;
+    public static final int RCA_GALLERY_SELECT                      = 2300;
     // OAuth API
     public static final int RCR_TOKEN                               = 5000;
     public static final int RCR_REGISTER                            = 5100;

@@ -179,7 +179,7 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     }
 
     private void startPackageDetailsActivity() {
-        Intent intent = new Intent(this, PackageDetailsActivity.class);
+        Intent intent = new Intent(this, PackageDetailsActivity2.class);
         startActivityForResult(intent, RequestCode.RCA_PACKAGE_DETAILS);
     }
 
@@ -201,9 +201,14 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void handleSubmitBooking() {
 
-        String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.DELIVERY_API + "/"
-                + ApiEndpoint.DELIVERY_BOOK;
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.DELIVERY_API + "/"
+//                + ApiEndpoint.DELIVERY_BOOK;
+
+        String endpoint = BuildConfig.DOMAIN + "/m/"
+                + ApiEndpoint.PACKAGES_API + "/"
+                + ApiEndpoint.PACKAGES_ADD;
+
 
         bookDeliveryRequest = new BookDeliveryRequest(
                 this,
