@@ -31,7 +31,8 @@
             android:layout_marginBottom="15dp"
             android:textSize="16sp"
             android:textColor="@color/warm_grey"
-            app:fontName="Roboto-Regular.ttf"/>
+            app:fontName="Roboto-Regular.ttf"
+            android:visibility="gone"/><!--changed from visible to gone-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,7 +68,8 @@
                 android:layout_marginEnd="10dp"
                 android:textSize="14sp"
                 android:textColor="@color/warm_grey"
-                app:fontName="Roboto-Light.ttf"/>
+                app:fontName="Roboto-Light.ttf"
+                android:visibility="gone"/><!--changed from visible to gone-->
         </LinearLayout>
 
         <!-- Status -->
