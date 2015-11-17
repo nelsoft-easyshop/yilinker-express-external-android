@@ -34,7 +34,7 @@ public class OAuthApi
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.OAUTH_API + "/"
+//                + ApiEndpoint.OAUTH_API + "/"
                 + ApiEndpoint.OAUTH_TOKEN;
 
         // Build request parameters
