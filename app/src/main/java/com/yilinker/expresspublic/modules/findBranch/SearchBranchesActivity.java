@@ -36,6 +36,7 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.BranchApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.SearchHistoryPrefHelper;
 import com.yilinker.expresspublic.core.managers.BranchManager;
 import com.yilinker.expresspublic.core.models.Branch;
@@ -418,8 +419,9 @@ public class SearchBranchesActivity extends BaseFragmentActivity
                     .snippet(branch.getAddress())
                     .visible(true)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker))
-                    .position(new LatLng(branch.getLatitude(), branch.getLongitude())));
-
+                    // Modified due to change of datatype within latutude and longitude
+                    //.position(new LatLng(branch.getLatitude(), branch.getLongitude())));
+                    .position(new LatLng(Double.parseDouble(String.valueOf(branch.getLatitude())), Double.parseDouble(String.valueOf(branch.getLongitude())))));
             branchMap.put(marker, branch);
         }
     }
@@ -482,7 +484,7 @@ public class SearchBranchesActivity extends BaseFragmentActivity
         progressDialog.setCancelable(false);
         progressDialog.show();
 
-        Request request = BranchApi.getAllBranch(RequestCode.RCR_GET_ALL_BRANCH, this);
+        Request request = BranchApi.getAllBranch(RequestCode.RCR_GET_ALL_BRANCH, OAuthPrefHelper.getAccessToken(this), this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 

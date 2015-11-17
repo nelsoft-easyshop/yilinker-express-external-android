@@ -25,15 +25,32 @@ public class Branch
     @SerializedName(ApiKey.IMAGE)
     public String image;
     @SerializedName(ApiKey.LATITUDE)
-    public Double latitude;
+    // Modified latitude datatype to String
+    public String latitude;
+    //public Double latitude;
     @SerializedName(ApiKey.LONGITUDE)
-    public Double longitude;
+    // Modified longitude datatype to String
+    public String longitude;
+    //public Double longitude;
     public Float distance;
 
     public Branch() {
     }
 
-    public Branch(Long id, String name, String address, String openingTime, String closingTime, String contactNumber, String image, Double latitude, Double longitude) {
+    // Modified Constructor Mapping due to Longitude and Latitude change of datatype
+    /*public Branch(Long id, String name, String address, String openingTime, String closingTime, String contactNumber, String image, Double latitude, Double longitude) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
+        this.contactNumber = contactNumber;
+        this.image = image;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }*/
+
+    public Branch(Long id, String name, String address, String openingTime, String closingTime, String contactNumber, String image, String latitude, String longitude) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -44,6 +61,8 @@ public class Branch
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+
 
     public Long getId() {
         return id;
@@ -101,7 +120,8 @@ public class Branch
         this.image = image;
     }
 
-    public Double getLatitude() {
+    // Modified setter and getter due to change of datatype
+    /*public Double getLatitude() {
         return latitude;
     }
 
@@ -114,6 +134,22 @@ public class Branch
     }
 
     public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }*/
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 

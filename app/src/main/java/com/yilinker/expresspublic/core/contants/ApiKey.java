@@ -81,4 +81,6 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    //Added Search Query for Branch Search
+    public static final String QUERY                                    = "query";
 }

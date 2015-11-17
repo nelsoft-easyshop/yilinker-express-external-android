@@ -29,6 +29,9 @@ public class BranchApi
      * @param handler
      * @return
      */
+
+    // Modified parameter and added access_token
+    /*
     public static Request getAllBranch(final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
@@ -37,6 +40,33 @@ public class BranchApi
 
         // Build request
         GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvBranchListResp.class,
+                new GsonRequest.GsonResponseListener<EvBranchListResp>() {
+                    @Override
+                    public void onResponse(EvBranchListResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });*/
+
+    public static Request getAllBranch(final int requestCode, String accessToken, final ResponseHandler handler)
+    {
+
+
+        // Modified endpoint and request method
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/m/"
+                + ApiEndpoint.BRANCH_API + "/"
+                + ApiEndpoint.BRANCH_API_GET + "?"
+                + ApiKey.ACCESS_TOKEN + "=" + accessToken;
+        // Build request parameters
+
+        // Build request
+        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, null, EvBranchListResp.class,
                 new GsonRequest.GsonResponseListener<EvBranchListResp>() {
                     @Override
                     public void onResponse(EvBranchListResp object) {
@@ -169,7 +199,8 @@ public class BranchApi
      */
     public static Request searchBranchesByKeyword(String keyword, final int requestCode, final ResponseHandler handler)
     {
-        // Build endpoint
+        // Modified endpoint and added query string for search
+        /*// Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.BRANCH_API + "/"
                 + ApiEndpoint.BRANCH_SEARCH;
@@ -177,6 +208,31 @@ public class BranchApi
         // Build request parameters
         Map<String, String> params = new HashMap<>();
         params.put(ApiKey.KEYWORD, keyword);
+
+        // Build request
+        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, params, EvBranchListResp.class,
+                new GsonRequest.GsonResponseListener<EvBranchListResp>() {
+                    @Override
+                    public void onResponse(EvBranchListResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });*/
+
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/m/"
+                + ApiEndpoint.BRANCH_API + "/"
+                + ApiEndpoint.BRANCH_API_GET;
+
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        //params.put(ApiKey.ACCESS_TOKEN, access_token);
+        params.put(ApiKey.QUERY, keyword);
 
         // Build request
         GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, params, EvBranchListResp.class,
