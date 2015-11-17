@@ -33,12 +33,8 @@ public class OAuthApi
     public static Request token(String username, String password, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
-//        String endpoint = BuildConfig.DOMAIN + "/"
-//                + ApiEndpoint.OAUTH_API + "/"
-//                + ApiEndpoint.OAUTH_TOKEN;
-
-        //new endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.OAUTH_API + "/"
                 + ApiEndpoint.OAUTH_TOKEN;
 
 
