@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * Created by Jeico.
- */
+        */
 public class DeliveryStatus
 {
     @SerializedName(ApiKey.MESSAGE)
