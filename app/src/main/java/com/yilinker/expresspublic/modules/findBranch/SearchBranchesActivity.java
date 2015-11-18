@@ -419,9 +419,9 @@ public class SearchBranchesActivity extends BaseFragmentActivity
                     .snippet(branch.getAddress())
                     .visible(true)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker))
-                    // Modified due to change of datatype within latutude and longitude
+                    // Modified due to change of datatype of latutude and longitude
                     //.position(new LatLng(branch.getLatitude(), branch.getLongitude())));
-                    .position(new LatLng(Double.parseDouble(String.valueOf(branch.getLatitude())), Double.parseDouble(String.valueOf(branch.getLongitude())))));
+                    .position(new LatLng(Double.parseDouble(branch.getLatitude()), Double.parseDouble(branch.getLongitude()))));
             branchMap.put(marker, branch);
         }
     }
@@ -483,7 +483,8 @@ public class SearchBranchesActivity extends BaseFragmentActivity
         progressDialog.setMessage(getString(R.string.loading_searching_branches));
         progressDialog.setCancelable(false);
         progressDialog.show();
-
+        // Added additional parameter "access token"
+        //Request request = BranchApi.getAllBranch(RequestCode.RCR_GET_ALL_BRANCH, this);
         Request request = BranchApi.getAllBranch(RequestCode.RCR_GET_ALL_BRANCH, OAuthPrefHelper.getAccessToken(this), this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }

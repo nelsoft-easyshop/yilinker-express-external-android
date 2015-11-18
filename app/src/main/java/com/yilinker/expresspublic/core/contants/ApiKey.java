@@ -10,7 +10,10 @@ public class ApiKey
     public static final String LAST_NAME                                = "last_name";
     public static final String USERNAME                                 = "username";
     public static final String EMAIL_ADDRESS                            = "email_address";
-    public static final String CONTACT_NUMBER                           = "contact_number";
+    //Modified Contact Number due to change of response field and added additional contacts variable for contacts model
+    public static final String CONTACTS                                 = "contacts";
+    public static final String CONTACT_NUMBER                           = "contactNumber";
+    //public static final String CONTACT_NUMBER                           = "contact_number";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
     public static final String FULL_NAME                                = "full_name";
     public static final String DATE_ADDED                               = "date_added";
@@ -32,8 +35,11 @@ public class ApiKey
     public static final String CITY                                     = "city";
     public static final String PROVINCE_ID                              = "province_id";
     public static final String KEYWORD                                  = "keyword";
-    public static final String OPENING_TIME                             = "opening_time";
-    public static final String CLOSING_TIME                             = "closing_time";
+    //Modified due to change of variable name
+   /* public static final String OPENING_TIME                             = "opening_time";
+    public static final String CLOSING_TIME                             = "closing_time";*/
+    public static final String OPENING_HOUR                              = "openingHour";
+    public static final String CLOSING_HOUR                              = "closingHour";
     public static final String IMAGE                                    = "image";
     public static final String MESSAGE                                  = "message";
     public static final String DATE                                     = "date";

@@ -3,6 +3,7 @@ package com.yilinker.expresspublic.core.api;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.google.android.gms.common.api.Api;
 import com.yilinker.expresspublic.BuildConfig;
 import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.GsonRequest;
@@ -59,14 +60,13 @@ public class BranchApi
 
         // Modified endpoint and request method
         // Build endpoint
-        String endpoint = BuildConfig.DOMAIN + "/m/"
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.M_BRANCH + "/"
                 + ApiEndpoint.BRANCH_API + "/"
-                + ApiEndpoint.BRANCH_API_GET + "?"
-                + ApiKey.ACCESS_TOKEN + "=" + accessToken;
-        // Build request parameters
+                + ApiEndpoint.BRANCH_API_GET;
 
         // Build request
-        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, null, EvBranchListResp.class,
+        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, null, EvBranchListResp.class,
                 new GsonRequest.GsonResponseListener<EvBranchListResp>() {
                     @Override
                     public void onResponse(EvBranchListResp object) {
@@ -197,8 +197,11 @@ public class BranchApi
      * @param handler
      * @return
      */
-    public static Request searchBranchesByKeyword(String keyword, final int requestCode, final ResponseHandler handler)
+    // Added additional parameter access token
+    public static Request searchBranchesByKeyword(String keyword, String accessToken, final int requestCode, final ResponseHandler handler)
     {
+    /*public static Request searchBranchesByKeyword(String keyword, final int requestCode, final ResponseHandler handler)
+    {*/
         // Modified endpoint and added query string for search
         /*// Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
@@ -225,17 +228,17 @@ public class BranchApi
                 });*/
 
         // Build endpoint
-        String endpoint = BuildConfig.DOMAIN + "/m/"
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.M_BRANCH + "/"
                 + ApiEndpoint.BRANCH_API + "/"
                 + ApiEndpoint.BRANCH_API_GET;
 
         // Build request parameters
         Map<String, String> params = new HashMap<>();
-        //params.put(ApiKey.ACCESS_TOKEN, access_token);
         params.put(ApiKey.QUERY, keyword);
 
         // Build request
-        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, params, EvBranchListResp.class,
+        GsonRequest<EvBranchListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBranchListResp.class,
                 new GsonRequest.GsonResponseListener<EvBranchListResp>() {
                     @Override
                     public void onResponse(EvBranchListResp object) {

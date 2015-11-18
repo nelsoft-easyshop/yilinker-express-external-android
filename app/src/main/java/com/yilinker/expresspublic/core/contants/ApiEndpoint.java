@@ -29,6 +29,7 @@ public class ApiEndpoint
     //public static final String BRANCH_API                               = "branch";
     public static final String BRANCH_API                               = "branches";
     public static final String BRANCH_API_GET                           = "get";
+    public static final String M_BRANCH                                 = "m";
     // Method
     public static final String BRANCH_BOOKMARK                          = "bookmark";
     public static final String BRANCH_UNBOOKMARK                        = "unbookmark";
