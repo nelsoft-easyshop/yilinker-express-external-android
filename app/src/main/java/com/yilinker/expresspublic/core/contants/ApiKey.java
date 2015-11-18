@@ -6,11 +6,15 @@ package com.yilinker.expresspublic.core.contants;
 public class ApiKey
 {
     public static final String ID                                       = "id";
-    public static final String FIRST_NAME                               = "first_name";
-    public static final String LAST_NAME                                = "last_name";
+//    public static final String FIRST_NAME                               = "first_name";
+    public static final String FIRST_NAME                               = "firstName";
+//    public static final String LAST_NAME                                = "last_name";
+    public static final String LAST_NAME                                = "lastName";
     public static final String USERNAME                                 = "username";
-    public static final String EMAIL_ADDRESS                            = "email_address";
-    public static final String CONTACT_NUMBER                           = "contact_number";
+//    public static final String EMAIL_ADDRESS                            = "email_address";
+    public static final String EMAIL_ADDRESS                            = "emailAddress";
+//    public static final String CONTACT_NUMBER                           = "contact_number";
+    public static final String CONTACT_NUMBER                           = "contactNumber";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
     public static final String FULL_NAME                                = "full_name";
     public static final String DATE_ADDED                               = "date_added";
@@ -81,4 +85,5 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    public static final String IS_SUCCESSFUL                            = "isSuccessful";
 }

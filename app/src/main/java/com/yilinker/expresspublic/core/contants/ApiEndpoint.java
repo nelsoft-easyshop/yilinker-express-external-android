@@ -3,6 +3,10 @@ package com.yilinker.expresspublic.core.contants;
 public class ApiEndpoint
 {
     /*******************************************************************************
+     * Mobile Endpoint
+     ******************************************************************************/
+    public static final String MOBILE_API                               = "m";
+    /*******************************************************************************
      * Home Endpoint
      ******************************************************************************/
     public static final String HOME_API                                 = "home";
@@ -10,6 +14,7 @@ public class ApiEndpoint
      * User Endpoint
      ******************************************************************************/
     public static final String USER_API                                 = "me";
+    public static final String USERS_API                                = "m/users";
     // Method
     public static final String USER_UPDATE_PROFILE                      = "update_profile";
     public static final String USER_UPDATE_PASSWORD                     = "update_password";

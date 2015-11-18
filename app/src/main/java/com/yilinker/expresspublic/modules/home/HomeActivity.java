@@ -66,7 +66,7 @@ public class HomeActivity
         CirclePageIndicator cpi_indicator = (CirclePageIndicator) findViewById(R.id.cpi_indicator);
         cpi_indicator.setViewPager(vp_slider);
 
-        volleyGetSliderList();
+//        volleyGetSliderList();
 
         checkForUpdates();
     }
