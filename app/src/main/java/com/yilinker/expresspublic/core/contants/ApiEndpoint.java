@@ -70,7 +70,7 @@ public class ApiEndpoint
     public static final String CONSUMER_API                             = "m/consumer";
     // Method
     public static final String CONSUMER_ADDRESS_TAG                     = "addressTag";
-    public static final String CONSUMER_ADDRESS_GROUP                   = "addressGroup";
+    public static final String CONSUMER_ADDRESS_GROUP                   = "address-group";
     /*******************************************************************************
      * Address Endpoint
      ******************************************************************************/

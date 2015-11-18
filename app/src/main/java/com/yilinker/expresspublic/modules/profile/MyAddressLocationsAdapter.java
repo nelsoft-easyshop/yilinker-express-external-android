@@ -1,6 +1,7 @@
 package com.yilinker.expresspublic.modules.profile;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,8 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
     @Override
     public long getGroupId(int groupPosition) {
-        return myAddressLocationModelList.get(groupPosition).getAddressGroup().getId();
+//        return myAddressLocationModelList.get(groupPosition).getAddressGroup().getId();
+        return Long.valueOf(myAddressLocationModelList.get(groupPosition).getAddressGroup().getId());
     }
 
     @Override

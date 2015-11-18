@@ -72,8 +72,10 @@ public class ApiKey
     public static final String ADDRESS_TYPE                             = "address_type";
     public static final String ADDRESS_ID                               = "address_id";
     public static final String CONSUMER_ID                              = "consumer_id";
-    public static final String CONTACT_PERSON                           = "contact_person";
-    public static final String CONTACT_PERSON_NUMBER                    = "contact_person_number";
+//    public static final String CONTACT_PERSON                           = "contact_person";
+    public static final String CONTACT_PERSON                           = "contactPerson";
+//    public static final String CONTACT_PERSON_NUMBER                    = "contact_person_number";
+    public static final String CONTACT_PERSON_NUMBER                    = "contactNumber";
     public static final String IS_PRIMARY                               = "is_primary";
     public static final String TITLE                                    = "title";
     public static final String CONTENT                                  = "content";
@@ -82,4 +84,5 @@ public class ApiKey
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
     public static final String ADDRESS_TAG                              = "addressTag";
+    public static final String IS_RECIPIENT                             = "isRecipient";
 }

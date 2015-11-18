@@ -152,7 +152,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 barangayArrayAdapter.clear();
 
                 Province province = provinceArrayAdapter.getItem(position);
-                volleyGetCityList(province.getId());
+//                volleyGetCityList(province.getId());
+                volleyGetCityList(Long.valueOf(province.getId()));
             }
 
             @Override
@@ -170,7 +171,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 barangayArrayAdapter.clear();
 
                 City city = cityArrayAdapter.getItem(position);
-                volleyGetBarangayList(city.getId());
+//                volleyGetBarangayList(city.getId());
+                volleyGetBarangayList(Long.valueOf(city.getId()));
             }
 
             @Override
@@ -508,11 +510,14 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         String village = ((EditText) findViewById(R.id.et_village)).getText().toString().trim();
 
         Province province = (Province) ((Spinner) findViewById(R.id.sp_province)).getSelectedItem();
-        Long provinceId = province.getId();
+//        Long provinceId = province.getId();
+        Long provinceId = Long.valueOf(province.getId());
         City city = (City) ((Spinner) findViewById(R.id.sp_city)).getSelectedItem();
-        Long cityId = city.getId();
+//        Long cityId = city.getId();
+        Long cityId = Long.valueOf(city.getId());
         Barangay barangay = (Barangay) ((Spinner) findViewById(R.id.sp_barangay)).getSelectedItem();
-        Long barangayId = barangay.getId();
+//        Long barangayId = barangay.getId();
+        Long barangayId = Long.valueOf(barangay.getId());
 
         String zipCode = ((EditText) findViewById(R.id.et_zipCode)).getText().toString().trim();
 

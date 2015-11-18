@@ -55,7 +55,8 @@ public class MyRecipientsLocationsAdapter extends BaseExpandableListAdapter
 
     @Override
     public long getGroupId(int groupPosition) {
-        return myAddressLocationModelList.get(groupPosition).getAddressGroup().getId();
+//        return myAddressLocationModelList.get(groupPosition).getAddressGroup().getId();
+        return Long.valueOf(myAddressLocationModelList.get(groupPosition).getAddressGroup().getId());
     }
 
     @Override

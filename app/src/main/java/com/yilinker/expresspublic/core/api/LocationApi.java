@@ -115,8 +115,28 @@ public class LocationApi
                 + ApiEndpoint.ADDRESS_API + "/"
                 + ApiEndpoint.ADDRESS_GET;
 
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+
+
         // Build request
-        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
+//        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
+//                new GsonRequest.GsonResponseListener<EvAddressLocationListResp>() {
+//                    @Override
+//                    public void onResponse(EvAddressLocationListResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        logger.severe(error.toString());
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+
+        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvAddressLocationListResp.class,
                 new GsonRequest.GsonResponseListener<EvAddressLocationListResp>() {
                     @Override
                     public void onResponse(EvAddressLocationListResp object) {
@@ -186,8 +206,28 @@ public class LocationApi
                 + ApiEndpoint.ADDRESS_GET;
 
 
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.IS_RECIPIENT, String.valueOf(true));
+
         // Build request
-        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
+//        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
+//                new GsonRequest.GsonResponseListener<EvAddressLocationListResp>() {
+//                    @Override
+//                    public void onResponse(EvAddressLocationListResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        logger.severe(error.toString());
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+
+        GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvAddressLocationListResp.class,
                 new GsonRequest.GsonResponseListener<EvAddressLocationListResp>() {
                     @Override
                     public void onResponse(EvAddressLocationListResp object) {
@@ -287,15 +327,20 @@ public class LocationApi
     public static Request addAddressGroup(String accessToken, String name, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_API + "/"
+//                + ApiEndpoint.LOCATION_ADDRESS + "/"
+//                + ApiEndpoint.LOCATION_GROUP + "/"
+//                + ApiEndpoint.LOCATION_STORE;
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_API + "/"
-                + ApiEndpoint.LOCATION_ADDRESS + "/"
-                + ApiEndpoint.LOCATION_GROUP + "/"
-                + ApiEndpoint.LOCATION_STORE;
+                + ApiEndpoint.CONSUMER_API + "/"
+                + ApiEndpoint.CONSUMER_ADDRESS_GROUP;
 
         // Build request parameters
         Map<String, String> params = new HashMap<>();
-        params.put(ApiKey.TYPE, name);
+//        params.put(ApiKey.TYPE, name);
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
 
         // Build request
         GsonRequest<EvAddressGroupListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvAddressGroupListResp.class,
@@ -324,8 +369,11 @@ public class LocationApi
     public static Request getProvinceList(final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_PROVINCE;
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_PROVINCE;
+                + ApiEndpoint.ADDRESS_GET_PROVINCES;
 
         // Build request
         GsonRequest<EvProvinceListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvProvinceListResp.class,
@@ -355,9 +403,14 @@ public class LocationApi
     public static Request getCityList(Long provinceId, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_CITY + "/"
+//                + Long.toString(provinceId);
+
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.LOCATION_CITY + "/"
                 + Long.toString(provinceId);
+
 
         // Build request
         GsonRequest<EvCityListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvCityListResp.class,
@@ -387,6 +440,10 @@ public class LocationApi
     public static Request getBarangayList(Long cityId, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_BARANGAY + "/"
+//                + Long.toString(cityId);
+
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.LOCATION_BARANGAY + "/"
                 + Long.toString(cityId);
