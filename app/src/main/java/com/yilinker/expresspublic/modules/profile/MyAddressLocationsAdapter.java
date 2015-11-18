@@ -111,14 +111,14 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
         addressLocationHolder.tv_address.setText(address.getAddress());
 
-        if(address.getIsPrimary() == 1)
-        {
-            addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_check);
-        }
-        else
-        {
-            addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_unchecked);
-        }
+//        if(address.getIsPrimary() == 1)
+//        {
+//            addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_check);
+//        }
+//        else
+//        {
+//            addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_unchecked);
+//        }
 
         return convertView;
     }

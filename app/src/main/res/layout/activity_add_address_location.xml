@@ -564,7 +564,7 @@
             <com.yilinker.expresspublic.modules.common.customviews.SquareFrameLayout
                 android:id="@+id/sfl_googleMapContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content" android:visibility="gone">
 
                 <!-- Google Map -->
                 <fragment

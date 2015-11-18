@@ -15,6 +15,7 @@ import com.yilinker.expresspublic.core.helpers.VolleyErrorHelper;
 import com.yilinker.expresspublic.core.requests.EvAddAddressLocationReq;
 import com.yilinker.expresspublic.core.responses.EvAddressGroupListResp;
 import com.yilinker.expresspublic.core.responses.EvAddressLocationListResp;
+import com.yilinker.expresspublic.core.responses.EvAddressTagListResponse;
 import com.yilinker.expresspublic.core.responses.EvBarangayListResp;
 import com.yilinker.expresspublic.core.responses.EvCityListResp;
 import com.yilinker.expresspublic.core.responses.EvGetAllProvinceAndCityResp;
@@ -106,9 +107,13 @@ public class LocationApi
     public static Request getMyAddressLocations(String accessToken, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_API + "/"
+//                + ApiEndpoint.LOCATION_SENDER_ADDRESS;
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_API + "/"
-                + ApiEndpoint.LOCATION_SENDER_ADDRESS;
+                + ApiEndpoint.ADDRESS_API + "/"
+                + ApiEndpoint.ADDRESS_GET;
 
         // Build request
         GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
@@ -171,10 +176,15 @@ public class LocationApi
      */
     public static Request getMyRecipientLocations(String accessToken, final int requestCode, final ResponseHandler handler)
     {
-        // Build endpoint
+//        // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_API + "/"
+//                + ApiEndpoint.LOCATION_RECIPIENT_ADDRESS;
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_API + "/"
-                + ApiEndpoint.LOCATION_RECIPIENT_ADDRESS;
+                + ApiEndpoint.ADDRESS_API + "/"
+                + ApiEndpoint.ADDRESS_GET;
+
 
         // Build request
         GsonRequest<EvAddressLocationListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressLocationListResp.class,
@@ -205,9 +215,14 @@ public class LocationApi
     public static Request getAddressGroup(String accessToken, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_API + "/"
+//                + ApiEndpoint.LOCATION_ADDRESS_GROUP;
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_API + "/"
-                + ApiEndpoint.LOCATION_ADDRESS_GROUP;
+                + ApiEndpoint.CONSUMER_API + "/"
+                + ApiEndpoint.CONSUMER_ADDRESS_GROUP;
+
 
         logger.severe(endpoint);
         // Build request
@@ -215,6 +230,39 @@ public class LocationApi
                 new GsonRequest.GsonResponseListener<EvAddressGroupListResp>() {
                     @Override
                     public void onResponse(EvAddressGroupListResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });
+
+        return gsonRequest;
+    }
+
+    /**
+     * Added by JBautista
+     * @param accessToken
+     * @param requestCode
+     * @param handler
+     * @return
+     */
+    public static Request getAddressTag(String accessToken, final int requestCode, final ResponseHandler handler)
+    {
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.CONSUMER_API + "/"
+                + ApiEndpoint.CONSUMER_ADDRESS_TAG;
+
+        logger.severe(endpoint);
+        // Build request
+        GsonRequest<EvAddressTagListResponse> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvAddressTagListResponse.class,
+                new GsonRequest.GsonResponseListener<EvAddressTagListResponse>() {
+                    @Override
+                    public void onResponse(EvAddressTagListResponse object) {
                         handler.onResponse(requestCode, object);
                     }
                 },

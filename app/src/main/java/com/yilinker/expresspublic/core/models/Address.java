@@ -10,30 +10,39 @@ public class Address
 {
     @SerializedName(ApiKey.ID)
     private Long id;
-    @SerializedName(ApiKey.ADDRESS_ID)
-    private Long addressId;
-    @SerializedName(ApiKey.CONSUMER_ID)
-    private Long consumerId;
+//    @SerializedName(ApiKey.ADDRESS_ID)
+//    private Long addressId;
+//    @SerializedName(ApiKey.CONSUMER_ID)
+//    private Long consumerId;
     @SerializedName(ApiKey.CONTACT_PERSON)
     private String contactPerson;
     @SerializedName(ApiKey.CONTACT_PERSON_NUMBER)
     private String contactPersonNumber;
     @SerializedName(ApiKey.ADDRESS)
     private String address;
-    @SerializedName(ApiKey.IS_PRIMARY)
-    private Integer isPrimary;
+//    @SerializedName(ApiKey.IS_PRIMARY)
+//    private Integer isPrimary;
+    @SerializedName(ApiKey.ADDRESS_TAG)
+    private String addressTag;
 
     public Address() {
     }
 
-    public Address(Long id, Long addressId, Long consumerId, String contactPerson, String contactPersonNumber, String address, Integer isPrimary) {
+//    public Address(Long id, Long addressId, Long consumerId, String contactPerson, String contactPersonNumber, String address, Integer isPrimary) {
+//        this.id = id;
+//        this.addressId = addressId;
+//        this.consumerId = consumerId;
+//        this.contactPerson = contactPerson;
+//        this.contactPersonNumber = contactPersonNumber;
+//        this.address = address;
+//        this.isPrimary = isPrimary;
+//    }
+
+    public Address(Long id, String contactPerson, String contactPersonNumber, String address) {
         this.id = id;
-        this.addressId = addressId;
-        this.consumerId = consumerId;
         this.contactPerson = contactPerson;
         this.contactPersonNumber = contactPersonNumber;
         this.address = address;
-        this.isPrimary = isPrimary;
     }
 
     public Long getId() {
@@ -44,21 +53,21 @@ public class Address
         this.id = id;
     }
 
-    public Long getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
-    }
-
-    public Long getConsumerId() {
-        return consumerId;
-    }
-
-    public void setConsumerId(Long consumerId) {
-        this.consumerId = consumerId;
-    }
+//    public Long getAddressId() {
+//        return addressId;
+//    }
+//
+//    public void setAddressId(Long addressId) {
+//        this.addressId = addressId;
+//    }
+//
+//    public Long getConsumerId() {
+//        return consumerId;
+//    }
+//
+//    public void setConsumerId(Long consumerId) {
+//        this.consumerId = consumerId;
+//    }
 
     public String getContactPerson() {
         return contactPerson;
@@ -84,11 +93,20 @@ public class Address
         this.address = address;
     }
 
-    public Integer getIsPrimary() {
-        return isPrimary;
+//    public Integer getIsPrimary() {
+//        return isPrimary;
+//    }
+//
+//    public void setIsPrimary(Integer isPrimary) {
+//        this.isPrimary = isPrimary;
+//    }
+
+
+    public String getAddressTag() {
+        return addressTag;
     }
 
-    public void setIsPrimary(Integer isPrimary) {
-        this.isPrimary = isPrimary;
+    public void setAddressTag(String addressTag) {
+        this.addressTag = addressTag;
     }
 }

@@ -81,4 +81,5 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    public static final String ADDRESS_TAG                              = "addressTag";
 }
