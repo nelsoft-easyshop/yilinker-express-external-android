@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -31,5 +32,27 @@ public class ImageUtility {
         return result;
     }
 
+    public static Bitmap convertFileToBitmap(String filePath) {
+
+        Bitmap bm = BitmapFactory.decodeFile(filePath);
+
+        if (bm != null) {
+
+//            ByteArrayOutputStream out = new ByteArrayOutputStream();
+//            bm.compress(Bitmap.CompressFormat.PNG, 100, out);
+//            Bitmap decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(out.toByteArray()));
+
+            //Resize the image
+            double width = bm.getWidth();
+            double height = bm.getHeight();
+            double ratio = 400 / width;
+            int newheight = (int) (ratio * height);
+
+            return Bitmap.createScaledBitmap(bm, 400, newheight, true);
+        }
+
+
+        return null;
+    }
 
 }

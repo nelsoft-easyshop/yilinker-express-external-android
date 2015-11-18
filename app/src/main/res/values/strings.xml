@@ -34,6 +34,10 @@
     <string name="title_change_binding_mobile">Change Binding Mobile</string>
     <string name="title_booking_successful">Booking Successful</string>
 
+    <!-- Activity Subtitle-->
+
+    <string name="subtitle_package_photos">Photos</string>
+
     <!-- Hints -->
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
@@ -140,6 +144,7 @@
     <string name="cancel">Cancel</string>
     <string name="package_name">Package Name</string>
     <string name="sku">SKU</string>
+    <string name="declared_value">Declared Value</string>
     <string name="fragile">Fragile</string>
     <string name="quantity">Quantity</string>
     <string name="image">Image</string>
@@ -178,5 +183,7 @@
     <string name="select_gender">Select Gender</string>
     <string name="new_recipient_detail">New Recipient Detail</string>
     <string name="package_description">Package Description</string>
+    <string name="package_image_path">filepath</string>
+    <string name="booking_successful">Your booking has been successfully submitted.</string>
 
 </resources>

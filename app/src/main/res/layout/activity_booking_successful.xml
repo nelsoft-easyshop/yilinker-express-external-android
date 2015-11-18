@@ -105,7 +105,8 @@
                     android:textSize="14sp"
                     android:textColor="@color/greyish_brown"
                     android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    app:fontName="Roboto-Medium.ttf"
+                    android:visibility="gone"/>
 
                 <!--Pickup Schedule -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
@@ -114,7 +115,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:textColor="@color/warm_grey"
-                    app:fontName="Roboto-Regular.ttf"/>
+                    app:fontName="Roboto-Regular.ttf"
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
 

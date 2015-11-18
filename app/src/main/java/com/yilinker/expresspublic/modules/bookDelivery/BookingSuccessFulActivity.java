@@ -13,6 +13,7 @@ import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.deserializer.BookingDateDeserializer;
+import com.yilinker.expresspublic.core.helpers.QRCodeHelper;
 import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
@@ -32,24 +33,28 @@ public class BookingSuccessFulActivity extends BaseActivity implements View.OnCl
         super.onCreate(savedInstanceState);
 
         Bundle bundle = getIntent().getExtras();
-        String response = bundle.getString(BundleKey.BOOK_DELIVERY_RESPONSE);
+        String bookingNumber = bundle.getString(BundleKey.WAYBILL_NUMBER);
+//        String response = bundle.getString(BundleKey.BOOK_DELIVERY_RESPONSE);
 
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Date.class, new BookingDateDeserializer())
-                .create();
-        EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
+//        Gson gson = new GsonBuilder()
+//                .registerTypeAdapter(Date.class, new BookingDateDeserializer())
+//                .create();
+//        EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
 
         // Setup UI
-        ((TextView) findViewById(R.id.tv_message)).setText(evBookDeliveryResponse.message);
-        ((TextView) findViewById(R.id.tv_bookingNumber)).setText(evBookDeliveryResponse.data.bookingNumber);
-        ((TextView) findViewById(R.id.tv_pickUpSchedule)).setText(DateUtils.displayDateAsReadable(evBookDeliveryResponse.data.schedule));
+//        ((TextView) findViewById(R.id.tv_message)).setText(evBookDeliveryResponse.message);
+//        ((TextView) findViewById(R.id.tv_bookingNumber)).setText(evBookDeliveryResponse.data.bookingNumber);
+//        ((TextView) findViewById(R.id.tv_pickUpSchedule)).setText(DateUtils.displayDateAsReadable(evBookDeliveryResponse.data.schedule));
+        ((TextView) findViewById(R.id.tv_message)).setText(R.string.booking_successful);
+        ((TextView) findViewById(R.id.tv_bookingNumber)).setText(bookingNumber);
 
-        String qrImageUrl = "http://express.dautour.com/" + evBookDeliveryResponse.data.qrImage;
+//        String qrImageUrl = "http://express.dautour.com/" + evBookDeliveryResponse.data.qrImage;
 
         // Load Image
         ImageView iv_qrImage = (ImageView) findViewById(R.id.iv_qrImage);
-        ImageLoader imageLoader = BaseApplication.getInstance().getImageLoader();
-        imageLoader.get(qrImageUrl, ImageLoader.getImageListener(iv_qrImage, -1, -1));
+        iv_qrImage.setImageBitmap(QRCodeHelper.generateQRCode(this, bookingNumber, R.dimen.qr_code_print));
+//        ImageLoader imageLoader = BaseApplication.getInstance().getImageLoader();
+//        imageLoader.get(qrImageUrl, ImageLoader.getImageListener(iv_qrImage, -1, -1));
     }
 
     @Override
