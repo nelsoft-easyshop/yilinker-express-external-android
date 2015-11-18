@@ -10,6 +10,7 @@ import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.deserializer.BookingDateDeserializer;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
 import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
+import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -162,8 +163,8 @@ public class BookDeliveryRequest extends AsyncTask<Void, Void, String>
                 .registerTypeAdapter(Date.class, new BookingDateDeserializer())
                 .create();
 
-        EvBookDeliveryResponse evBookDeliveryResponse = gson.fromJson(response, EvBookDeliveryResponse.class);
-        if(evBookDeliveryResponse.success)
+        EvBaseResp evBookDeliveryResponse = gson.fromJson(response, EvBaseResp.class);
+        if(evBookDeliveryResponse.isSuccessful)
         {
             listener.onBookingSuccessful(response);
         }

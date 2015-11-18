@@ -185,5 +185,7 @@
     <string name="package_description">Package Description</string>
     <string name="package_image_path">filepath</string>
     <string name="booking_successful">Your booking has been successfully submitted.</string>
+    <string name="declared_weight">Declared Weight</string>
+    <string name="outgoing_list_message">Already added to outgoing list. Click "View Outgoing List" to view.</string>
 
 </resources>

@@ -47,6 +47,7 @@ public class BookingSuccessFulActivity extends BaseActivity implements View.OnCl
 //        ((TextView) findViewById(R.id.tv_pickUpSchedule)).setText(DateUtils.displayDateAsReadable(evBookDeliveryResponse.data.schedule));
         ((TextView) findViewById(R.id.tv_message)).setText(R.string.booking_successful);
         ((TextView) findViewById(R.id.tv_bookingNumber)).setText(bookingNumber);
+        ((TextView) findViewById(R.id.tv_outGoingListMessage)).setText(R.string.outgoing_list_message);
 
 //        String qrImageUrl = "http://express.dautour.com/" + evBookDeliveryResponse.data.qrImage;
 

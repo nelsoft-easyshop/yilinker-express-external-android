@@ -13,8 +13,10 @@ import com.yilinker.expresspublic.core.helpers.VolleyErrorHelper;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
 import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageListResp;
+import com.yilinker.expresspublic.core.responses.EvDeliveryPackageResp;
 import com.yilinker.expresspublic.core.responses.EvPackageContainerResp;
 import com.yilinker.expresspublic.core.responses.EvPickUpScheduleListResp;
+import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -105,7 +107,7 @@ public class DeliveryApi
 
         // Build request parameters
         Map<String, String> params = new HashMap<>();
-        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+//        params.put(ApiKey.ACCESS_TOKEN, accessToken);
         params.put(ApiKey.SENDER_ADDRESS, String.valueOf(evBookDeliveryReq.getRecipientAddressId()));
         params.put(ApiKey.RECIPIENT_ADDRESS, String.valueOf(evBookDeliveryReq.getSenderAddressId()));
         params.put(ApiKey.PACKAGE_DESCRIPTION, evBookDeliveryReq.getPackageName());
@@ -118,7 +120,7 @@ public class DeliveryApi
         params.put(ApiKey.HEIGHT, String.valueOf(evBookDeliveryReq.getHeight()));
 
         // Build request
-        GsonRequest<EvBookDeliveryResponse> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, params, EvBookDeliveryResponse.class,
+        GsonRequest<EvBookDeliveryResponse> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBookDeliveryResponse.class,
                 new GsonRequest.GsonResponseListener<EvBookDeliveryResponse>() {
                     @Override
                     public void onResponse(EvBookDeliveryResponse object) {

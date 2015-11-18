@@ -63,8 +63,25 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         bookingSyncModel = new BookingSyncModel();
         bookingSyncModel.addObserver(this);
 
+        bookingSyncModel.setIsRecipientReady(true);
+        bookingSyncModel.setIsSenderReady(true);
+        bookingSyncModel.setIsPackageDetailsReady(true);
+        bookingSyncModel.setIsPackageSizeReady(true);
+
         // Intialize request parameters
         evBookDeliveryReq = new EvBookDeliveryReq();
+
+        evBookDeliveryReq.setSenderAddressId(Long.valueOf(125));
+        evBookDeliveryReq.setRecipientAddressId(Long.valueOf(298));
+        evBookDeliveryReq.setPaidBy("true");
+        evBookDeliveryReq.setDeclaredValue("1000");
+        evBookDeliveryReq.setQuantity(10);
+        evBookDeliveryReq.setHeight("100");
+        evBookDeliveryReq.setWidth("100");
+        evBookDeliveryReq.setLength("100");
+        evBookDeliveryReq.setWeight("100");
+        evBookDeliveryReq.setPackageName("Test");
+
     }
 
     @Override
@@ -216,9 +233,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 //                + ApiEndpoint.DELIVERY_API + "/"
 //                + ApiEndpoint.DELIVERY_BOOK;
 
-        String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.PACKAGES_API + "/"
-                + ApiEndpoint.PACKAGES_ADD;
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.PACKAGES_API + "/"
+//                + ApiEndpoint.PACKAGES_ADD;
 
 
 //        bookDeliveryRequest = new BookDeliveryRequest(
@@ -240,7 +257,7 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 //        bookDeliveryRequest.execute();
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.loading_getting_package_container));
+        progressDialog.setMessage(getString(R.string.loading_booking_delivery));
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -328,8 +345,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         evBookDeliveryReq.setWeight(weight);
 
         // Update UI
-        ((TextView) findViewById(R.id.tv_packageContainer)).setText(packageContainerUI);
-        ((TextView) findViewById(R.id.tv_weight)).setText(weightUI);
+        ((TextView) findViewById(R.id.tv_packageContainer)).setText(R.string.declared_weight);
+        ((TextView) findViewById(R.id.tv_weight)).setText(String.format("%s%s", weight, "kg"));
         ((ImageView) findViewById(R.id.iv_packageSizeCheckStatus)).setImageResource(R.drawable.ic_check);
         findViewById(R.id.tv_packageSizeLabelMessage).setVisibility(View.GONE);
         findViewById(R.id.ll_packageSizeContainer).setVisibility(View.VISIBLE);
