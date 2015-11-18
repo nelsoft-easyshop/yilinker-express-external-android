@@ -22,6 +22,12 @@ public class DeliveryStatus
     public DeliveryStatus() {
     }
 
+//    public DeliveryStatus(String message, Date date) {
+//        this.message = message;
+//        this.date = date;
+//    }
+
+    //new constructor
     public DeliveryStatus(String message, Date date, String packageStatus) {
         this.message = message;
         this.date = date;
