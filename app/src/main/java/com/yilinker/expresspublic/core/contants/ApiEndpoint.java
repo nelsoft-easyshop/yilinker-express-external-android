@@ -34,7 +34,11 @@ public class ApiEndpoint
     /*******************************************************************************
      * Branch Endpoint
      ******************************************************************************/
-    public static final String BRANCH_API                               = "branch";
+    // Modified Branch API and added endpoint
+    //public static final String BRANCH_API                               = "branch";
+    public static final String BRANCH_API                               = "branches";
+    public static final String BRANCH_API_GET                           = "get";
+    public static final String M_BRANCH                                 = "m";
     // Method
     public static final String BRANCH_BOOKMARK                          = "bookmark";
     public static final String BRANCH_UNBOOKMARK                        = "unbookmark";
@@ -45,9 +49,11 @@ public class ApiEndpoint
     /*******************************************************************************
      * Track Endpoint
      ******************************************************************************/
-    public static final String TRACK_API                                = "m/tracking";
+    public static final String TRACK_API                                = "track";
+    public static final String TRACKING_API                             = "m/tracking";
     // Method
-    public static final String TRACK_PACKAGE                            = "packages";
+    public static final String TRACK_PACKAGE                            = "package";
+    public static final String TRACKING_PACKAGES                        = "packages";
     public static final String TRACK_ONGOING                            = "ongoing";
     public static final String TRACK_DELIVERED                          = "delivered";
     /*******************************************************************************

@@ -8,7 +8,8 @@ public enum ShipmentType
     ONGOING {
         @Override
         public String getValue() {
-            return "Ongoing";
+//            return "Ongoing";
+            return "On-going";
         }
     },
     DELIVERED {

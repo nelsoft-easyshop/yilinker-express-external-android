@@ -22,6 +22,20 @@ public class MyShipmentActivity extends BaseActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        // Get the ViewPager and set it's PagerAdapter so that it can display items
+//        ViewPager vp_viewPager = (ViewPager) findViewById(R.id.vp_viewPager);
+//        vp_viewPager.setAdapter(new MyShipmentPagerAdapter(getSupportFragmentManager()));
+//
+//        // Give the TabLayout the ViewPager
+//        TabLayout tl_tabs = (TabLayout) findViewById(R.id.tl_tabs);
+//        tl_tabs.setupWithViewPager(vp_viewPager);
+
+        initViews();
+
+    }
+
+    private void initViews() {
+
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager vp_viewPager = (ViewPager) findViewById(R.id.vp_viewPager);
         vp_viewPager.setAdapter(new MyShipmentPagerAdapter(getSupportFragmentManager()));
@@ -29,7 +43,9 @@ public class MyShipmentActivity extends BaseActivity
         // Give the TabLayout the ViewPager
         TabLayout tl_tabs = (TabLayout) findViewById(R.id.tl_tabs);
         tl_tabs.setupWithViewPager(vp_viewPager);
+
     }
+
 
     @Override
     protected int getBaseLayout() {

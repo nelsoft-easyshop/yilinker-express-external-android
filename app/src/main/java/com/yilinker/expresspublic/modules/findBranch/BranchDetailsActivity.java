@@ -18,6 +18,8 @@ import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.Branch;
+import com.yilinker.expresspublic.core.models.Contacts;
+import com.yilinker.expresspublic.core.models.Schedule;
 import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
@@ -51,9 +53,32 @@ public class BranchDetailsActivity extends BaseActivity implements View.OnClickL
         ((TextView) findViewById(R.id.tv_branchAddress)).setText(branch.getAddress());
         ((TextView) findViewById(R.id.tv_address)).setText(branch.getAddress());
         // Set operating hours
-        ((TextView) findViewById(R.id.tv_operatingHours)).setText(branch.getOpeningTime() + " to " + branch.getClosingTime());
+        // Modified due to change of model and variable name of openingTime and closingTime
+        StringBuilder builder = new StringBuilder();
+        if(branch.getSchedule().isEmpty()){
+            builder.append("-");
+        }else {
+            for (Schedule schedule : branch.getSchedule()) {
+                String value = schedule.getOpeningHour() + " to " + schedule.getClosingHour();
+                builder.append(value).append('\n');
+            }
+        }
+        ((TextView) findViewById(R.id.tv_operatingHours)).setText(builder);
+        //((TextView) findViewById(R.id.tv_operatingHours)).setText(branch.getOpeningTime() + " to " + branch.getClosingTime());
         // Set phone number
-        ((TextView) findViewById(R.id.tv_contactNumber)).setText("+" + branch.getContactNumber());
+
+        //Modified due to change of model and variable of contacts
+        StringBuilder contactBuilder = new StringBuilder();
+        if(branch.getContacts().isEmpty()){
+            contactBuilder.append("-");
+        }else {
+            for (Contacts contacts : branch.getContacts()) {
+                String value = contacts.getContactNumber();
+                contactBuilder.append(value).append('\n');
+            }
+        }
+        ((TextView) findViewById(R.id.tv_contactNumber)).setText(contactBuilder);
+        //((TextView) findViewById(R.id.tv_contactNumber)).setText("+" + branch.getContactNumber());
     }
 
     @Override

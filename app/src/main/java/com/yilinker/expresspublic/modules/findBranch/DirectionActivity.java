@@ -351,8 +351,10 @@ public class DirectionActivity extends BaseFragmentActivity
         List<LatLng> latLngList = PolyUtil.decode(encodedPoints);
 
         LatLng origin = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        LatLng destination = new LatLng(branch.getLatitude(), branch.getLongitude());
-
+        // Modified due to change of datatype of latitude and longitude
+        //LatLng destination = new LatLng(branch.getLatitude(), branch.getLongitude());
+        LatLng destination = new LatLng(Double.parseDouble(branch.getLatitude()),
+                Double.parseDouble(branch.getLongitude()));
         if(latLngList.size() == 0)
         {
             latLngList.add(origin);
@@ -392,8 +394,10 @@ public class DirectionActivity extends BaseFragmentActivity
                 .snippet(branch.getAddress())
                 .visible(true)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_marker))
-                .position(new LatLng(branch.getLatitude(), branch.getLongitude())));
-
+                // Modified due to change of datatype of latitude and longitude
+                //.position(new LatLng(branch.getLatitude(), branch.getLongitude())));
+                .position(new LatLng(Double.parseDouble(branch.getLatitude()),
+                        Double.parseDouble(branch.getLongitude()))));
         // Place origin marker
         this.googleMap.addMarker(new MarkerOptions()
                 .visible(true)
@@ -403,7 +407,10 @@ public class DirectionActivity extends BaseFragmentActivity
         // Make request
         volleyGetDirection(
                 new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
-                new LatLng(branch.getLatitude(), branch.getLongitude()),
-                getString(R.string.google_api_key));
+                // Modified due to change of datatype within latitude and longitude
+                //new LatLng(branch.getLatitude(), branch.getLongitude()),
+                new LatLng(Double.parseDouble(branch.getLatitude()),
+                        Double.parseDouble(branch.getLongitude())),
+                        getString(R.string.google_api_key));
     }
 }
