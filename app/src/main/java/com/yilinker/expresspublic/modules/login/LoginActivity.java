@@ -38,13 +38,29 @@ public class LoginActivity
     {
         super.onCreate(savedInstanceState);
 
+        initViews();
+
+//        progressDialog = new ProgressDialog(this);
+//
+//        // Remove toolbar elements
+//        (toolbar.findViewById(R.id.toolbar_back)).setVisibility(View.GONE);
+//        (toolbar.findViewById(R.id.toolbar_title)).setVisibility(View.GONE);
+//        (toolbar.findViewById(R.id.toolbar_avatar)).setVisibility(View.GONE);
+//        toolbar.setBackgroundResource(android.R.color.transparent);
+    }
+
+    private void initViews() {
+
+        // Initialize progress dialog view
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         // Remove toolbar elements
         (toolbar.findViewById(R.id.toolbar_back)).setVisibility(View.GONE);
         (toolbar.findViewById(R.id.toolbar_title)).setVisibility(View.GONE);
         (toolbar.findViewById(R.id.toolbar_avatar)).setVisibility(View.GONE);
         toolbar.setBackgroundResource(android.R.color.transparent);
+
     }
 
     @Override
@@ -185,9 +201,9 @@ public class LoginActivity
     private void volleyToken(String emailAddress, String password)
     {
         // Show loading
-        progressDialog = new ProgressDialog(this);
+//        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_login));
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.show();
 
         Request request = OAuthApi.token(emailAddress, password, RequestCode.RCR_TOKEN, this);

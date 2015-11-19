@@ -36,13 +36,26 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     private String currentEmailAddress;
     private String currentPassword;
+    private String registrationToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
+//        progressDialog = new ProgressDialog(this);
+        initViews();
+//        // Remove toolbar elements
+//        (toolbar.findViewById(R.id.toolbar_avatar)).setVisibility(View.GONE);
+
+        volleyRegisterToken();
+    }
+
+    private void initViews()
+    {
+        // Initialize progress dialog view
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         // Remove toolbar elements
         (toolbar.findViewById(R.id.toolbar_avatar)).setVisibility(View.GONE);
@@ -111,6 +124,14 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
 
+            case RequestCode.RCR_REGISTER_TOKEN:
+
+                OAuth registerAuth = (OAuth) object;
+
+                registrationToken = registerAuth.getAccessToken();
+
+                break;
+
             default:
                 break;
         }
@@ -133,6 +154,11 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show();
                 break;
 
+            case RequestCode.RCR_REGISTER_TOKEN:
+                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+                finish();
+                break;
+
             default:
                 break;
         }
@@ -140,13 +166,13 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     private void handleSubmit() {
 
-        String firstname = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
-        String lastname = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
+        String firstName = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
+        String lastName = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
         String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
         String contactNumber = ((EditText) findViewById(R.id.et_contact)).getText().toString().trim();
         String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
 
-        String errorMessage = validateUserInput(firstname, lastname, emailAddress, contactNumber, password);
+        String errorMessage = validateUserInput(firstName, lastName, emailAddress, contactNumber, password);
 
         if(errorMessage != null)
         {
@@ -158,42 +184,56 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
             // Initially hide keyboard
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            volleyRegister(firstname, lastname, emailAddress, contactNumber, password);
+            volleyRegister(firstName, lastName, emailAddress, contactNumber, password);
         }
     }
 
-    private void volleyRegister(String firstname, String lastname, String emailAddress, String contactNumber, String password)
+    private void volleyRegister(String firstName, String lastName, String emailAddress, String contactNumber, String password)
     {
         currentEmailAddress = emailAddress;
         currentPassword = password;
 
         // Show loading
-        progressDialog = new ProgressDialog(this);
+//        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_registration));
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.show();
 
         // Make request
-        Request request = OAuthApi.register(firstname, lastname, emailAddress, contactNumber, password, RequestCode.RCR_REGISTER, this);
+        Request request = OAuthApi.register(firstName, lastName, emailAddress, contactNumber, password,
+                registrationToken, RequestCode.RCR_REGISTER, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
     private void volleyToken(String emailAddress, String password)
     {
         // Show loading
-        progressDialog = new ProgressDialog(this);
+//        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_login));
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.show();
 
         Request request = OAuthApi.token(emailAddress, password, RequestCode.RCR_TOKEN, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private String validateUserInput(String firstname, String lastname, String emailAddress, String contactNumber, String password)
+    private void volleyRegisterToken() {
+        // Show loading
+//        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_registration_token));
+//        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        //TODO: insert request for registration token
+        Request request = OAuthApi.getRegistrationToken(RequestCode.RCR_REGISTER_TOKEN, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+
+    }
+
+    private String validateUserInput(String firstName, String lastName, String emailAddress, String contactNumber, String password)
     {
         // Check firstname
-        String errorMessage = InputValidator.isFirstnameValid(firstname);
+        String errorMessage = InputValidator.isFirstnameValid(firstName);
 
         if(errorMessage != null)
         {
@@ -201,7 +241,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
 
         // Check lastname
-        errorMessage = InputValidator.isLastnameValid(lastname);
+        errorMessage = InputValidator.isLastnameValid(lastName);
 
         if(errorMessage != null)
         {
