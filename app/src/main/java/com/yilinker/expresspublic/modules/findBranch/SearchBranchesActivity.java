@@ -464,16 +464,25 @@ public class SearchBranchesActivity extends BaseFragmentActivity
 
     private void showDirectionActivity()
     {
-        if(BranchManager.getInstance().getBranchMap().size() > 0)
-        {
-            Bundle bundle = new Bundle();
-            Branch nearestBranch = BranchManager.getInstance().getNearestBranch(currentLocation);
-            Gson gson = new GsonBuilder().create();
-            bundle.putString(BundleKey.BRANCH, gson.toJson(nearestBranch));
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
 
-            Intent intent = new Intent(this, DirectionActivity.class);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        if(gps_enabled) {
+            if (BranchManager.getInstance().getBranchMap().size() > 0) {
+                Bundle bundle = new Bundle();
+                Branch nearestBranch = BranchManager.getInstance().getNearestBranch(currentLocation);
+                Gson gson = new GsonBuilder().create();
+                bundle.putString(BundleKey.BRANCH, gson.toJson(nearestBranch));
+
+                Intent intent = new Intent(this, DirectionActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        }else{
+            Toast.makeText(this, R.string.location_services_error_toast, Toast.LENGTH_SHORT).show();
         }
     }
 
