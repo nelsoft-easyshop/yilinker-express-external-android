@@ -59,7 +59,8 @@ public class BranchDetailsActivity extends BaseActivity implements View.OnClickL
             builder.append("-");
         }else {
             for (Schedule schedule : branch.getSchedule()) {
-                String value = schedule.getOpeningHour() + " to " + schedule.getClosingHour();
+                String value = schedule.getOpeningHour() + " to " + schedule.getClosingHour()
+                        + " (" + schedule.getDay() + ")";
                 builder.append(value).append('\n');
             }
         }
