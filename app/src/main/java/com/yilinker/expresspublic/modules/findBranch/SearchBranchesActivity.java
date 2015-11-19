@@ -471,6 +471,12 @@ public class SearchBranchesActivity extends BaseFragmentActivity
         } catch(Exception ex) {}
 
         if(gps_enabled) {
+
+            if (currentLocation == null) {
+                Toast.makeText(this, getString(R.string.error_no_location), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             if (BranchManager.getInstance().getBranchMap().size() > 0) {
                 Bundle bundle = new Bundle();
                 Branch nearestBranch = BranchManager.getInstance().getNearestBranch(currentLocation);
@@ -481,6 +487,7 @@ public class SearchBranchesActivity extends BaseFragmentActivity
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
+
         }else{
             Toast.makeText(this, R.string.location_services_error_toast, Toast.LENGTH_SHORT).show();
         }

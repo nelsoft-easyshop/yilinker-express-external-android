@@ -135,15 +135,34 @@
             android:textSize="14sp"
             android:textColor="@color/greyish_brown"
             app:fontName="Roboto-Medium.ttf"/>
-        <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
-            android:id="@+id/et_password"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textSize="14sp"
-            android:textColor="@color/greyish_brown"
-            android:background="@drawable/bg_input"
-            app:fontName="Roboto-Medium.ttf"/>
+            android:layout_height="40dp">
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                android:background="@drawable/bg_input"
+                app:fontName="Roboto-Medium.ttf"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:id="@+id/iv_show_password"
+                android:src="@drawable/ic_track_a_delivery"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp" />
+
+        </RelativeLayout>
+
     </LinearLayout>
 
     <Space
@@ -158,7 +177,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="24dp"
         android:paddingBottom="24dp"
-        android:text="@string/submit_and_update"
+        android:text="@string/submit"
         android:textSize="22sp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"

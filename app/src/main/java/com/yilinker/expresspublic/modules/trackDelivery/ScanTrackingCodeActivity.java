@@ -239,6 +239,12 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
                 Intent intent = new Intent(this, TrackDetailsActivity.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+            } else {
+                Toast.makeText(this, getString(R.string.error_invalid_tracking_number), Toast.LENGTH_SHORT).show();
+
+                mydecoderview.getCameraManager().startPreview();
+
+                isOngoingRequest = false;
             }
     }
 }
