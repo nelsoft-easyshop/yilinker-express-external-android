@@ -55,6 +55,7 @@
     <string name="loading_tracking">Tracking&#8230;</string>
     <string name="loading_getting_package_container">Getting package container&#8230;</string>
     <string name="loading_account_information">Loading account information&#8230;</string>
+    <string name="loading_changing_user_details">Changing user details&#8230;</string>
     <string name="loading_changing_password">Changing password&#8230;</string>
     <string name="loading_getting_address_group">Getting address group&#8230;</string>
     <string name="loading_adding_address_group">Adding address group&#8230;</string>
