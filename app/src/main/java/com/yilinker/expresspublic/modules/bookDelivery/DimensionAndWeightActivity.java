@@ -49,6 +49,8 @@ public class DimensionAndWeightActivity extends BaseActivity implements View.OnC
         super.onCreate(savedInstanceState);
 
         progressDialog = new ProgressDialog(this);
+        handleIntentData();
+
     }
 
     @Override
@@ -71,6 +73,21 @@ public class DimensionAndWeightActivity extends BaseActivity implements View.OnC
         // Set onclick listener for submit
         findViewById(R.id.btn_submit).setOnClickListener(this);
     }
+
+    private void handleIntentData() {
+
+        if(getIntent().getExtras() != null)
+        {
+            Bundle bundle = getIntent().getExtras();
+
+            ((EditText) findViewById(R.id.et_length)).setText(bundle.getString(BundleKey.LENGTH));
+            ((EditText) findViewById(R.id.et_height)).setText(bundle.getString(BundleKey.HEIGHT));
+            ((EditText) findViewById(R.id.et_width)).setText(bundle.getString(BundleKey.WIDTH));
+            ((EditText) findViewById(R.id.et_weight)).setText(bundle.getString(BundleKey.WEIGHT));
+
+        }
+    }
+
 
     @Override
     protected Intent resultIntent() {

@@ -264,4 +264,40 @@ public class InputValidator
 
         return errorMessage;
     }
+
+    public static String isPackageNameValid(String packageName) {
+
+        String errorMessage = null;
+
+        if (packageName.trim().isEmpty())
+        {
+            errorMessage = "Package Details should not be empty";
+        }
+
+        return errorMessage;
+    }
+
+    public static String isQuantityValid(String quantity) {
+
+        String errorMessage = null;
+
+        if (quantity.trim().isEmpty())
+        {
+            errorMessage = "Quantity should not be empty";
+        }
+
+        return errorMessage;
+    }
+
+    public static String isDeclaredValueValid(String declaredValue) {
+
+        String errorMessage = null;
+
+        if (declaredValue.trim().isEmpty())
+        {
+            errorMessage = "Declared Value should not be empty";
+        }
+
+        return errorMessage;
+    }
 }
