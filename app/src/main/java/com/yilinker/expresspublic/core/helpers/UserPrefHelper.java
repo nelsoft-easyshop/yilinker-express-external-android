@@ -60,7 +60,8 @@ public class UserPrefHelper
         editor.putString(USERNAME, user.getUsername());
         editor.putString(EMAIL, user.getEmail());
         editor.putString(CONTACT_NUMBER, user.getContactNumber());
-        editor.putLong(BIRTHDATE, user.getBirthdate().getTime());
+        if (user.getBirthdate() != null)
+            editor.putLong(BIRTHDATE, user.getBirthdate().getTime());
         editor.putString(GENDER, user.getGender());
         editor.apply();
     }

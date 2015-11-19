@@ -68,6 +68,8 @@ public class HomeActivity
 
         //TODO uncomment this when api for getSlider is working
 //        volleyGetSliderList();
+        //temp
+        sliderContent();
 
         checkForUpdates();
     }
@@ -261,5 +263,21 @@ public class HomeActivity
 
             sliderPagerAdapter.notifyDataSetChanged();
         }
+    }
+
+    private void sliderContent() {
+        List<Slider> sliderList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            int a = i + 1;
+            Slider slider = new Slider();
+            slider.setTitle("Sample Title " + a);
+            slider.setContent("Crazy Fredrick bought many very exquisite opal jewels.\n" +
+                    "We promptly judged antique ivory buckles for the next prize.\n" +
+                    "A mad boxer shot a quick, gloved jab to the jaw of his dizzy opponent.");
+            sliderList.add(slider);
+        }
+
+        handleSliderListResp(sliderList);
     }
 }
