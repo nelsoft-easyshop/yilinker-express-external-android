@@ -177,9 +177,12 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
         {
             deliveryPackageList.clear();
 
-            for (DeliveryPackage deliveryPackage : tempDeliveryPackageList)
-            {
-                deliveryPackageList.add(deliveryPackage);
+            if (tempDeliveryPackageList != null) {
+
+                for (DeliveryPackage deliveryPackage : tempDeliveryPackageList) {
+                    deliveryPackageList.add(deliveryPackage);
+                }
+
             }
 
             deliveryPackageAdapter.notifyDataSetChanged();
