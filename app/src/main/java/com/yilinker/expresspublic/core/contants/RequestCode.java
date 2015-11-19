@@ -22,6 +22,7 @@ public class RequestCode
     // OAuth API
     public static final int RCR_TOKEN                               = 5000;
     public static final int RCR_REGISTER                            = 5100;
+    public static final int RCR_REGISTER_TOKEN                      = 5101;
     // Branch API
     public static final int RCR_GET_ALL_BRANCH                      = 5200;
     public static final int RCR_BOOKMARK                            = 5300;

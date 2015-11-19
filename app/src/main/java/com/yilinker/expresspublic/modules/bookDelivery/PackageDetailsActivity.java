@@ -72,7 +72,7 @@ public class PackageDetailsActivity extends BaseActivity implements View.OnClick
         if(resultCode == RESULT_OK)
         {
             String packageName = ((EditText) findViewById(R.id.et_packageName)).getText().toString().trim();
-            String sku = ((EditText) findViewById(R.id.et_sku)).getText().toString().trim();
+//            String sku = ((EditText) findViewById(R.id.et_sku)).getText().toString().trim();
             String quantityRaw = ((EditText) findViewById(R.id.et_quantity)).getText().toString().trim();
             int quantity;
             if(TextUtils.isEmpty(quantityRaw))
@@ -99,7 +99,7 @@ public class PackageDetailsActivity extends BaseActivity implements View.OnClick
 
             Bundle bundle = new Bundle();
             bundle.putString(BundleKey.PACKAGE_NAME, packageName);
-            bundle.putString(BundleKey.SKU, sku);
+//            bundle.putString(BundleKey.SKU, sku);
             bundle.putInt(BundleKey.QUANTITY, quantity);
             bundle.putString(BundleKey.PAID_BY, paidBy);
             bundle.putBoolean(BundleKey.IS_FRAGILE, isFragile);
