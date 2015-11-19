@@ -67,4 +67,8 @@ public class ApiEndpoint
     public static final String DELIVERY_BOOK                            = "book";
     public static final String DELIVERY_PACKAGE_CONTAINER               = "package_container";
     public static final String DELIVERY_PICKUP_SCHEDULE                 = "pickup_schedule";
+
+    public static final String PACKAGES_API                             = "m/packages";
+    public static final String PACKAGES_ADD                             = "add";
+    public static final String PACKAGES_IMAGES                          = "images";
 }

@@ -68,7 +68,8 @@ public class BookingSyncModel extends Observable
 
     public void triggerObservers()
     {
-        if(isSenderReady && isRecipientReady && isPackageDetailsReady && isPackageSizeReady && isPickUpScheduleReady)
+//        if(isSenderReady && isRecipientReady && isPackageDetailsReady && isPackageSizeReady && isPickUpScheduleReady)
+        if(isSenderReady && isRecipientReady && isPackageDetailsReady && isPackageSizeReady)
         {
             setChanged();
             notifyObservers();

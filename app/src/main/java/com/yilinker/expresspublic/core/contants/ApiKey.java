@@ -83,4 +83,12 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    public static final String SENDER_ADDRESS                           = "senderAddress";
+    public static final String RECIPIENT_ADDRESS                        = "recipientAddress";
+    public static final String PACKAGE_DESCRIPTION                      = "packageDescription";
+    public static final String IS_PAID_BY_RECIPIENT                     = "isPaidByRecipient";
+    public static final String DECLARED_VALUE                           = "declaredValue";
+    public static final String PACKAGE_COUNT                            = "packageCount";
+    public static final String WAYBILL_NUMBER                           = "waybillNumber";
+
 }
