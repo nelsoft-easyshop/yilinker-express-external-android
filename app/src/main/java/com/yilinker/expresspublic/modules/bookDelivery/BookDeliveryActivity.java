@@ -208,6 +208,20 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void startPackageDetailsActivity() {
         Intent intent = new Intent(this, PackageDetailsActivity2.class);
+        if(bookingSyncModel.isPackageDetailsReady())
+        {
+
+            Bundle bundle = new Bundle();
+
+            bundle.putString(BundleKey.PACKAGE_NAME, evBookDeliveryReq.getPackageName());
+            bundle.putString(BundleKey.DECLARED_VALUE, evBookDeliveryReq.getDeclaredValue());
+            bundle.putString(BundleKey.QUANTITY, String.valueOf(evBookDeliveryReq.getQuantity()));
+            bundle.putStringArrayList(BundleKey.PHOTO_FILEPATH_LIST, (ArrayList<String>) evBookDeliveryReq.getImages());
+            bundle.putString(BundleKey.PAID_BY, evBookDeliveryReq.getPaidBy());
+
+            intent.putExtras(bundle);
+
+        }
         startActivityForResult(intent, RequestCode.RCA_PACKAGE_DETAILS);
     }
 
@@ -224,6 +238,17 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     private void startDimensionAndWeightActivity()
     {
         Intent intent = new Intent(this, DimensionAndWeightActivity.class);
+        if(bookingSyncModel.isPackageSizeReady())
+        {
+            Bundle bundle = new Bundle();
+            bundle.putString(BundleKey.LENGTH, evBookDeliveryReq.getLength());
+            bundle.putString(BundleKey.HEIGHT, evBookDeliveryReq.getHeight());
+            bundle.putString(BundleKey.WIDTH, evBookDeliveryReq.getWidth());
+            bundle.putString(BundleKey.WEIGHT, evBookDeliveryReq.getWeight());
+
+            intent.putExtras(bundle);
+
+        }
         startActivityForResult(intent, RequestCode.RCA_PACKAGE_SIZE);
     }
 
@@ -455,8 +480,18 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         switch(requestCode)
         {
             case RequestCode.RCR_BOOK_DELIVERY:
+
                 waybillNumber = processWaybillNumber((EvBookDeliveryResponse) object);
-                handleUploadWaybillImages(waybillNumber);
+
+                if(evBookDeliveryReq.getImages().size() > 0)
+                {
+                    handleUploadWaybillImages(waybillNumber);
+                }
+                else
+                {
+                    handleBookDeliveryResponse("SkipImageUpload");
+                }
+
                 break;
         }
     }

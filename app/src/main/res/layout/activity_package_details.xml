@@ -14,17 +14,33 @@
         android:orientation="vertical">
 
         <!-- Package Name Label -->
-        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-            android:layout_width="match_parent"
+
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/package_description"
-            android:textSize="14sp"
-            android:textColor="@color/greyish_brown"
-            android:textAllCaps="true"
-            android:gravity="left"
-            app:fontName="Roboto-Medium.ttf"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asterisk"
+                android:textColor="@color/orange_red"
+                android:layout_marginTop="18dp" />
+
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/package_description"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                android:textAllCaps="true"
+                android:gravity="left"
+                app:fontName="Roboto-Medium.ttf"/>
+
+
+        </LinearLayout>
 
         <!-- Input -->
         <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
@@ -37,25 +53,40 @@
             android:background="@drawable/bg_input"
             app:fontName="Roboto-Light.ttf"/>
 
-        <!-- Declared Value Label -->
-        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/declared_value"
-            android:textSize="14sp"
-            android:textColor="@color/greyish_brown"
-            android:textAllCaps="true"
-            android:gravity="left"
-            app:fontName="Roboto-Medium.ttf"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asterisk"
+                android:textColor="@color/orange_red"
+                android:layout_marginTop="18dp" />
+
+
+            <!-- Declared Value Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/declared_value"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                android:textAllCaps="true"
+                android:gravity="left"
+                app:fontName="Roboto-Medium.ttf"/>
+
+        </LinearLayout>
 
         <!-- Input -->
         <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
             android:id="@+id/et_declared_value"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:textSize="16sp"
             android:textColor="@color/warm_grey"
             android:background="@drawable/bg_input"
@@ -74,17 +105,31 @@
                 android:paddingEnd="5dp"
                 android:orientation="vertical">
 
-                <!-- Quantity Label -->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:text="@string/quantity"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    android:gravity="left"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red" />
+
+                    <!-- Quantity Label -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/quantity"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        android:gravity="left"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+
+                </LinearLayout>
 
                 <!-- Input -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
@@ -129,7 +174,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:text="@string/default_image_count"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/warm_grey"
                         android:gravity="center"
                         android:background="@drawable/bg_rounded_left_input"

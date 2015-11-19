@@ -13,6 +13,7 @@ import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +21,10 @@ import android.widget.Toast;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.helpers.DialogHelper;
 import com.yilinker.expresspublic.core.helpers.ImageUtility;
 import com.yilinker.expresspublic.core.helpers.MediaHelper;
+import com.yilinker.expresspublic.core.utilities.InputValidator;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.io.File;
@@ -50,7 +53,9 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
         super.onCreate(savedInstanceState);
 
         photoFilePathList = new ArrayList<>();
+        handleIntentData();
     }
+
 
     @Override
     protected int getBaseLayout() {
@@ -75,6 +80,28 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
         findViewById(R.id.btn_submit).setOnClickListener(this);
         //Set onclick listener for view image
         findViewById(R.id.tv_imageCount).setOnClickListener(this);
+    }
+
+    private void handleIntentData() {
+
+        if(getIntent().getExtras() != null)
+        {
+            Bundle bundle = getIntent().getExtras();
+
+            ((EditText) findViewById(R.id.et_packageName)).setText(bundle.getString(BundleKey.PACKAGE_NAME));
+            ((EditText) findViewById(R.id.et_declared_value)).setText(bundle.getString(BundleKey.DECLARED_VALUE));
+            ((EditText) findViewById(R.id.et_quantity)).setText(bundle.getString(BundleKey.QUANTITY));
+
+            if(bundle.getString(BundleKey.PAID_BY).equals("false"))
+            {
+                ((SwitchCompat) findViewById(R.id.sc_paidBySender)).setChecked(false);
+            }
+
+            photoFilePathList = bundle.getStringArrayList(BundleKey.PHOTO_FILEPATH_LIST);
+
+            updatePhotoCount();
+        }
+
     }
 
     @Override
@@ -296,9 +323,57 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
     }
 
     private void handleSubmit() {
-        resultCode = RESULT_OK;
-        finish();
+
+        String packageDescription = ((EditText) findViewById(R.id.et_packageName)).getText().toString();
+        String declaredValue = ((EditText) findViewById(R.id.et_declared_value)).getText().toString();
+        String quantity = ((EditText) findViewById(R.id.et_quantity)).getText().toString();
+
+        String errorMessage = validateUserInput(packageDescription, declaredValue, quantity);
+
+
+        if(errorMessage != null)
+        {
+            AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
+            alertDialog.show();
+        }
+        else
+        {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+            //finish activity
+            resultCode = RESULT_OK;
+            finish();
+        }
+
+
     }
+
+    private String validateUserInput(String packageDescription, String declaredValue, String quantity)
+    {
+        String errorMessage = InputValidator.isPackageNameValid(packageDescription);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
+        errorMessage = InputValidator.isDeclaredValueValid(declaredValue);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
+        errorMessage = InputValidator.isQuantityValid(quantity);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
+        return errorMessage;
+    }
+
 
     private void addPhoto() {
 
