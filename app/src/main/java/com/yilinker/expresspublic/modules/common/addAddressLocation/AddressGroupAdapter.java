@@ -22,11 +22,15 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
 
     private static final Logger logger = Logger.getLogger(AddressGroupAdapter.class.getSimpleName());
 
+    private static final int NO_SELECTION = -1;
+
     private Context context;
 
     private LayoutInflater layoutInflater;
 
     private List<AddressGroupModel> addressGroupModelList;
+
+    private int selectedGroup = NO_SELECTION;
 
 
     public AddressGroupAdapter(Context context, List<AddressGroupModel> addressGroupModelList) {
@@ -85,6 +89,15 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
         return selectedIds;
     }
 
+    /**
+     * TODO
+     * @return
+     */
+    public Long getSelectedId()
+    {
+        return addressGroupModelList.get(selectedGroup).getId();
+    }
+
     class AddressGroupViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tv_addressGroup;
 
@@ -98,10 +111,34 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
 
         @Override
         public void onClick(View v) {
-            boolean isSelected = addressGroupModelList.get(getAdapterPosition()).isSelected();
-            addressGroupModelList.get(getAdapterPosition()).setIsSelected(!isSelected);
+//            boolean isSelected = addressGroupModelList.get(getAdapterPosition()).isSelected();
+//            addressGroupModelList.get(getAdapterPosition()).setIsSelected(!isSelected);
+//
+//            notifyDataSetChanged();
+
+            int currentPosition = getAdapterPosition();
+
+            boolean isSelected = !addressGroupModelList.get(currentPosition).isSelected();
+
+            addressGroupModelList.get(currentPosition).setIsSelected(isSelected);
+
+            if(isSelected){
+
+                //Get previously selected group then set isSelected to false
+                if(selectedGroup != NO_SELECTION && currentPosition != selectedGroup){
+
+                    addressGroupModelList.get(selectedGroup).setIsSelected(false);
+                }
+
+                selectedGroup = currentPosition;
+            }
+            else{
+
+                selectedGroup = NO_SELECTION;
+            }
 
             notifyDataSetChanged();
+
         }
     }
 }
