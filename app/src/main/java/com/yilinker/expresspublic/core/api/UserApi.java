@@ -30,7 +30,8 @@ public class UserApi
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.USER_API;
+                + ApiEndpoint.USER_API + "/"
+                + ApiEndpoint.USER_PROFILE;
 
         // Build request
         GsonRequest<EvMeResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvMeResp.class,
@@ -75,7 +76,7 @@ public class UserApi
         params.put(ApiKey.FIRST_NAME, firstname);
         params.put(ApiKey.LAST_NAME, lastname);
         params.put(ApiKey.BIRTHDATE, birthdate);
-        params.put(ApiKey.GENDER, gender);
+        params.put(ApiKey.GENDER, gender.equals("Male") ? "1" : "2");
         params.put(ApiKey.EMAIL_ADDRESS, email);
 
         // Build request
@@ -115,7 +116,7 @@ public class UserApi
         // Build request parameters
         Map<String, String> params = new HashMap<>();
         params.put(ApiKey.CONTACT_NUMBER, contactNumber);
-        params.put(ApiKey.VERIFICATION_CODE, verificationCode);
+        //params.put(ApiKey.VERIFICATION_CODE, verificationCode);
 
         // Build request
         GsonRequest<EvMeResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvMeResp.class,
@@ -175,14 +176,14 @@ public class UserApi
     /**
      * TODO
      * @param accessToken
-     * @param oldPassword
      * @param password
+     * @param newPassword
      * @param passwordConfirmation
      * @param requestCode
      * @param handler
      * @return
      */
-    public static Request updatePassword(String accessToken, String oldPassword, String password, String passwordConfirmation, final int requestCode, final ResponseHandler handler)
+    public static Request updatePassword(String accessToken, String password, String newPassword, String passwordConfirmation, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
@@ -191,15 +192,27 @@ public class UserApi
 
         // Build request parameters
         Map<String, String> params = new HashMap<>();
-        params.put(ApiKey.OLD_PASSWORD, oldPassword);
         params.put(ApiKey.PASSWORD, password);
-        params.put(ApiKey.PASSWORD_CONFIRMATION, passwordConfirmation);
+        params.put(ApiKey.NEW_PASSWORD, newPassword);
 
         // Build request
-        GsonRequest<EvMeResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvMeResp.class,
-                new GsonRequest.GsonResponseListener<EvMeResp>() {
+        GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBaseResp.class,
+//                new GsonRequest.GsonResponseListener<EvMeResp>() {
+//                    @Override
+//                    public void onResponse(EvMeResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+
+                new GsonRequest.GsonResponseListener<EvBaseResp>() {
                     @Override
-                    public void onResponse(EvMeResp object) {
+                    public void onResponse(EvBaseResp object) {
                         handler.onResponse(requestCode, object);
                     }
                 },
