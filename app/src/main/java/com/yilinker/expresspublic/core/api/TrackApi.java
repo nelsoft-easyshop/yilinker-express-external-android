@@ -3,6 +3,7 @@ package com.yilinker.expresspublic.core.api;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.google.android.gms.common.api.Api;
 import com.yilinker.expresspublic.BuildConfig;
 import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.GsonRequest;
@@ -103,20 +104,28 @@ public class TrackApi
 
     /**
      * TODO
+     * @param accessToken
      * @param trackingNumber
      * @param requestCode
      * @param handler
      * @return
      */
-    public static Request searchTrackingNumber(String trackingNumber, final int requestCode, final ResponseHandler handler)
+    public static Request searchTrackingNumber(String accessToken, String trackingNumber, final int requestCode, final ResponseHandler handler)
+//    public static Request searchTrackingNumber(String trackingNumber, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.TRACK_API + "/"
-                + trackingNumber;
+                + ApiEndpoint.TRACKING_API + "/"
+                + ApiEndpoint.TRACKING_PACKAGES;
+//                + ApiEndpoint.TRACK_API + "/"
+//                + trackingNumber;
+
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.TRACKING_NUMBER, trackingNumber);
 
         // Build request
-        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvDeliveryPackageResp.class,
+        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvDeliveryPackageResp.class,
                 new GsonRequest.GsonResponseListener<EvDeliveryPackageResp>() {
                     @Override
                     public void onResponse(EvDeliveryPackageResp object) {

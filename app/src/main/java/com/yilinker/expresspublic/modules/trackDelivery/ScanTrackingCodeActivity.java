@@ -22,6 +22,7 @@ import com.yilinker.expresspublic.core.api.TrackApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.deserializer.DateDeserializer;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.DeliveryPackage;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageResp;
 import com.yilinker.expresspublic.core.serializer.DateSerializer;
@@ -46,10 +47,22 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        progressDialog = new ProgressDialog(this);
+//
+//        mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
+//        mydecoderview.setOnQRCodeReadListener(this);
+//
+        initViews();
+    }
+
+    private void initViews() {
+
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
         mydecoderview.setOnQRCodeReadListener(this);
+
     }
 
     @Override
@@ -171,12 +184,14 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
     private void volleySearchTrackingNumber(String trackingNumber)
     {
         // Show loading
-        progressDialog = new ProgressDialog(this);
+//        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_tracking));
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.show();
 
-        Request request = TrackApi.searchTrackingNumber(trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
+        String accessToken = OAuthPrefHelper.getAccessToken(this);
+
+        Request request = TrackApi.searchTrackingNumber(accessToken, trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 

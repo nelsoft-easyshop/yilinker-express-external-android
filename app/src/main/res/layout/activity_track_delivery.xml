@@ -19,6 +19,7 @@
             android:background="@drawable/bg_rounded_white">
 
             <!-- Search Field -->
+            <!--changed inputType from number to text-->
             <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
                 android:id="@+id/et_searchField"
                 android:layout_width="0dp"
@@ -26,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:textSize="20sp"
                 android:textColor="@color/greyish_brown"
-                android:inputType="number"
+                android:inputType="text"
                 android:hint="@string/enter_tracking_code"
                 android:singleLine="true"
                 android:background="@null"
