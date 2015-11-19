@@ -58,6 +58,7 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
+
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -338,6 +339,7 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
+
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -434,6 +436,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -489,6 +492,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -544,6 +548,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
+
             </LinearLayout>
             <!-- Divider -->
             <View
