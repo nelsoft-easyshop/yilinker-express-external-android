@@ -89,7 +89,10 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             case RequestCode.RCR_UPDATE_PASSWORD:
                 EvBaseResp evBaseResp = (EvBaseResp) object;
                 //processUpdatePasswordResp(evMeResp);
-                Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
+                if (evBaseResp.isSuccessful)
+                    Toast.makeText(this, getString(R.string.profile_message_password_successful), Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(this, getString(R.string.profile_message_password_wrong), Toast.LENGTH_LONG).show();
                 finish();
                 break;
 
@@ -165,6 +168,13 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         }
 
         errorMessage = InputValidator.isPasswordMatch(newPassword, passwordConfirmation);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
+        errorMessage = InputValidator.isPasswordAtLeastEight(newPassword, passwordConfirmation);
 
         if(errorMessage != null)
         {

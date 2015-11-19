@@ -113,6 +113,30 @@ public class InputValidator
         return errorMessage;
     }
 
+    public static String isPasswordAtLeastEight(String password, String confirmPassword)
+    {
+        String errorMessage = null;
+
+        if (password.length() < 8 || confirmPassword.length() < 8)
+        {
+            errorMessage = "Password should be at least 8 characters.";
+        }
+
+        return errorMessage;
+    }
+
+    public static String isNewContactNumberValid(String contactNumber)
+    {
+        String errorMessage = null;
+
+        if (contactNumber.trim().isEmpty())
+        {
+            errorMessage = "New mobile number should not be empty.";
+        }
+
+        return errorMessage;
+    }
+
     public static String isFullnameValid(String fullname)
     {
         String errorMessage = null;
