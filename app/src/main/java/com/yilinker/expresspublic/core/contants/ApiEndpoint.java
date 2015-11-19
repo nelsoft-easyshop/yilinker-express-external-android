@@ -9,12 +9,15 @@ public class ApiEndpoint
     /*******************************************************************************
      * User Endpoint
      ******************************************************************************/
-    public static final String USER_API                                 = "me";
+    public static final String USER_API                                 = "m/consumer";
     // Method
-    public static final String USER_UPDATE_PROFILE                      = "update_profile";
-    public static final String USER_UPDATE_PASSWORD                     = "update_password";
-    public static final String USER_UPDATE_MOBILE                       = "update_mobile";
+    public static final String USER_PROFILE                             = "profile";
+    public static final String USER_UPDATE_PROFILE                      = "update-profile";
+    public static final String USER_UPDATE_PASSWORD                     = "update-password";
+    public static final String USER_UPDATE_MOBILE                       = "update-contact-number";
     public static final String USER_VERIFY_MOBILE                       = "verify_mobile";
+    //temp
+    public static final String USER_APP_DEV                             = "http://api.express.api.easydeal.ph/app_dev.php/v1";
     /*******************************************************************************
      * OAuth Endpoint
      ******************************************************************************/
@@ -36,9 +39,9 @@ public class ApiEndpoint
     /*******************************************************************************
      * Track Endpoint
      ******************************************************************************/
-    public static final String TRACK_API                                = "track";
+    public static final String TRACK_API                                = "m/tracking";
     // Method
-    public static final String TRACK_PACKAGE                            = "package";
+    public static final String TRACK_PACKAGE                            = "packages";
     public static final String TRACK_ONGOING                            = "ongoing";
     public static final String TRACK_DELIVERED                          = "delivered";
     /*******************************************************************************
@@ -81,6 +84,11 @@ public class ApiEndpoint
     public static final String ADDRESS_GET_PROVINCES                   = "get-provinces";
     public static final String ADDRESS_GET_CITIES                      = "get-cities";
     public static final String ADDRESS_GET_BARANGAYS                   = "get-barangays";
-
+    /*******************************************************************************
+     * Package Endpoint
+     ******************************************************************************/
+    public static final String PACKAGES_API                             = "m/packages";
+    public static final String PACKAGES_ADD                             = "add";
+    public static final String PACKAGES_IMAGES                          = "images";
 
 }

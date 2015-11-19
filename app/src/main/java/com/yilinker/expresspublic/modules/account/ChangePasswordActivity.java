@@ -20,6 +20,7 @@ import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.core.models.User;
 import com.yilinker.expresspublic.core.responses.EvMeResp;
+import com.yilinker.expresspublic.core.responses.bases.EvBaseResp;
 import com.yilinker.expresspublic.core.utilities.InputValidator;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
@@ -86,9 +87,9 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
         switch (requestCode)
         {
             case RequestCode.RCR_UPDATE_PASSWORD:
-                EvMeResp evMeResp = (EvMeResp) object;
-                processUpdatePasswordResp(evMeResp);
-                Toast.makeText(this, evMeResp.message, Toast.LENGTH_LONG).show();
+                EvBaseResp evBaseResp = (EvBaseResp) object;
+                //processUpdatePasswordResp(evMeResp);
+                Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
                 finish();
                 break;
 

@@ -271,9 +271,9 @@
                             android:textColor="@color/orange_yellow"
                             app:fontName="Roboto-Regular.ttf"/>
 
-                        <!-- SKU -->
+                        <!-- Declared Value -->
                         <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
-                            android:id="@+id/tv_sku"
+                            android:id="@+id/tv_declaredValue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
@@ -401,7 +401,8 @@
                 android:id="@+id/ll_pickupSchedule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <!-- Pickup Schedule Label -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
