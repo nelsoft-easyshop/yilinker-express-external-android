@@ -1,6 +1,7 @@
 package com.yilinker.expresspublic.core.responses;
 
 import com.yilinker.expresspublic.core.models.AddressGroup;
+import com.yilinker.expresspublic.core.models.AddressTag;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public class EvAddressTagListResponse {
 
-    public List<AddressGroup> data;
+    public List<AddressTag> data;
 }

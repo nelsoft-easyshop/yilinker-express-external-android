@@ -11,7 +11,6 @@ public class ApiKey
 //    public static final String LAST_NAME                                = "last_name";
     public static final String LAST_NAME                                = "lastName";
     public static final String USERNAME                                 = "username";
-
 //    public static final String EMAIL_ADDRESS                            = "email_address";
     public static final String EMAIL_ADDRESS                            = "emailAddress";
     public static final String CONTACTS                                 = "contacts";
@@ -50,22 +49,21 @@ public class ApiKey
     public static final String MESSAGE                                  = "message";
     public static final String DATE                                     = "date";
 //    public static final String TRACKING_NUMBER                          = "tracking_number";
-    public static final String TRACKING_NUMBER                          = "trackingNumber";
+    public static final String TRACKING_NUMBER                          = "trackingNumber"; //new api key for tracking number
 //    public static final String FROM_TO                                  = "from_to";
-    public static final String FROM_TO                                  = "fromTo";
+    public static final String FROM_TO                                  = "fromTo"; //new api key for from to
 //    public static final String SHIPPING_TYPE                            = "shipping_type";
-    public static final String SHIPPING_TYPE                            = "shippingType";
+    public static final String SHIPPING_TYPE                            = "shippingType"; //new api key for shipping type
     public static final String STATUS                                   = "status";
 //    public static final String STATUS_REMARKS                           = "status_remarks";
     public static final String STATUS_REMARKS                           = "statusRemarks";
     public static final String RIDER_VEHICLE                            = "rider_vehicle";
     public static final String PICKUP_DATE                              = "pickup_date";
 //    public static final String POUCH_TYPE                               = "pouch_type";
-    public static final String POUCH_TYPE                               = "pouchType";
+    public static final String POUCH_TYPE                               = "pouchType";//new api key for pouch type
     public static final String ETA                                      = "eta";
-//    public static final String DELIVERY_STATUS                          = "delivery_status";
+//    public static final String DELIVERY_STATUS                          = "delivery_status";//    public static final String DELIVERY_STATUS                          = "delivery_status";
     public static final String DELIVERY_STATUS                          = "deliveryStatus";
-    public static final String PACKAGE_STATUS                           = "packageStatus";
     public static final String REGISTRATION_ID                          = "registration_id";
     public static final String LENGTH                                   = "length";
     public static final String WIDTH                                    = "width";
@@ -107,6 +105,8 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    /** added key/s for track delivery module **/
+    public static final String PACKAGE_STATUS                           = "packageStatus";
     public static final String ADDRESS_TAG                              = "addressTag";
     public static final String ADDRESS_GROUP                            = "addressGroup";
     public static final String IS_RECIPIENT                             = "isRecipient";
@@ -121,5 +121,6 @@ public class ApiKey
     public static final String DECLARED_VALUE                           = "declaredValue";
     public static final String PACKAGE_COUNT                            = "packageCount";
     public static final String WAYBILL_NUMBER                           = "waybillNumber";
+    public static final String VALUE                                    = "value";
 
 }
