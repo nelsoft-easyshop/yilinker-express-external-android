@@ -403,8 +403,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
 
 //        evBookDeliveryReq.setRecipientConsumerId(address.getConsumerId());
-//        evBookDeliveryReq.setRecipientAddressId(address.getAddressId());
-        evBookDeliveryReq.setRecipientConsumerAddressId(address.getId());
+        evBookDeliveryReq.setRecipientAddressId(address.getId());
+//        evBookDeliveryReq.setRecipientConsumerAddressId(address.getId());
 
         // Update UI
         ((TextView) findViewById(R.id.tv_recipientName)).setText(address.getContactPerson());
@@ -425,8 +425,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
 
 //        evBookDeliveryReq.setSenderConsumerId(address.getConsumerId());
-//        evBookDeliveryReq.setSenderAddressId(address.getAddressId());
-        evBookDeliveryReq.setSenderConsumerAddressId(address.getId());
+        evBookDeliveryReq.setSenderAddressId(address.getId());
+//        evBookDeliveryReq.setSenderConsumerAddressId(address.getId());
 
         // Update UI
         ((TextView) findViewById(R.id.tv_senderName)).setText(address.getContactPerson());
