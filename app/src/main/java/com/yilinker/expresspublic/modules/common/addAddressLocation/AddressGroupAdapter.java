@@ -95,7 +95,12 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
      */
     public Long getSelectedId()
     {
-        return addressGroupModelList.get(selectedGroup).getId();
+        long id = NO_SELECTION;
+
+        if(selectedGroup != NO_SELECTION)
+            id = addressGroupModelList.get(selectedGroup).getId();
+
+        return id;
     }
 
     class AddressGroupViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

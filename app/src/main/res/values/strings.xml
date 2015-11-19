@@ -202,5 +202,4 @@
     <!-- Branch Toast -->
     <string name="location_services_error_toast">Location services must be turned on.</string>
 
-
 </resources>
