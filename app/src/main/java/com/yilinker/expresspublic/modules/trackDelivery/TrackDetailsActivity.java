@@ -55,11 +55,20 @@ public class TrackDetailsActivity extends BaseActivity {
         // Status
         ((TextView) findViewById(R.id.tv_status)).setText(deliveryPackage.getStatus());
         // Status Remarks
-        ((TextView) findViewById(R.id.tv_statusRemarks)).setText(deliveryPackage.getStatusRemarks());
+        if (deliveryPackage.getStatusRemarks() == null || deliveryPackage.getStatusRemarks().isEmpty())
+        {
+            ((TextView) findViewById(R.id.tv_statusRemarks)).setVisibility(View.GONE);
+        }
+        else
+        {
+            ((TextView) findViewById(R.id.tv_statusRemarks)).setText(deliveryPackage.getStatusRemarks());
+        }
         // Status "Delivered" icon
-        if(deliveryPackage.getStatus().contains("Delivered"))
+        if(deliveryPackage.getStatus().contains("Delivered") || deliveryPackage.getStatus().contains("Received by Recipient"))
         {
             ((ImageView) findViewById(R.id.iv_checkDelivered)).setVisibility(View.VISIBLE);
+            ((TextView) findViewById(R.id.tv_statusRemarks)).setText(getString(R.string.delivered_remarks));
+            ((TextView) findViewById(R.id.tv_statusRemarks)).setVisibility(View.VISIBLE);
         }
 
         if(deliveryPackage.getDeliveryStatusList() != null)
