@@ -10,9 +10,11 @@ public class ApiKey
     public static final String LAST_NAME                                = "last_name";
     public static final String USERNAME                                 = "username";
     public static final String EMAIL_ADDRESS                            = "email_address";
-    public static final String CONTACT_NUMBER                           = "contact_number";
+//    public static final String CONTACT_NUMBER                           = "contact_number";
+    public static final String CONTACT_NUMBER                           = "contactNumber";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
-    public static final String FULL_NAME                                = "full_name";
+//    public static final String FULL_NAME                                = "full_name";
+    public static final String FULL_NAME                                = "fullname";
     public static final String DATE_ADDED                               = "date_added";
     public static final String LAST_DATE_MODIFIED                       = "last_date_modified";
     public static final String PASSWORD                                 = "password";
@@ -30,7 +32,9 @@ public class ApiKey
     public static final String BRANCH_ID                                = "branch_id";
     public static final String KEY                                      = "key";
     public static final String CITY                                     = "city";
-    public static final String PROVINCE_ID                              = "province_id";
+//    public static final String PROVINCE_ID                              = "province_id";
+    public static final String PROVINCE_ID                              = "provinceId";
+    public static final String PROVINCE                                 = "province";
     public static final String KEYWORD                                  = "keyword";
     public static final String OPENING_TIME                             = "opening_time";
     public static final String CLOSING_TIME                             = "closing_time";
@@ -60,15 +64,19 @@ public class ApiKey
     public static final String TIME_FROM                                = "time_from";
     public static final String TIME_TO                                  = "time_to";
     public static final String SCHEDULE                                 = "schedule";
-    public static final String CITY_ID                                  = "city_id";
+//    public static final String CITY_ID                                  = "city_id";
+    public static final String CITY_ID                                  = "cityId";
     public static final String TYPE                                     = "type";
     public static final String UNIT                                     = "unit";
     public static final String BUILDING                                 = "building";
-    public static final String STREET_NUMBER                            = "street_number";
+//    public static final String STREET_NUMBER                            = "street_number";
+    public static final String STREET_NUMBER                            = "streetNumber";
     public static final String STREET                                   = "street";
     public static final String VILLAGE                                  = "village";
-    public static final String BARANGAY_ID                              = "barangay_id";
-    public static final String ZIPCODE                                  = "zipcode";
+//    public static final String BARANGAY_ID                              = "barangay_id";
+public static final String BARANGAY_ID                                  = "barangayId";
+//    public static final String ZIPCODE                                  = "zipcode";
+    public static final String ZIPCODE                                  = "zipCode";
     public static final String ADDRESS_TYPE                             = "address_type";
     public static final String ADDRESS_ID                               = "address_id";
     public static final String CONSUMER_ID                              = "consumer_id";
@@ -84,5 +92,7 @@ public class ApiKey
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
     public static final String ADDRESS_TAG                              = "addressTag";
+    public static final String ADDRESS_GROUP                            = "addressGroup";
     public static final String IS_RECIPIENT                             = "isRecipient";
+    public static final String SUBDIVISION                              = "subdivision";
 }

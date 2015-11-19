@@ -360,23 +360,57 @@ public class LocationApi
         return gsonRequest;
     }
 
+//    /**
+//     * TODO
+//     * @param requestCode
+//     * @param handler
+//     * @return
+//     */
+//    public static Request getProvinceList(final int requestCode, final ResponseHandler handler)
+//    {
+//        // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_PROVINCE;
+//
+//
+//        // Build request
+//        GsonRequest<EvProvinceListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, null, endpoint, null, EvProvinceListResp.class,
+//                new GsonRequest.GsonResponseListener<EvProvinceListResp>() {
+//                    @Override
+//                    public void onResponse(EvProvinceListResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+//
+//        return gsonRequest;
+//    }
+
     /**
      * TODO
      * @param requestCode
      * @param handler
      * @return
      */
-    public static Request getProvinceList(final int requestCode, final ResponseHandler handler)
+    public static Request getProvinceList(String accessToken, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
-//        String endpoint = BuildConfig.DOMAIN + "/"
-//                + ApiEndpoint.LOCATION_PROVINCE;
-
         String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.ADDRESS_API + "/"
                 + ApiEndpoint.ADDRESS_GET_PROVINCES;
 
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+
+
         // Build request
-        GsonRequest<EvProvinceListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvProvinceListResp.class,
+        GsonRequest<EvProvinceListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvProvinceListResp.class,
                 new GsonRequest.GsonResponseListener<EvProvinceListResp>() {
                     @Override
                     public void onResponse(EvProvinceListResp object) {
@@ -393,6 +427,40 @@ public class LocationApi
         return gsonRequest;
     }
 
+//    /**
+//     * TODO
+//     * @param provinceId
+//     * @param requestCode
+//     * @param handler
+//     * @return
+//     */
+//    public static Request getCityList(Long provinceId, final int requestCode, final ResponseHandler handler)
+//    {
+//        // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_CITY + "/"
+//                + Long.toString(provinceId);
+//
+//
+//
+//        // Build request
+//        GsonRequest<EvCityListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvCityListResp.class,
+//                new GsonRequest.GsonResponseListener<EvCityListResp>() {
+//                    @Override
+//                    public void onResponse(EvCityListResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+//
+//        return gsonRequest;
+//    }
+
     /**
      * TODO
      * @param provinceId
@@ -400,20 +468,20 @@ public class LocationApi
      * @param handler
      * @return
      */
-    public static Request getCityList(Long provinceId, final int requestCode, final ResponseHandler handler)
+    public static Request getCityList(String accessToken, Long provinceId, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
-//        String endpoint = BuildConfig.DOMAIN + "/"
-//                + ApiEndpoint.LOCATION_CITY + "/"
-//                + Long.toString(provinceId);
-
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_CITY + "/"
-                + Long.toString(provinceId);
+                + ApiEndpoint.ADDRESS_API + "/"
+                + ApiEndpoint.ADDRESS_GET_CITIES;
 
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.PROVINCE, String.valueOf(provinceId));
 
         // Build request
-        GsonRequest<EvCityListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvCityListResp.class,
+        GsonRequest<EvCityListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvCityListResp.class,
                 new GsonRequest.GsonResponseListener<EvCityListResp>() {
                     @Override
                     public void onResponse(EvCityListResp object) {
@@ -430,6 +498,39 @@ public class LocationApi
         return gsonRequest;
     }
 
+//    /**
+//     * TODO
+//     * @param cityId
+//     * @param requestCode
+//     * @param handler
+//     * @return
+//     */
+//    public static Request getBarangayList(Long cityId, final int requestCode, final ResponseHandler handler)
+//    {
+//        // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_BARANGAY + "/"
+//                + Long.toString(cityId);
+//
+//
+//        // Build request
+//        GsonRequest<EvBarangayListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvBarangayListResp.class,
+//                new GsonRequest.GsonResponseListener<EvBarangayListResp>() {
+//                    @Override
+//                    public void onResponse(EvBarangayListResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+//
+//        return gsonRequest;
+//    }
+
     /**
      * TODO
      * @param cityId
@@ -437,19 +538,21 @@ public class LocationApi
      * @param handler
      * @return
      */
-    public static Request getBarangayList(Long cityId, final int requestCode, final ResponseHandler handler)
+    public static Request getBarangayList(String accessToken, Long cityId, final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
-//        String endpoint = BuildConfig.DOMAIN + "/"
-//                + ApiEndpoint.LOCATION_BARANGAY + "/"
-//                + Long.toString(cityId);
-
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.LOCATION_BARANGAY + "/"
-                + Long.toString(cityId);
+                + ApiEndpoint.ADDRESS_API + "/"
+                + ApiEndpoint.ADDRESS_GET_BARANGAYS;
+
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.CITY, String.valueOf(cityId));
+
 
         // Build request
-        GsonRequest<EvBarangayListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvBarangayListResp.class,
+        GsonRequest<EvBarangayListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBarangayListResp.class,
                 new GsonRequest.GsonResponseListener<EvBarangayListResp>() {
                     @Override
                     public void onResponse(EvBarangayListResp object) {
@@ -539,4 +642,93 @@ public class LocationApi
 
         return gsonRequest;
     }
+
+    /**
+     * TODO
+     * @param accessToken
+     * @param fullName
+     * @param contactNumber
+     * @param addressGroup
+     * @param addressTag
+     * @param unitNumber
+     * @param buildingName
+     * @param streetNumber
+     * @param streetName
+     * @param village
+     * @param provinceId
+     * @param cityId
+     * @param barangayId
+     * @param zipCode
+     * @param requestCode
+     * @param handler
+     * @return
+     */
+    public static Request addAddress(String accessToken, String fullName, String contactNumber, String addressGroup, String addressTag,
+                                             String unitNumber, String buildingName, String streetNumber, String streetName, String village, Long provinceId,
+                                             Long cityId, Long barangayId, String zipCode,
+                                             final int requestCode, final ResponseHandler handler)
+    {
+        // Build endpoint
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.CONSUMER_API + "/"
+                + ApiEndpoint.CONSUMER_ADD_ADDRESS;
+
+
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.FULL_NAME, fullName);
+        params.put(ApiKey.CONTACT_NUMBER, contactNumber);
+        params.put(ApiKey.STREET, streetName);
+
+        if(unitNumber != null)
+            params.put(ApiKey.UNIT, unitNumber);
+
+        if(buildingName != null)
+            params.put(ApiKey.BUILDING, buildingName);
+
+        if(streetNumber != null)
+            params.put(ApiKey.STREET_NUMBER, streetNumber);
+
+        if(streetName != null)
+            params.put(ApiKey.STREET, streetName);
+
+        if(village != null)
+            params.put(ApiKey.SUBDIVISION, village);
+
+        if(zipCode != null)
+            params.put(ApiKey.ZIPCODE, zipCode);
+
+        if(addressGroup == null)
+            addressGroup = "";
+
+
+        if(addressTag == null)
+            addressTag = "";
+
+        params.put(ApiKey.ADDRESS_TAG, addressTag);
+        params.put(ApiKey.ADDRESS_GROUP, addressGroup);
+        params.put(ApiKey.PROVINCE_ID, String.valueOf(provinceId));
+        params.put(ApiKey.CITY_ID, String.valueOf(cityId));
+        params.put(ApiKey.BARANGAY_ID, String.valueOf(barangayId));
+
+
+        // Build request
+        GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvBaseResp.class,
+                new GsonRequest.GsonResponseListener<EvBaseResp>() {
+                    @Override
+                    public void onResponse(EvBaseResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });
+
+        return gsonRequest;
+    }
+
 }
