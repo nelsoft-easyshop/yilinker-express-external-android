@@ -61,6 +61,10 @@ public class InputValidator
         {
             errorMessage = "Contact number should not be empty.";
         }
+        else if (contactNumber.trim().length() == 1)
+        {
+            errorMessage = "Contact number must be 11 digits.";
+        }
 
         return errorMessage;
     }
@@ -72,6 +76,9 @@ public class InputValidator
         if (password.trim().isEmpty())
         {
             errorMessage = "Password should not be empty.";
+        }
+        else if (password.trim().length() < 8) {
+            errorMessage = "Password must be at least 8 characters.";
         }
 
         return errorMessage;
@@ -108,6 +115,30 @@ public class InputValidator
         if (!password.equals(confirmPassword))
         {
             errorMessage = "Password does not match.";
+        }
+
+        return errorMessage;
+    }
+
+    public static String isPasswordAtLeastEight(String password, String confirmPassword)
+    {
+        String errorMessage = null;
+
+        if (password.length() < 8 || confirmPassword.length() < 8)
+        {
+            errorMessage = "Password should be at least 8 characters.";
+        }
+
+        return errorMessage;
+    }
+
+    public static String isNewContactNumberValid(String contactNumber)
+    {
+        String errorMessage = null;
+
+        if (contactNumber.trim().isEmpty())
+        {
+            errorMessage = "New mobile number should not be empty.";
         }
 
         return errorMessage;

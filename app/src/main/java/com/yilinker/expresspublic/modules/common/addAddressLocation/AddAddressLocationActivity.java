@@ -39,10 +39,12 @@ import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.enums.AddressType;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.AddressGroup;
+import com.yilinker.expresspublic.core.models.AddressTag;
 import com.yilinker.expresspublic.core.models.Barangay;
 import com.yilinker.expresspublic.core.models.City;
 import com.yilinker.expresspublic.core.models.Province;
 import com.yilinker.expresspublic.core.responses.EvAddressGroupListResp;
+import com.yilinker.expresspublic.core.responses.EvAddressTagListResponse;
 import com.yilinker.expresspublic.core.responses.EvBarangayListResp;
 import com.yilinker.expresspublic.core.responses.EvCityListResp;
 import com.yilinker.expresspublic.core.responses.EvProvinceListResp;
@@ -227,6 +229,10 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 break;
 
             case R.id.btn_submit:
+
+                if(!hasValidInput())
+                    return;
+
                 volleySubmit();
                 break;
 
@@ -315,9 +321,10 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         switch (requestCode)
         {
             case RequestCode.RCR_GET_ADDRESS_GROUP:
-                EvAddressGroupListResp getAddressGroupResp = (EvAddressGroupListResp) object;
-                populateAddressGroup(getAddressGroupResp.data);
-                volleyGetProvinceList();
+//                EvAddressGroupListResp getAddressGroupResp = (EvAddressGroupListResp) object;
+//                populateAddressGroup(getAddressGroupResp.data);
+//                volleyGetProvinceList();
+                handleAddressGroup(object);
                 break;
 
             case RequestCode.RCR_ADD_ADDRESS_GROUP:
@@ -398,9 +405,30 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         progressDialog.show();
 
         // Request for address group
-        Request request = LocationApi.getAddressGroup(OAuthPrefHelper.getAccessToken(this),
-                RequestCode.RCR_GET_ADDRESS_GROUP, this);
+//        Request request = LocationApi.getAddressGroup(OAuthPrefHelper.getAccessToken(this),
+//                RequestCode.RCR_GET_ADDRESS_GROUP, this);
+//        BaseApplication.getInstance().getRequestQueue().add(request);
+
+        Request request = null;
+
+        switch (addressType) {
+
+            case SENDER:
+
+                request = LocationApi.getAddressGroup(OAuthPrefHelper.getAccessToken(this),
+                        RequestCode.RCR_GET_ADDRESS_GROUP, this);
+                break;
+
+            case RECIPIENT:
+
+                request = LocationApi.getAddressTag(OAuthPrefHelper.getAccessToken(this),
+                        RequestCode.RCR_GET_ADDRESS_GROUP, this);
+                break;
+        }
+
+
         BaseApplication.getInstance().getRequestQueue().add(request);
+
     }
 
     private void volleyGetProvinceList()
@@ -455,6 +483,25 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
             {
                 AddressGroupModel addressGroupModel = new AddressGroupModel(false,
                         addressGroup.getId(), addressGroup.getName()
+                );
+
+                addressGroupModelList.add(addressGroupModel);
+            }
+
+            addressGroupAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void populateAddressTag(List<AddressTag> addressTagList) {
+
+        if(addressTagList != null)
+        {
+            addressGroupModelList.clear();
+
+            for (AddressTag addressGroup : addressTagList)
+            {
+                AddressGroupModel addressGroupModel = new AddressGroupModel(false,
+                        String.valueOf(addressGroup.getValue()), addressGroup.getName()
                 );
 
                 addressGroupModelList.add(addressGroupModel);
@@ -522,7 +569,7 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         String fullName = ((EditText) findViewById(R.id.et_fullName)).getText().toString().trim();
         String contactNumber = ((EditText) findViewById(R.id.et_contactNumber)).getText().toString().trim();
 //        List<Long> addressGroup = addressGroupAdapter.getSelectedIds();
-        String addressGroup = String.valueOf(173);
+        String addressGroup = String.valueOf(addressGroupAdapter.getSelectedId());
         String unitNumber = ((EditText) findViewById(R.id.et_unitNumber)).getText().toString().trim();
         String buildingName = ((EditText) findViewById(R.id.et_buildingName)).getText().toString().trim();
         String streetNumber = ((EditText) findViewById(R.id.et_streetNumber)).getText().toString().trim();
@@ -575,4 +622,66 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
+
+    private void handleAddressGroup(Object object){
+
+        switch (addressType){
+
+            case SENDER:
+
+                EvAddressGroupListResp getAddressGroupResp = (EvAddressGroupListResp) object;
+                populateAddressGroup(getAddressGroupResp.data);
+                break;
+
+            case RECIPIENT:
+
+                EvAddressTagListResponse getAddressTagResp = (EvAddressTagListResponse) object;
+                populateAddressTag(getAddressTagResp.data);
+
+                break;
+
+        }
+
+        volleyGetProvinceList();
+
+    }
+
+    private boolean hasValidInput(){
+
+        EditText etFullname = (EditText) findViewById(R.id.et_fullName);
+        EditText etContactNo = (EditText) findViewById(R.id.et_contactNumber);
+        EditText etStreetName = (EditText) findViewById(R.id.et_streetName);
+
+        String fullname = etFullname.getText().toString().trim();
+        String contactNumber = etContactNo.getText().toString().trim();
+        String streetName = etStreetName.getText().toString().trim();
+
+        if(fullname.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter the full name of the contact", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if(contactNumber.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter a contact number", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if(addressGroupAdapter.getSelectedId() == AddressGroupAdapter.NO_SELECTION){
+
+            Toast.makeText(getApplicationContext(), "Please select a group", Toast.LENGTH_LONG).show();
+            return false;
+
+        }
+
+        if(streetName.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter a street name", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
+
 }

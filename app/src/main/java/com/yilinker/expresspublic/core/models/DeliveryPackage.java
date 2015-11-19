@@ -2,7 +2,9 @@ package com.yilinker.expresspublic.core.models;
 
 import com.google.gson.annotations.SerializedName;
 import com.yilinker.expresspublic.core.contants.ApiKey;
+import com.yilinker.expresspublic.core.utilities.DateUtils;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -138,4 +140,24 @@ public class DeliveryPackage
     public void setDeliveryStatusList(List<DeliveryStatus> deliveryStatusList) {
         this.deliveryStatusList = deliveryStatusList;
     }
+
+    /**
+     * Sort by date descending
+     */
+    public static Comparator<DeliveryPackage> sortDateDesc = new Comparator<DeliveryPackage>()
+    {
+        @Override
+        public int compare(DeliveryPackage lhs, DeliveryPackage rhs)
+        {
+            Date lhsDate = DateUtils.parseDate(lhs.getDeliveryStatusList().get(0).getDate());
+            Date rhsDate = DateUtils.parseDate(rhs.getDeliveryStatusList().get(0).getDate());
+
+            if (lhsDate == null || rhs == null) {
+                return -1;
+            }
+
+            return rhsDate.compareTo(lhsDate);
+        }
+    };
+
 }

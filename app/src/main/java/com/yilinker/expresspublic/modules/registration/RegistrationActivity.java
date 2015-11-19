@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -79,6 +81,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void initListeners() {
         findViewById(R.id.btn_submitAndUpdate).setOnClickListener(this);
+        findViewById(R.id.iv_show_password).setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +95,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         {
             case R.id.btn_submitAndUpdate:
                 handleSubmit();
+                break;
+            case R.id.iv_show_password:
+                togglePasswordVisibility();
                 break;
 
             default:
@@ -186,6 +192,19 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             volleyRegister(firstName, lastName, emailAddress, contactNumber, password);
         }
+    }
+
+    private void togglePasswordVisibility()
+    {
+
+        int inputType = ((EditText) findViewById(R.id.et_password)).getInputType();
+        String password = ((EditText) findViewById(R.id.et_password)).getText().toString();
+
+        ((EditText) findViewById(R.id.et_password)).setInputType(inputType == InputType.TYPE_CLASS_TEXT ?
+                InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD : InputType.TYPE_CLASS_TEXT);
+
+        ((EditText) findViewById(R.id.et_password)).setSelection(password.length());
+
     }
 
     private void volleyRegister(String firstName, String lastName, String emailAddress, String contactNumber, String password)

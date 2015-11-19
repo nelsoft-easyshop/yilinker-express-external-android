@@ -3,6 +3,7 @@ package com.yilinker.expresspublic.modules.account;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +16,13 @@ import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.UserApi;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.helpers.DialogHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.core.models.User;
 import com.yilinker.expresspublic.core.responses.EvMeResp;
 import com.yilinker.expresspublic.core.utilities.CommonUtils;
+import com.yilinker.expresspublic.core.utilities.InputValidator;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.util.logging.Logger;
@@ -97,8 +100,7 @@ public class ChangeBindingMobileActivity
                 break;
 
             case R.id.btn_submitAndUpdate:
-                //handleSubmitAndUpdate();
-                volleyUpdateMobile();
+                handleSubmitAndUpdate();
                 break;
 
             default:
@@ -118,7 +120,7 @@ public class ChangeBindingMobileActivity
         {
             case RequestCode.RCR_UPDATE_MOBILE:
                 EvMeResp evMeResp = (EvMeResp) object;
-                handleUpdateMobileResp(evMeResp.data, evMeResp.message);
+                handleUpdateMobileResp(evMeResp.data, getString(R.string.profile_message_mobile_successful));
                 break;
 
             case RequestCode.RCR_VERIFY_MOBILE:
@@ -184,11 +186,24 @@ public class ChangeBindingMobileActivity
 
     private void handleSubmitAndUpdate()
     {
-        String verificationCode = ((EditText) findViewById(R.id.et_verificationCode)).getText().toString().trim();
+//        String verificationCode = ((EditText) findViewById(R.id.et_verificationCode)).getText().toString().trim();
+//
+//        if (TextUtils.isEmpty(verificationCode))
+//        {
+//            Toast.makeText(this, getString(R.string.error_invalid_verification_code), Toast.LENGTH_LONG).show();
+//        }
+//        else
+//        {
+//            volleyUpdateMobile();
+//        }
+        String contactNumber = ((EditText) findViewById(R.id.et_newMobile)).getText().toString().trim();
 
-        if (TextUtils.isEmpty(verificationCode))
+        String errorMessage = validateUserInput(contactNumber);
+
+        if(errorMessage != null)
         {
-            Toast.makeText(this, getString(R.string.error_invalid_verification_code), Toast.LENGTH_LONG).show();
+            AlertDialog alertDialog = DialogHelper.createOkDialog(this, false, getString(R.string.error), errorMessage);
+            alertDialog.show();
         }
         else
         {
@@ -234,5 +249,17 @@ public class ChangeBindingMobileActivity
         {
             volleyGetVerificationCode();
         }
+    }
+
+    private String validateUserInput(String contactNumber) {
+
+        String errorMessage = InputValidator.isNewContactNumberValid(contactNumber);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
+        return errorMessage;
     }
 }

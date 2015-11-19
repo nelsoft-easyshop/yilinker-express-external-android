@@ -154,12 +154,19 @@ public class MyAddressLocationsActivity extends BaseActivity implements Response
 
         List<EvMyAddressLocationModelListResp.Data> dataList = evMyAddressLocationModelListResp.data;
 
+        long i = -1;
         for (EvMyAddressLocationModelListResp.Data data : dataList)
         {
-            AddressGroup addressGroup = data.group;
+//            AddressGroup addressGroup = data.group;
+
+            AddressGroup addressGroup = new AddressGroup();
+            addressGroup.setName(data.group);
+            addressGroup.setId(String.valueOf(i++));
+
             List<Address> addressList = data.address;
 
             MyAddressLocationModel myAddressLocationModel = new MyAddressLocationModel();
+//            myAddressLocationModel.setAddressGroup(addressGroup);
             myAddressLocationModel.setAddressGroup(addressGroup);
             myAddressLocationModel.setAddressList(addressList);
 
@@ -181,7 +188,10 @@ public class MyAddressLocationsActivity extends BaseActivity implements Response
 
         findViewById(R.id.elv_addressLocation).setVisibility(View.GONE);
 
-        Request request = LocationApi.getMyAddressLocationsAsGroup(OAuthPrefHelper.getAccessToken(this),
+//        Request request = LocationApi.getMyAddressLocationsAsGroup(OAuthPrefHelper.getAccessToken(this),
+//                RequestCode.RCR_GET_MY_ADDRESS_LOCATIONS, this);
+
+        Request request = LocationApi.getAddressAsGroup(OAuthPrefHelper.getAccessToken(this), false,
                 RequestCode.RCR_GET_MY_ADDRESS_LOCATIONS, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }

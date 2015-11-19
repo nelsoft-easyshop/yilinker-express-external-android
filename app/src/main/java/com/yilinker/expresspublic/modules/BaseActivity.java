@@ -136,10 +136,14 @@ public abstract class BaseActivity extends AppCompatActivity
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
+                        Intent homeIntent = new Intent(BaseActivity.this, HomeActivity.class);
+                        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
                         return true;
 
                     case R.id.profile:
                         Intent intent = new Intent(BaseActivity.this, MyProfileActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         return true;
 

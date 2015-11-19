@@ -31,6 +31,7 @@ import com.yilinker.expresspublic.modules.trackDelivery.DeliveryPackageAdapter;
 import com.yilinker.expresspublic.modules.trackDelivery.TrackDetailsActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -177,10 +178,15 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
         {
             deliveryPackageList.clear();
 
-            for (DeliveryPackage deliveryPackage : tempDeliveryPackageList)
-            {
-                deliveryPackageList.add(deliveryPackage);
+            if (tempDeliveryPackageList != null) {
+
+                for (DeliveryPackage deliveryPackage : tempDeliveryPackageList) {
+                    deliveryPackageList.add(deliveryPackage);
+                }
+
             }
+
+            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
 
             deliveryPackageAdapter.notifyDataSetChanged();
         }

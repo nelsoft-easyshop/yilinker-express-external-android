@@ -1,6 +1,8 @@
 package com.yilinker.expresspublic.modules.findBranch;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.google.gson.Gson;
@@ -238,8 +241,18 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
         Gson gson = new GsonBuilder().create();
         bundle.putString(BundleKey.BRANCH, gson.toJson(branch));
 
-        Intent intent = new Intent(this, DirectionActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(gps_enabled) {
+            Intent intent = new Intent(this, DirectionActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, R.string.location_services_error_toast, Toast.LENGTH_SHORT).show();
+        }
     }
 }

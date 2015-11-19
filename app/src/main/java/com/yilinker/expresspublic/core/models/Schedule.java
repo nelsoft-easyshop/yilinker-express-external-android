@@ -14,6 +14,8 @@ public class Schedule {
     private String openingHour;
     @SerializedName(ApiKey.CLOSING_HOUR)
     private String closingHour;
+    @SerializedName(ApiKey.DAY)
+    private String day;
 
     public Schedule() {
     }
@@ -37,5 +39,13 @@ public class Schedule {
 
     public void setClosingHour(String closingHour) {
         this.closingHour = closingHour;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 }

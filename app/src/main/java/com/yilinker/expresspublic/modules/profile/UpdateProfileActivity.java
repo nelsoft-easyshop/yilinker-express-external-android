@@ -162,7 +162,7 @@ public class UpdateProfileActivity
             case RequestCode.RCR_UPDATE_PROFILE:
                 EvMeResp evMeResp = (EvMeResp) object;
                 processUpdateProfileResp(evMeResp);
-                Toast.makeText(this, evMeResp.message, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.profile_message_user_details_successful), Toast.LENGTH_LONG).show();
                 finish();
                 break;
 
@@ -220,7 +220,8 @@ public class UpdateProfileActivity
                         Calendar c = Calendar.getInstance();
                         c.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
 
-                        userModel.setBirthdate(c.getTime());
+                        setNewUserDetails(c, userModel.getGender(), true);
+
                         findViewById(resId).clearFocus();
                     }
                 }, year, month, day);
@@ -276,20 +277,15 @@ public class UpdateProfileActivity
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.select_gender));
-        builder.setSingleChoiceItems(genderList, currentPosition, new DialogInterface.OnClickListener()
-        {
+        builder.setSingleChoiceItems(genderList, currentPosition, new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 String selectedGender = genderList[which].toString();
 
-                if (selectedGender.equalsIgnoreCase(currentGender))
-                {
+                if (selectedGender.equalsIgnoreCase(currentGender)) {
                     // Do nothing
-                }
-                else
-                {
-                    userModel.setGender(selectedGender);
+                } else {
+                    setNewUserDetails(Calendar.getInstance(), selectedGender, false);
                     editText.clearFocus();
                 }
 
@@ -297,20 +293,16 @@ public class UpdateProfileActivity
             }
         });
 
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
-            public void onCancel(DialogInterface dialog)
-            {
+            public void onCancel(DialogInterface dialog) {
                 editText.clearFocus();
             }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener()
-        {
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
-            public void onDismiss(DialogInterface dialog)
-            {
+            public void onDismiss(DialogInterface dialog) {
                 editText.clearFocus();
             }
         });
@@ -360,6 +352,24 @@ public class UpdateProfileActivity
                 this);
 
         BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void setNewUserDetails(Calendar c, String selectedGender, boolean isCalendar) {
+        String firstname = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
+        String lastname = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
+        String gender = ((EditText) findViewById(R.id.et_gender)).getText().toString().trim();
+        String email = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
+
+        userModel.setFirstname(firstname);
+        userModel.setLastname(lastname);
+        if (isCalendar)
+            userModel.setBirthdate(c.getTime());
+        else
+            gender = selectedGender;
+        userModel.setGender(gender.equals("1") ||
+                gender.equals(genderList[0]) ?
+                genderList[0].toString() : genderList[1].toString());
+        userModel.setEmail(email);
     }
 
     /**

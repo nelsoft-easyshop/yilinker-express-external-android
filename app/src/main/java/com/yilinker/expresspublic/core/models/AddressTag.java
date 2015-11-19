@@ -1,26 +1,31 @@
 package com.yilinker.expresspublic.core.models;
 
+import com.google.gson.annotations.SerializedName;
+import com.yilinker.expresspublic.core.contants.ApiKey;
+
 /**
  * Created by JBautista on 11/18/15.
  */
 public class AddressTag {
 
-    private String value;
+    @SerializedName(ApiKey.VALUE)
+    private int value;
+    @SerializedName(ApiKey.NAME)
     private String name;
 
     public AddressTag() {
     }
 
-    public AddressTag(String value, String name) {
+    public AddressTag(int value, String name) {
         this.value = value;
         this.name = name;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(Long id) {
+    public void setValue(int value) {
         this.value = value;
     }
 
