@@ -154,7 +154,7 @@ public class MyRecipientsLocationsActivity extends BaseActivity implements View.
 
 //        Request request = LocationApi.getRecipientLocationsAsGroup(OAuthPrefHelper.getAccessToken(this),
 //                RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS, this);
-        Request request = LocationApi.getMyRecipientLocations(OAuthPrefHelper.getAccessToken(this),
+        Request request = LocationApi.getAddressAsGroup(OAuthPrefHelper.getAccessToken(this), true,
                 RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
@@ -165,9 +165,14 @@ public class MyRecipientsLocationsActivity extends BaseActivity implements View.
 
         List<EvMyAddressLocationModelListResp.Data> dataList = evMyAddressLocationModelListResp.data;
 
+        long i = -1;
         for (EvMyAddressLocationModelListResp.Data data : dataList)
         {
-            AddressGroup addressGroup = data.group;
+//            AddressGroup addressGroup = data.group;
+            AddressGroup addressGroup = new AddressGroup();
+            addressGroup.setName(data.group);
+            addressGroup.setId(String.valueOf(i++));
+
             List<Address> addressList = data.address;
 
             MyAddressLocationModel myAddressLocationModel = new MyAddressLocationModel();

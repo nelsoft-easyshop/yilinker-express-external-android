@@ -22,7 +22,7 @@ public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapte
 
     private static final Logger logger = Logger.getLogger(AddressGroupAdapter.class.getSimpleName());
 
-    private static final int NO_SELECTION = -1;
+    public static final int NO_SELECTION = -1;
 
     private Context context;
 

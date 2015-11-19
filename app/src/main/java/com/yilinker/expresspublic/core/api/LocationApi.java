@@ -79,8 +79,53 @@ public class LocationApi
                 + ApiEndpoint.LOCATION_API + "/"
                 + ApiEndpoint.LOCATION_SENDER_ADDRESS + "?group_by=address_group";
 
+
         // Build request
         GsonRequest<EvMyAddressLocationModelListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvMyAddressLocationModelListResp.class,
+                new GsonRequest.GsonResponseListener<EvMyAddressLocationModelListResp>() {
+                    @Override
+                    public void onResponse(EvMyAddressLocationModelListResp object) {
+                        handler.onResponse(requestCode, object);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        logger.severe(error.toString());
+                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+                    }
+                });
+
+        return gsonRequest;
+    }
+
+    /**
+     *
+     * @param accessToken
+     * @param isRecipient
+     * @param requestCode
+     * @param handler
+     * @return
+     */
+    public static Request getAddressAsGroup(String accessToken, boolean isRecipient, final int requestCode, final ResponseHandler handler)
+    {
+        // Build endpoint
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.LOCATION_API + "/"
+//                + ApiEndpoint.LOCATION_SENDER_ADDRESS + "?group_by=address_group";
+
+        String endpoint = BuildConfig.DOMAIN + "/"
+                + ApiEndpoint.CONSUMER_API + "/"
+                + ApiEndpoint.CONSUMER_GROUPED_ADDRESS;
+
+        // Build request parameters
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.IS_RECIPIENT, String.valueOf(isRecipient));
+
+
+        // Build request
+        GsonRequest<EvMyAddressLocationModelListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvMyAddressLocationModelListResp.class,
                 new GsonRequest.GsonResponseListener<EvMyAddressLocationModelListResp>() {
                     @Override
                     public void onResponse(EvMyAddressLocationModelListResp object) {
@@ -699,8 +744,12 @@ public class LocationApi
         if(zipCode != null)
             params.put(ApiKey.ZIPCODE, zipCode);
 
-        if(addressGroup == null)
+        boolean isRecipient = false;
+
+        if(addressGroup == null) {
             addressGroup = "";
+            isRecipient = true;
+        }
 
 
         if(addressTag == null)
@@ -711,6 +760,7 @@ public class LocationApi
         params.put(ApiKey.PROVINCE_ID, String.valueOf(provinceId));
         params.put(ApiKey.CITY_ID, String.valueOf(cityId));
         params.put(ApiKey.BARANGAY_ID, String.valueOf(barangayId));
+        params.put(ApiKey.IS_RECIPIENT, String.valueOf(isRecipient));
 
 
         // Build request
