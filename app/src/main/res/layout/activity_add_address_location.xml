@@ -58,13 +58,6 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -112,13 +105,6 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -352,13 +338,6 @@
                     android:textColor="@color/warm_grey"
                     android:background="@null"
                     app:fontName="Roboto-Medium.ttf"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -456,14 +435,6 @@
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
-
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -519,15 +490,6 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
-
             </LinearLayout>
             <!-- Divider -->
             <View
@@ -583,15 +545,6 @@
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:text="*"
-                    android:textColor="@color/orange_red"
-                    android:layout_weight="0.1"
-                    android:gravity="center" />
-
             </LinearLayout>
             <!-- Divider -->
             <View
