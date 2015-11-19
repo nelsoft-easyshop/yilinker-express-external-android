@@ -95,8 +95,9 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
     @Override
     protected void onResume() {
         super.onResume();
-        mydecoderview.getCameraManager().startPreview();
-        isOngoingRequest = false;
+//        mydecoderview.getCameraManager().startPreview();
+//        isOngoingRequest = false;
+        startCamera();
     }
 
     @Override
@@ -170,8 +171,9 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
             progressDialog.dismiss();
         }
 
-        mydecoderview.getCameraManager().startPreview();
-        isOngoingRequest = false;
+//        mydecoderview.getCameraManager().startPreview();
+//        isOngoingRequest = false;
+        startCamera();
 
         switch (requestCode)
         {
@@ -240,11 +242,16 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
                 intent.putExtras(bundle);
                 startActivity(intent);
             } else {
+
                 Toast.makeText(this, getString(R.string.error_invalid_tracking_number), Toast.LENGTH_SHORT).show();
+                startCamera();
 
-                mydecoderview.getCameraManager().startPreview();
-
-                isOngoingRequest = false;
             }
+    }
+
+    private void startCamera() {
+        mydecoderview.getCameraManager().startPreview();
+
+        isOngoingRequest = false;
     }
 }

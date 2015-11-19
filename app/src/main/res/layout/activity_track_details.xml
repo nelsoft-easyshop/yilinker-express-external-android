@@ -18,7 +18,7 @@
             android:id="@+id/tv_trackingNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:textSize="26sp"
             android:textColor="@color/orange_yellow"
@@ -79,6 +79,7 @@
                     android:id="@+id/tv_statusRemarks"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/delivered_remarks"
                     android:textSize="18sp"
                     android:textColor="@color/greyish_brown"
                     app:fontName="Roboto-Regular.ttf"/>
