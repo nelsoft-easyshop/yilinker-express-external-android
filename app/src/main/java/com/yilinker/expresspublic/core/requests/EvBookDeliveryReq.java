@@ -20,7 +20,8 @@ public class EvBookDeliveryReq
 
     // Package Details
     private String packageName;
-    private String sku;
+//    private String sku;
+    private String declaredValue;
     private Integer quantity;
     private List<String> images;
     private Boolean fragile;
@@ -96,12 +97,21 @@ public class EvBookDeliveryReq
         this.packageName = packageName;
     }
 
-    public String getSku() {
-        return sku;
+//    public String getSku() {
+//        return sku;
+//    }
+//
+//    public void setSku(String sku) {
+//        this.sku = sku;
+//    }
+
+
+    public String getDeclaredValue() {
+        return declaredValue;
     }
 
-    public void setSku(String sku) {
-        this.sku = sku;
+    public void setDeclaredValue(String declaredValue) {
+        this.declaredValue = declaredValue;
     }
 
     public Integer getQuantity() {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/background_dark">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/warm_grey"
+        android:text="@string/subtitle_package_photos"
+        android:gravity="center"/>
+
+    <com.yilinker.expresspublic.modules.common.customviews.TouchImageView
+        android:id="@+id/tivImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.yilinker.expresspublic.modules.common.customviews.TouchImageView>
+
+
+</LinearLayout>

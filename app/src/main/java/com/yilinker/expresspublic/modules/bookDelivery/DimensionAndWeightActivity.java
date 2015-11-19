@@ -124,7 +124,11 @@ public class DimensionAndWeightActivity extends BaseActivity implements View.OnC
             this.width = width;
             this.weight = weight;
 
-            volleyGetDimensionAndWeight(length, height, width, weight);
+//            volleyGetDimensionAndWeight(length, height, width, weight);
+
+            //finish activity
+            resultCode = RESULT_OK;
+            finish();
         }
     }
 

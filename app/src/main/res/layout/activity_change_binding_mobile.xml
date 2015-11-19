@@ -154,6 +154,7 @@
                     android:textAllCaps="true"
                     android:background="@drawable/bg_rounded_orange_yellow"
                     android:gravity="center"
+                    android:visibility="gone"
                     app:fontName="Roboto-Regular.ttf" />
 
                 <!-- Verification Code -->
@@ -234,8 +235,9 @@
         android:textSize="22sp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"
-        android:background="@drawable/bg_rect_divider"
+        android:background="@drawable/bg_rect_marigold"
         android:gravity="center"
-        android:enabled="false"
         app:fontName="Roboto-Regular.ttf"/>
+        <!-- android:enabled="false" -->
+
 </LinearLayout>

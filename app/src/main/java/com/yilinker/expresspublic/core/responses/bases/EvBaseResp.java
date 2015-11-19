@@ -9,7 +9,8 @@ import com.yilinker.expresspublic.core.contants.ApiKey;
 public class EvBaseResp
 {
     @SerializedName(ApiKey.IS_SUCCESSFUL)
-    public boolean success;
+//    public boolean success;
+    public boolean isSuccessful;
     @SerializedName(ApiKey.MESSAGE)
     public String message;
 }
