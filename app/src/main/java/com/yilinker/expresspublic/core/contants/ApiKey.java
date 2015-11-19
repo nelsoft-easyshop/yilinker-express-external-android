@@ -9,9 +9,11 @@ public class ApiKey
     public static final String FIRST_NAME                               = "firstName";
     public static final String LAST_NAME                                = "lastName";
     public static final String USERNAME                                 = "username";
-    public static final String EMAIL_ADDRESS                            = "email_address";
-//    public static final String CONTACT_NUMBER                           = "contact_number";
+    //public static final String EMAIL_ADDRESS                            = "email_address";
+    public static final String CONTACTS                                 = "contacts";
     public static final String CONTACT_NUMBER                           = "contactNumber";
+    //public static final String CONTACT_NUMBER                           = "contact_number";
+    public static final String EMAIL_ADDRESS                            = "emailAddress";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
 //    public static final String FULL_NAME                                = "full_name";
     public static final String FULL_NAME                                = "fullname";
@@ -36,22 +38,31 @@ public class ApiKey
     public static final String PROVINCE_ID                              = "provinceId";
     public static final String PROVINCE                                 = "province";
     public static final String KEYWORD                                  = "keyword";
-    public static final String OPENING_TIME                             = "opening_time";
-    public static final String CLOSING_TIME                             = "closing_time";
+    //Modified due to change of variable name
+   /* public static final String OPENING_TIME                             = "opening_time";
+    public static final String CLOSING_TIME                             = "closing_time";*/
+    public static final String OPENING_HOUR                              = "openingHour";
+    public static final String CLOSING_HOUR                              = "closingHour";
     public static final String IMAGE                                    = "image";
     public static final String MESSAGE                                  = "message";
     public static final String DATE                                     = "date";
+//    public static final String TRACKING_NUMBER                          = "tracking_number";
     public static final String TRACKING_NUMBER                          = "trackingNumber";
+//    public static final String FROM_TO                                  = "from_to";
     public static final String FROM_TO                                  = "fromTo";
+//    public static final String SHIPPING_TYPE                            = "shipping_type";
     public static final String SHIPPING_TYPE                            = "shippingType";
     public static final String STATUS                                   = "status";
+//    public static final String STATUS_REMARKS                           = "status_remarks";
     public static final String STATUS_REMARKS                           = "statusRemarks";
     public static final String RIDER_VEHICLE                            = "rider_vehicle";
     public static final String PICKUP_DATE                              = "pickup_date";
+//    public static final String POUCH_TYPE                               = "pouch_type";
     public static final String POUCH_TYPE                               = "pouchType";
     public static final String ETA                                      = "eta";
-    public static final String PACKAGE_STATUS                           = "packageStatus";
+//    public static final String DELIVERY_STATUS                          = "delivery_status";
     public static final String DELIVERY_STATUS                          = "deliveryStatus";
+    public static final String PACKAGE_STATUS                           = "packageStatus";
     public static final String REGISTRATION_ID                          = "registration_id";
     public static final String LENGTH                                   = "length";
     public static final String WIDTH                                    = "width";
@@ -76,7 +87,7 @@ public class ApiKey
     public static final String STREET                                   = "street";
     public static final String VILLAGE                                  = "village";
 //    public static final String BARANGAY_ID                              = "barangay_id";
-public static final String BARANGAY_ID                                  = "barangayId";
+    public static final String BARANGAY_ID                              = "barangayId";
 //    public static final String ZIPCODE                                  = "zipcode";
     public static final String ZIPCODE                                  = "zipCode";
     public static final String ADDRESS_TYPE                             = "address_type";
@@ -93,10 +104,15 @@ public static final String BARANGAY_ID                                  = "baran
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+
     public static final String ADDRESS_TAG                              = "addressTag";
     public static final String ADDRESS_GROUP                            = "addressGroup";
     public static final String IS_RECIPIENT                             = "isRecipient";
     public static final String SUBDIVISION                              = "subdivision";
+
+    //Added Search Query for Branch Search
+    public static final String QUERY                                    = "query";
+
     public static final String SENDER_ADDRESS                           = "senderAddress";
     public static final String RECIPIENT_ADDRESS                        = "recipientAddress";
     public static final String PACKAGE_DESCRIPTION                      = "packageDescription";
@@ -104,6 +120,5 @@ public static final String BARANGAY_ID                                  = "baran
     public static final String DECLARED_VALUE                           = "declaredValue";
     public static final String PACKAGE_COUNT                            = "packageCount";
     public static final String WAYBILL_NUMBER                           = "waybillNumber";
-
 
 }

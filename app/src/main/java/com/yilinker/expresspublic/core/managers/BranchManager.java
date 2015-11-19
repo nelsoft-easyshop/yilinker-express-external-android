@@ -85,8 +85,13 @@ public class BranchManager
 
             float[] results = new float[1];
 
-            Location.distanceBetween(currentLocation.getLatitude(), currentLocation.getLongitude(),
-                    branch.getLatitude(), branch.getLongitude(), results);
+            // Modified due to change of datatype of longitude and latitude
+            /*Location.distanceBetween(currentLocation.getLatitude(), currentLocation.getLongitude(),
+                    branch.getLatitude(), branch.getLongitude(), results);*/
+            Location.distanceBetween(currentLocation.getLatitude(),
+                    currentLocation.getLongitude(),
+                    Double.parseDouble(branch.getLatitude()),
+                            Double.parseDouble(branch.getLongitude()), results);
 
             if(distance == null)
             {

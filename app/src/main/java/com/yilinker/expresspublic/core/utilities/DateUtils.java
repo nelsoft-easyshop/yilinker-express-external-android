@@ -1,5 +1,6 @@
 package com.yilinker.expresspublic.core.utilities;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -49,4 +50,24 @@ public class DateUtils
 
         return outputTimeStr;
     }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public static Date parseDate(String date)
+    {
+        final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try
+        {
+            return df.parse(date);
+        }
+        catch (final java.text.ParseException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

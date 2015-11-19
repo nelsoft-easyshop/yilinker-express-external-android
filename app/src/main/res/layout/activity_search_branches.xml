@@ -10,9 +10,10 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:background="@color/divider">
-
+        <!-- Added visibility gone -->
         <!-- Select Area -->
         <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+            android:visibility="gone"
             android:id="@+id/btn_selectArea"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
