@@ -1,5 +1,6 @@
 package com.yilinker.expresspublic.modules.bookDelivery;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,18 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.BuildConfig;
 import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.BookDeliveryRequest;
+import com.yilinker.expresspublic.core.api.DeliveryApi;
 import com.yilinker.expresspublic.core.contants.ApiEndpoint;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.Address;
+import com.yilinker.expresspublic.core.models.DeliveryPackage;
 import com.yilinker.expresspublic.core.models.PickUpSchedule;
 import com.yilinker.expresspublic.core.requests.EvBookDeliveryReq;
+import com.yilinker.expresspublic.core.responses.EvBookDeliveryResponse;
 import com.yilinker.expresspublic.core.utilities.CommonUtils;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 import com.yilinker.expresspublic.modules.BaseActivity;
@@ -35,14 +42,18 @@ import java.util.logging.Logger;
 /**
  * Created by Jeico.
  */
-public class BookDeliveryActivity extends BaseActivity implements Observer, View.OnClickListener {
+public class BookDeliveryActivity extends BaseActivity implements Observer, View.OnClickListener, ResponseHandler {
     private static final Logger logger = Logger.getLogger(BookDeliveryActivity.class.getSimpleName());
+
+    private ProgressDialog progressDialog;
 
     private BookingSyncModel bookingSyncModel;
 
     private EvBookDeliveryReq evBookDeliveryReq;
 
     private BookDeliveryRequest bookDeliveryRequest;
+
+    private String waybillNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +63,25 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         bookingSyncModel = new BookingSyncModel();
         bookingSyncModel.addObserver(this);
 
+        bookingSyncModel.setIsRecipientReady(true);
+        bookingSyncModel.setIsSenderReady(true);
+        bookingSyncModel.setIsPackageDetailsReady(true);
+        bookingSyncModel.setIsPackageSizeReady(true);
+
         // Intialize request parameters
         evBookDeliveryReq = new EvBookDeliveryReq();
+
+        evBookDeliveryReq.setSenderAddressId(Long.valueOf(125));
+        evBookDeliveryReq.setRecipientAddressId(Long.valueOf(298));
+        evBookDeliveryReq.setPaidBy("true");
+        evBookDeliveryReq.setDeclaredValue("1000");
+        evBookDeliveryReq.setQuantity(10);
+        evBookDeliveryReq.setHeight("100");
+        evBookDeliveryReq.setWidth("100");
+        evBookDeliveryReq.setLength("100");
+        evBookDeliveryReq.setWeight("100");
+        evBookDeliveryReq.setPackageName("Test");
+
     }
 
     @Override
@@ -179,7 +207,7 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
     }
 
     private void startPackageDetailsActivity() {
-        Intent intent = new Intent(this, PackageDetailsActivity.class);
+        Intent intent = new Intent(this, PackageDetailsActivity2.class);
         startActivityForResult(intent, RequestCode.RCA_PACKAGE_DETAILS);
     }
 
@@ -201,15 +229,67 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
 
     private void handleSubmitBooking() {
 
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.DELIVERY_API + "/"
+//                + ApiEndpoint.DELIVERY_BOOK;
+
+//        String endpoint = BuildConfig.DOMAIN + "/"
+//                + ApiEndpoint.PACKAGES_API + "/"
+//                + ApiEndpoint.PACKAGES_ADD;
+
+
+//        bookDeliveryRequest = new BookDeliveryRequest(
+//                this,
+//                endpoint,
+//                OAuthPrefHelper.getAccessToken(this),
+//                evBookDeliveryReq,
+//                new BookDeliveryRequest.BookingDeliveryListener() {
+//                    @Override
+//                    public void onBookingSuccessful(String response) {
+//                        handleBookDeliveryResponse(response);
+//                    }
+//
+//                    @Override
+//                    public void onBookingFailed(String message) {
+//                        Toast.makeText(BookDeliveryActivity.this, message, Toast.LENGTH_SHORT).show();
+//                    }
+//        });
+//        bookDeliveryRequest.execute();
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.loading_booking_delivery));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        Request request = DeliveryApi.bookDelivery(RequestCode.RCR_BOOK_DELIVERY, OAuthPrefHelper.getAccessToken(this), evBookDeliveryReq, this);
+        BaseApplication.getInstance().getRequestQueue().add(request);
+    }
+
+    private void handleBookDeliveryResponse(String response) {
+        Bundle bundle = new Bundle();
+//        bundle.putString(BundleKey.BOOK_DELIVERY_RESPONSE, response);
+        bundle.putString(BundleKey.WAYBILL_NUMBER, waybillNumber);
+
+        Intent intent = new Intent(this, BookingSuccessFulActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+        finish();
+    }
+
+    private void handleUploadWaybillImages(String waybillNumber) {
+
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.DELIVERY_API + "/"
-                + ApiEndpoint.DELIVERY_BOOK;
+                + ApiEndpoint.PACKAGES_API + "/"
+                + ApiEndpoint.PACKAGES_IMAGES + "/"
+                + ApiEndpoint.PACKAGES_ADD + "?access_token="
+                + OAuthPrefHelper.getAccessToken(this);
 
         bookDeliveryRequest = new BookDeliveryRequest(
                 this,
                 endpoint,
                 OAuthPrefHelper.getAccessToken(this),
-                evBookDeliveryReq,
+                evBookDeliveryReq.getImages(), waybillNumber,
                 new BookDeliveryRequest.BookingDeliveryListener() {
                     @Override
                     public void onBookingSuccessful(String response) {
@@ -220,19 +300,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
                     public void onBookingFailed(String message) {
                         Toast.makeText(BookDeliveryActivity.this, message, Toast.LENGTH_SHORT).show();
                     }
-        });
+                });
         bookDeliveryRequest.execute();
-    }
 
-    private void handleBookDeliveryResponse(String response) {
-        Bundle bundle = new Bundle();
-        bundle.putString(BundleKey.BOOK_DELIVERY_RESPONSE, response);
-
-        Intent intent = new Intent(this, BookingSuccessFulActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
-
-        finish();
     }
 
     private void handlePickupSchedule(Intent data) {
@@ -275,8 +345,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         evBookDeliveryReq.setWeight(weight);
 
         // Update UI
-        ((TextView) findViewById(R.id.tv_packageContainer)).setText(packageContainerUI);
-        ((TextView) findViewById(R.id.tv_weight)).setText(weightUI);
+        ((TextView) findViewById(R.id.tv_packageContainer)).setText(R.string.declared_weight);
+        ((TextView) findViewById(R.id.tv_weight)).setText(String.format("%s%s", weight, "kg"));
         ((ImageView) findViewById(R.id.iv_packageSizeCheckStatus)).setImageResource(R.drawable.ic_check);
         findViewById(R.id.tv_packageSizeLabelMessage).setVisibility(View.GONE);
         findViewById(R.id.ll_packageSizeContainer).setVisibility(View.VISIBLE);
@@ -288,7 +358,7 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         Bundle bundle = data.getExtras();
 
         String packageName = bundle.getString(BundleKey.PACKAGE_NAME);
-        String sku = bundle.getString(BundleKey.SKU);
+        String declaredValue = bundle.getString(BundleKey.DECLARED_VALUE);
         int quantity = bundle.getInt(BundleKey.QUANTITY);
         String paidBy = bundle.getString(BundleKey.PAID_BY);
         boolean isFragile = bundle.getBoolean(BundleKey.IS_FRAGILE);
@@ -299,15 +369,22 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         }
 
         evBookDeliveryReq.setPackageName(packageName);
-        evBookDeliveryReq.setSku(sku);
+        evBookDeliveryReq.setDeclaredValue(declaredValue);
         evBookDeliveryReq.setQuantity(quantity);
         evBookDeliveryReq.setImages(photoFilepathList);
         evBookDeliveryReq.setFragile(isFragile);
-        evBookDeliveryReq.setPaidBy(paidBy);
+//        evBookDeliveryReq.setPaidBy(paidBy);
+        if(paidBy.equals("sender"))
+        {
+            evBookDeliveryReq.setPaidBy("true");
+        } else
+        {
+            evBookDeliveryReq.setPaidBy("false");
+        }
 
         // Update UI
         ((TextView) findViewById(R.id.tv_packageName)).setText(packageName);
-        ((TextView) findViewById(R.id.tv_sku)).setText("SKU " + sku);
+        ((TextView) findViewById(R.id.tv_declaredValue)).setText("Declared Value " + declaredValue);
         ((TextView) findViewById(R.id.tv_imageCount)).setText(photoFilepathList.size() + " Images uploaded");
         ((TextView) findViewById(R.id.tv_paidBy)).setText("Paid by " + paidBy);
         ((ImageView) findViewById(R.id.iv_packageDetailsCheckStatus)).setImageResource(R.drawable.ic_check);
@@ -325,7 +402,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
 
         evBookDeliveryReq.setRecipientConsumerId(address.getConsumerId());
-        evBookDeliveryReq.setRecipientAddressId(address.getAddressId());
+//        evBookDeliveryReq.setRecipientAddressId(address.getAddressId());
+        evBookDeliveryReq.setRecipientAddressId((long) 125);
         evBookDeliveryReq.setRecipientConsumerAddressId(address.getId());
 
         // Update UI
@@ -346,7 +424,8 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
 
         evBookDeliveryReq.setSenderConsumerId(address.getConsumerId());
-        evBookDeliveryReq.setSenderAddressId(address.getAddressId());
+//        evBookDeliveryReq.setSenderAddressId(address.getAddressId());
+        evBookDeliveryReq.setSenderAddressId((long) 258);
         evBookDeliveryReq.setSenderConsumerAddressId(address.getId());
 
         // Update UI
@@ -356,5 +435,40 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         ((ImageView) findViewById(R.id.iv_senderCheckStatus)).setImageResource(R.drawable.ic_check);
         findViewById(R.id.tv_fromLabelMessage).setVisibility(View.GONE);
         findViewById(R.id.ll_fromContainer).setVisibility(View.VISIBLE);
+    }
+
+    private String processWaybillNumber(EvBookDeliveryResponse object) {
+
+        EvBookDeliveryResponse.Data deliveryResponse = object.data;
+
+        return deliveryResponse.waybillNumber;
+    }
+
+    @Override
+    public void onResponse(int requestCode, Object object) {
+
+        if(progressDialog.isShowing())
+        {
+            progressDialog.dismiss();
+        }
+
+        switch(requestCode)
+        {
+            case RequestCode.RCR_BOOK_DELIVERY:
+                waybillNumber = processWaybillNumber((EvBookDeliveryResponse) object);
+                handleUploadWaybillImages(waybillNumber);
+                break;
+        }
+    }
+
+    @Override
+    public void onErrorResponse(int requestCode, String message) {
+
+        if(progressDialog.isShowing())
+        {
+            progressDialog.dismiss();
+        }
+
+        Toast.makeText(this.getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

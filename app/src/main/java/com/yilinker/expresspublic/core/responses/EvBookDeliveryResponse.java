@@ -21,5 +21,7 @@ public class EvBookDeliveryResponse extends EvBaseResp
         public Date schedule;
         @SerializedName(ApiKey.QR_IMAGE)
         public String qrImage;
+        @SerializedName(ApiKey.WAYBILL_NUMBER)
+        public String waybillNumber;
     }
 }

@@ -4,4 +4,8 @@
     <!-- Toolbar's top padding -->
     <dimen name="toolbar_top_padding">0dp</dimen>
 
+    <!--QR Code-->
+    <dimen name="qr_code_size">300dp</dimen>
+    <dimen name="qr_code_print">100dp</dimen>
+
 </resources>
