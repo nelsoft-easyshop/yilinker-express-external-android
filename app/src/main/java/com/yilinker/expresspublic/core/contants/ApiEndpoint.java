@@ -79,8 +79,28 @@ public class ApiEndpoint
     public static final String DELIVERY_BOOK                            = "book";
     public static final String DELIVERY_PACKAGE_CONTAINER               = "package_container";
     public static final String DELIVERY_PICKUP_SCHEDULE                 = "pickup_schedule";
-
+    /*******************************************************************************
+     * Consumer Endpoint
+     ******************************************************************************/
+    public static final String CONSUMER_API                             = "m/consumer";
+    // Method
+    public static final String CONSUMER_ADDRESS_TAG                     = "addressTag";
+    public static final String CONSUMER_ADDRESS_GROUP                   = "address-group";
+    public static final String CONSUMER_ADD_ADDRESS                     = "add-address";
+    /*******************************************************************************
+     * Address Endpoint
+     ******************************************************************************/
+    public static final String ADDRESS_API                             = "m/address";
+    // Method
+    public static final String ADDRESS_GET                             = "get";
+    public static final String ADDRESS_GET_PROVINCES                   = "get-provinces";
+    public static final String ADDRESS_GET_CITIES                      = "get-cities";
+    public static final String ADDRESS_GET_BARANGAYS                   = "get-barangays";
+    /*******************************************************************************
+     * Package Endpoint
+     ******************************************************************************/
     public static final String PACKAGES_API                             = "m/packages";
     public static final String PACKAGES_ADD                             = "add";
     public static final String PACKAGES_IMAGES                          = "images";
+
 }
