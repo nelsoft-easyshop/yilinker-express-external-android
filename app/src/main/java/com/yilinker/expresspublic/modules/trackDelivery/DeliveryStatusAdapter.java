@@ -14,6 +14,7 @@ import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.core.models.DeliveryStatus;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -47,9 +48,16 @@ public class DeliveryStatusAdapter extends RecyclerView.Adapter<DeliveryStatusAd
 
         DeliveryStatus deliveryStatus = deliveryStatusList.get(position);
 
-        holder.tv_message.setText(deliveryStatus.getMessage());
-        holder.tv_date.setText(DateUtils.displayDateAsReadable(deliveryStatus.getDate()));
-        holder.tv_time.setText(DateUtils.displayTimeAsReadable(deliveryStatus.getDate()));
+//        holder.tv_message.setText(deliveryStatus.getMessage());
+        holder.tv_message.setText(deliveryStatus.getPackageStatus());
+
+        Date deliveryDate = DateUtils.parseDate(deliveryStatus.getDate());
+
+//        holder.tv_date.setText(DateUtils.displayDateAsReadable(deliveryStatus.getDate()));
+//        holder.tv_time.setText(DateUtils.displayTimeAsReadable(deliveryStatus.getDate()));
+
+        holder.tv_date.setText(DateUtils.displayDateAsReadable(deliveryDate));
+        holder.tv_time.setText(DateUtils.displayTimeAsReadable(deliveryDate));
 
         if(position%2 == 0)
         {

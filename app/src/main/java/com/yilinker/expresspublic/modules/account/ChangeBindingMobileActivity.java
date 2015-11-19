@@ -97,7 +97,8 @@ public class ChangeBindingMobileActivity
                 break;
 
             case R.id.btn_submitAndUpdate:
-                handleSubmitAndUpdate();
+                //handleSubmitAndUpdate();
+                volleyUpdateMobile();
                 break;
 
             default:

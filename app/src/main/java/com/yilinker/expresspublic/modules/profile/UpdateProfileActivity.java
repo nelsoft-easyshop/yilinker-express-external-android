@@ -39,6 +39,8 @@ public class UpdateProfileActivity
 {
     private static final Logger logger = Logger.getLogger(UpdateProfileActivity.class.getSimpleName());
 
+    private CharSequence[] genderList = {"Male", "Female"};
+
     private ProgressDialog progressDialog;
 
     private UserModel userModel;
@@ -136,7 +138,9 @@ public class UpdateProfileActivity
             case R.id.et_gender:
                 if(hasFocus)
                 {
-                    displayGenderDialog(R.id.et_gender, userModel.getGender());
+                    displayGenderDialog(R.id.et_gender, userModel.getGender().equals("1") ||
+                            userModel.getGender().equals(genderList[0]) ?
+                            genderList[0].toString() : genderList[1].toString());
                 }
                 break;
 
@@ -260,8 +264,6 @@ public class UpdateProfileActivity
     {
         final EditText editText = (EditText) findViewById(resId);
 
-        final CharSequence[] genderList = {"Male", "Female"};
-
         int currentPosition = -1;
 
         for (int i = 0; i < genderList.length; i++)
@@ -328,14 +330,16 @@ public class UpdateProfileActivity
         ((EditText) findViewById(R.id.et_firstname)).setText(firstname);
         ((EditText) findViewById(R.id.et_lastname)).setText(lastname);
         ((EditText) findViewById(R.id.et_birthdate)).setText(birthdate);
-        ((EditText) findViewById(R.id.et_gender)).setText(gender);
+        ((EditText) findViewById(R.id.et_gender)).setText(gender.equals("1") ||
+                gender.equals(genderList[0]) ?
+                genderList[0] : genderList[1]);
         ((EditText) findViewById(R.id.et_email)).setText(email);
     }
 
     private void volleyUpdateProfile()
     {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.loading_changing_password));
+        progressDialog.setMessage(getString(R.string.loading_changing_user_details));
         progressDialog.setCancelable(false);
         progressDialog.show();
 

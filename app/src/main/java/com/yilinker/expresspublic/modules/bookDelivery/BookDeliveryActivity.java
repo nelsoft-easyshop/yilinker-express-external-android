@@ -401,9 +401,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         String addressJson = bundle.getString(BundleKey.ADDRESS);
         Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
 
-        evBookDeliveryReq.setRecipientConsumerId(address.getConsumerId());
+
+//        evBookDeliveryReq.setRecipientConsumerId(address.getConsumerId());
 //        evBookDeliveryReq.setRecipientAddressId(address.getAddressId());
-        evBookDeliveryReq.setRecipientAddressId((long) 125);
         evBookDeliveryReq.setRecipientConsumerAddressId(address.getId());
 
         // Update UI
@@ -423,9 +423,9 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         String addressJson = bundle.getString(BundleKey.ADDRESS);
         Address address = new GsonBuilder().create().fromJson(addressJson, Address.class);
 
-        evBookDeliveryReq.setSenderConsumerId(address.getConsumerId());
+
+//        evBookDeliveryReq.setSenderConsumerId(address.getConsumerId());
 //        evBookDeliveryReq.setSenderAddressId(address.getAddressId());
-        evBookDeliveryReq.setSenderAddressId((long) 258);
         evBookDeliveryReq.setSenderConsumerAddressId(address.getId());
 
         // Update UI

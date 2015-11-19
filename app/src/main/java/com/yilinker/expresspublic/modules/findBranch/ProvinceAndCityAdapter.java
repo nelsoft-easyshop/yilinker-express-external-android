@@ -57,7 +57,8 @@ public class ProvinceAndCityAdapter extends ExpandableRecyclerAdapter<ProvinceAn
     @Override
     public void onBindChildViewHolder(CityViewHolder cityViewHolder, int i, Object childObject) {
         City city = (City) childObject;
-        cityViewHolder.id = city.getId();
+//        cityViewHolder.id = city.getId();
+        cityViewHolder.id = Long.valueOf(city.getId());
         cityViewHolder.name = city.getName();
         cityViewHolder.tv_city.setText(city.getName());
     }
