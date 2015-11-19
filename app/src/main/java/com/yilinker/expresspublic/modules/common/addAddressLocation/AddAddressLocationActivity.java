@@ -229,6 +229,10 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 break;
 
             case R.id.btn_submit:
+
+                if(!hasValidInput())
+                    return;
+
                 volleySubmit();
                 break;
 
@@ -642,5 +646,42 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
     }
 
+    private boolean hasValidInput(){
+
+        EditText etFullname = (EditText) findViewById(R.id.et_fullName);
+        EditText etContactNo = (EditText) findViewById(R.id.et_contactNumber);
+        EditText etStreetName = (EditText) findViewById(R.id.et_streetName);
+
+        String fullname = etFullname.getText().toString().trim();
+        String contactNumber = etContactNo.getText().toString().trim();
+        String streetName = etStreetName.getText().toString().trim();
+
+        if(fullname.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter the full name of the contact", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if(contactNumber.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter a contact number", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if(addressGroupAdapter.getSelectedId() == AddressGroupAdapter.NO_SELECTION){
+
+            Toast.makeText(getApplicationContext(), "Please select a group", Toast.LENGTH_LONG).show();
+            return false;
+
+        }
+
+        if(streetName.isEmpty()){
+
+            Toast.makeText(getApplicationContext(), "Please enter a street name", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        return true;
+    }
 
 }

@@ -87,6 +87,7 @@ public class ApiEndpoint
     public static final String CONSUMER_ADDRESS_TAG                     = "address-tag";
     public static final String CONSUMER_ADDRESS_GROUP                   = "address-group";
     public static final String CONSUMER_ADD_ADDRESS                     = "add-address";
+    public static final String CONSUMER_GROUPED_ADDRESS                 = "grouped-address";
     /*******************************************************************************
      * Address Endpoint
      ******************************************************************************/

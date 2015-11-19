@@ -124,6 +124,7 @@ public class ApiKey
     public static final String VALUE                                    = "value";
     //Added Day for Schedule of Branch
     public static final String DAY                                      = "day";
+    public static final String GROUPED_ADDRESSES                        = "addresses";
 
 
 }
