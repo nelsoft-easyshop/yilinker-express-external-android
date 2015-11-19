@@ -350,6 +350,11 @@ public class DirectionActivity extends BaseFragmentActivity
 
         List<LatLng> latLngList = PolyUtil.decode(encodedPoints);
 
+        if (currentLocation == null) {
+            Toast.makeText(this, getString(R.string.error_no_location), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         LatLng origin = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         // Modified due to change of datatype of latitude and longitude
         //LatLng destination = new LatLng(branch.getLatitude(), branch.getLongitude());

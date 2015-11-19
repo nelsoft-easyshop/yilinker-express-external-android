@@ -12,6 +12,7 @@ import com.yilinker.expresspublic.core.interfaces.DeliveryPackageListener;
 import com.yilinker.expresspublic.core.models.DeliveryPackage;
 import com.yilinker.expresspublic.core.utilities.DateUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -49,7 +50,12 @@ public class DeliveryPackageAdapter extends RecyclerView.Adapter<DeliveryPackage
 
         holder.tv_trackingNumber.setText(deliveryPackage.getTrackingNumber());
         holder.tv_riderDetails.setText(deliveryPackage.getRiderDetails());
-        holder.tv_deliveryDate.setText(DateUtils.displayDateAsReadable(deliveryPackage.getDeliveryDate()));
+        Date date = DateUtils.parseDate(deliveryPackage.getDeliveryStatusList().get(0).getDate());
+        holder.tv_deliveryDate.setVisibility(date != null ? View.VISIBLE : View.GONE);
+        if (date != null) {
+            holder.tv_deliveryDate.setText(DateUtils.displayDateAsReadable(date));
+        }
+//        holder.tv_deliveryDate.setText(DateUtils.displayDateAsReadable(deliveryPackage.getDeliveryDate()));
         holder.tv_packageContainer.setText(deliveryPackage.getPackageContainer());
 //        holder.tv_eta.setText("ETA " + deliveryPackage.getEta());
 //        holder.tv_status.setText(deliveryPackage.getStatus());

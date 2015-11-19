@@ -31,6 +31,7 @@ import com.yilinker.expresspublic.core.serializer.DateSerializer;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -217,6 +218,8 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
                 }
 
             }
+
+            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
 
             deliveryPackageAdapter.notifyDataSetChanged();
         }

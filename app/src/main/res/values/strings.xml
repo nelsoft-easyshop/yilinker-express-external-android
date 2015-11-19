@@ -49,6 +49,8 @@
     <string name="error_invalid_verification_code">Invalid verification code.</string>
     <string name="error_invalid_mobile_number">Invalid mobile number.</string>
     <string name="error_maximum_photo_upload">Already reached maximum photo upload.</string>
+    <string name="error_no_location">Can\'t find location.</string>
+    <string name="error_invalid_tracking_number">Invalid tracking number.</string>
 
     <!-- Loading messages -->
     <string name="loading_registration">Registering&#8230;</string>
