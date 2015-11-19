@@ -122,4 +122,7 @@ public class ApiKey
     public static final String PACKAGE_COUNT                            = "packageCount";
     public static final String WAYBILL_NUMBER                           = "waybillNumber";
 
+    //Added Day for Schedule of Branch
+    public static final String DAY                                      = "day";
+
 }
