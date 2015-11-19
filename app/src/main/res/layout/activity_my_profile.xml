@@ -81,6 +81,7 @@
             android:paddingTop="15dp"
             android:paddingBottom="15dp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:gravity="center_vertical">
 
             <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
