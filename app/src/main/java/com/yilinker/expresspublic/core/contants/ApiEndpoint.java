@@ -43,9 +43,11 @@ public class ApiEndpoint
     /*******************************************************************************
      * Track Endpoint
      ******************************************************************************/
-    public static final String TRACK_API                                = "m/tracking";
+    public static final String TRACK_API                                = "track";
+    public static final String TRACKING_API                             = "m/tracking";
     // Method
-    public static final String TRACK_PACKAGE                            = "packages";
+    public static final String TRACK_PACKAGE                            = "package";
+    public static final String TRACKING_PACKAGES                        = "packages";
     public static final String TRACK_ONGOING                            = "ongoing";
     public static final String TRACK_DELIVERED                          = "delivered";
     /*******************************************************************************
