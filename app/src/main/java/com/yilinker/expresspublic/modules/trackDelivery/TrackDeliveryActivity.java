@@ -22,6 +22,7 @@ import com.yilinker.expresspublic.core.api.TrackApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.deserializer.DateDeserializer;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.interfaces.DeliveryPackageListener;
 import com.yilinker.expresspublic.core.models.DeliveryPackage;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageListResp;
@@ -155,8 +156,10 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
         switch (requestCode)
         {
             case RequestCode.RCR_SEARCH_TRACKING_NUMBER:
-                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
-                populateList(evDeliveryPackageResp.data);
+//                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
+//                populateList(evDeliveryPackageResp.data);
+                EvDeliveryPackageListResp evDeliveryPackageListResp = (EvDeliveryPackageListResp) object;
+                populateList(evDeliveryPackageListResp.data);
                 break;
 
             default:
@@ -186,17 +189,35 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
     {
         ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.GONE);
 
-        Request request = TrackApi.searchTrackingNumber(trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
+        String accessToken = OAuthPrefHelper.getAccessToken(this);
+
+        Request request = TrackApi.searchTrackingNumber(accessToken, trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
 
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private void populateList(DeliveryPackage deliveryPackage)
+//    private void populateList(DeliveryPackage deliveryPackage)
+    private void populateList(List<DeliveryPackage> tempDeliveryPackageList)
     {
-        if(deliveryPackage != null)
+//        if(deliveryPackages != null)
+//        {
+//            deliveryPackageList.clear();
+//            deliveryPackageList.add(deliveryPackage);
+//            deliveryPackageAdapter.notifyDataSetChanged();
+//        }
+
+        if(deliveryPackageList != null)
         {
             deliveryPackageList.clear();
-            deliveryPackageList.add(deliveryPackage);
+
+            if (tempDeliveryPackageList != null) {
+
+                for (DeliveryPackage deliveryPackage : tempDeliveryPackageList) {
+                    deliveryPackageList.add(deliveryPackage);
+                }
+
+            }
+
             deliveryPackageAdapter.notifyDataSetChanged();
         }
     }

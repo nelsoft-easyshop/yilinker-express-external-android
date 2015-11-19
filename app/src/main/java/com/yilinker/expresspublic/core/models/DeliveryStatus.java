@@ -9,60 +9,43 @@ import java.util.Date;
 
 /**
  * Created by Jeico.
- */
+        */
 public class DeliveryStatus
 {
-    @SerializedName(ApiKey.PACKAGE_STATUS)
-    private String packageStatus;
+
 //    @SerializedName(ApiKey.MESSAGE)
 //    private String message;
     @SerializedName(ApiKey.DATE)
-//    private Date date;
+    //    private Date date;
     private String date;
+    /***added new key/s*/
+    @SerializedName(ApiKey.PACKAGE_STATUS)
+    private String packageStatus;
+
 
     public DeliveryStatus() {
     }
 
-    public DeliveryStatus(String packageStatus, String date) {
+    public DeliveryStatus(String date, String packageStatus) {
+        this.date = date;
         this.packageStatus = packageStatus;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
         this.date = date;
     }
 
+    /** added getter and setter for package status**/
     public String getPackageStatus() {
         return packageStatus;
     }
 
     public void setPackageStatus(String packageStatus) {
         this.packageStatus = packageStatus;
-    }
-
-    //    public DeliveryStatus(String message, Date date) {
-//        this.message = message;
-//        this.date = date;
-//    }
-//
-//    public String getMessage() {
-//        return message;
-//    }
-//
-//    public void setMessage(String message) {
-//        this.message = message;
-//    }
-
-//    public Date getDate() {
-//        return date;
-//    }
-
-    public String getDate() {
-        return date;
-    }
-
-//    public void setDate(Date date) {
-//        this.date = date;
-//    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     /**
@@ -81,4 +64,32 @@ public class DeliveryStatus
             return rhsDate.compareTo(lhsDate);
         }
     };
+
+//    public DeliveryStatus(String message, Date date) {
+//        this.message = message;
+//        this.date = date;
+//    }
+
+    //    public DeliveryStatus(String message, Date date) {
+//        this.message = message;
+//        this.date = date;
+//    }
+//
+//    public String getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(String message) {
+//        this.message = message;
+//    }
+
+//    public Date getDate() {
+//        return date;
+//    }
+
+    //    public void setDate(Date date) {
+//        this.date = date;
+//    }
+
+
 }

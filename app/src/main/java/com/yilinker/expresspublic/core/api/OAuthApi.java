@@ -37,6 +37,7 @@ public class OAuthApi
 //                + ApiEndpoint.OAUTH_API + "/"
                 + ApiEndpoint.OAUTH_TOKEN;
 
+
         // Build request parameters
         Map<String, String> params = new HashMap<>();
         params.put(ApiKey.GRANT_TYPE, GrantType.PASSWORD.getValue());

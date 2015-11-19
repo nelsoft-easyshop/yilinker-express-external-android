@@ -22,12 +22,15 @@ import com.yilinker.expresspublic.core.api.TrackApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.deserializer.DateDeserializer;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.DeliveryPackage;
+import com.yilinker.expresspublic.core.responses.EvDeliveryPackageListResp;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageResp;
 import com.yilinker.expresspublic.core.serializer.DateSerializer;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -46,10 +49,22 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        progressDialog = new ProgressDialog(this);
+//
+//        mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
+//        mydecoderview.setOnQRCodeReadListener(this);
+//
+        initViews();
+    }
+
+    private void initViews() {
+
         progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         mydecoderview = (QRCodeReaderView) findViewById(R.id.qrdecoderview);
         mydecoderview.setOnQRCodeReadListener(this);
+
     }
 
     @Override
@@ -137,8 +152,10 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
         switch (requestCode)
         {
             case RequestCode.RCR_SEARCH_TRACKING_NUMBER:
-                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
-                startTrackDetailsActivity(evDeliveryPackageResp.data);
+                EvDeliveryPackageListResp evDeliveryPackageListResp = (EvDeliveryPackageListResp) object;
+                startTrackDetailsActivity(evDeliveryPackageListResp.data);
+//                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
+//                startTrackDetailsActivity(evDeliveryPackageResp.data);
                 break;
 
             default:
@@ -171,12 +188,14 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
     private void volleySearchTrackingNumber(String trackingNumber)
     {
         // Show loading
-        progressDialog = new ProgressDialog(this);
+//        progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(getString(R.string.loading_tracking));
-        progressDialog.setCancelable(false);
+//        progressDialog.setCancelable(false);
         progressDialog.show();
 
-        Request request = TrackApi.searchTrackingNumber(trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
+        String accessToken = OAuthPrefHelper.getAccessToken(this);
+
+        Request request = TrackApi.searchTrackingNumber(accessToken, trackingNumber, RequestCode.RCR_SEARCH_TRACKING_NUMBER, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
@@ -200,20 +219,26 @@ public class ScanTrackingCodeActivity extends BaseActivity implements QRCodeRead
         }
     }
 
-    private void startTrackDetailsActivity(DeliveryPackage data) {
+//    private void startTrackDetailsActivity(DeliveryPackage data) {
+        private void startTrackDetailsActivity(List<DeliveryPackage> tempDeliveryPackageList) {
 
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Date.class, new DateDeserializer())
-                .registerTypeAdapter(Date.class, new DateSerializer())
-                .create();
+            if (tempDeliveryPackageList != null && tempDeliveryPackageList.size() != 0) {
 
-        String deliveryPackageRaw = gson.toJson(data);
+                DeliveryPackage data = tempDeliveryPackageList.get(0);
 
-        Bundle bundle = new Bundle();
-        bundle.putString(BundleKey.DELIVERY_PACKAGE, deliveryPackageRaw);
+                Gson gson = new GsonBuilder()
+                        .registerTypeAdapter(Date.class, new DateDeserializer())
+                        .registerTypeAdapter(Date.class, new DateSerializer())
+                        .create();
 
-        Intent intent = new Intent(this, TrackDetailsActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+                String deliveryPackageRaw = gson.toJson(data);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(BundleKey.DELIVERY_PACKAGE, deliveryPackageRaw);
+
+                Intent intent = new Intent(this, TrackDetailsActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
     }
 }

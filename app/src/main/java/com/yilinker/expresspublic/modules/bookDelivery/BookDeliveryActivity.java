@@ -63,24 +63,24 @@ public class BookDeliveryActivity extends BaseActivity implements Observer, View
         bookingSyncModel = new BookingSyncModel();
         bookingSyncModel.addObserver(this);
 
-        bookingSyncModel.setIsRecipientReady(true);
-        bookingSyncModel.setIsSenderReady(true);
-        bookingSyncModel.setIsPackageDetailsReady(true);
-        bookingSyncModel.setIsPackageSizeReady(true);
+//        bookingSyncModel.setIsRecipientReady(true);
+//        bookingSyncModel.setIsSenderReady(true);
+//        bookingSyncModel.setIsPackageDetailsReady(true);
+//        bookingSyncModel.setIsPackageSizeReady(true);
 
         // Intialize request parameters
         evBookDeliveryReq = new EvBookDeliveryReq();
 
-        evBookDeliveryReq.setSenderAddressId(Long.valueOf(125));
-        evBookDeliveryReq.setRecipientAddressId(Long.valueOf(298));
-        evBookDeliveryReq.setPaidBy("true");
-        evBookDeliveryReq.setDeclaredValue("1000");
-        evBookDeliveryReq.setQuantity(10);
-        evBookDeliveryReq.setHeight("100");
-        evBookDeliveryReq.setWidth("100");
-        evBookDeliveryReq.setLength("100");
-        evBookDeliveryReq.setWeight("100");
-        evBookDeliveryReq.setPackageName("Test");
+//        evBookDeliveryReq.setSenderAddressId(Long.valueOf(125));
+//        evBookDeliveryReq.setRecipientAddressId(Long.valueOf(298));
+//        evBookDeliveryReq.setPaidBy("true");
+//        evBookDeliveryReq.setDeclaredValue("1000");
+//        evBookDeliveryReq.setQuantity(10);
+//        evBookDeliveryReq.setHeight("100");
+//        evBookDeliveryReq.setWidth("100");
+//        evBookDeliveryReq.setLength("100");
+//        evBookDeliveryReq.setWeight("100");
+//        evBookDeliveryReq.setPackageName("Test");
 
     }
 
