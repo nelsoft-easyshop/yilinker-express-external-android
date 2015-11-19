@@ -156,8 +156,10 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
         switch (requestCode)
         {
             case RequestCode.RCR_SEARCH_TRACKING_NUMBER:
-                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
-                populateList(evDeliveryPackageResp.data);
+//                EvDeliveryPackageResp evDeliveryPackageResp = (EvDeliveryPackageResp) object;
+//                populateList(evDeliveryPackageResp.data);
+                EvDeliveryPackageListResp evDeliveryPackageListResp = (EvDeliveryPackageListResp) object;
+                populateList(evDeliveryPackageListResp.data);
                 break;
 
             default:
@@ -194,12 +196,28 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
-    private void populateList(DeliveryPackage deliveryPackage)
+//    private void populateList(DeliveryPackage deliveryPackage)
+    private void populateList(List<DeliveryPackage> tempDeliveryPackageList)
     {
-        if(deliveryPackage != null)
+//        if(deliveryPackages != null)
+//        {
+//            deliveryPackageList.clear();
+//            deliveryPackageList.add(deliveryPackage);
+//            deliveryPackageAdapter.notifyDataSetChanged();
+//        }
+
+        if(deliveryPackageList != null)
         {
             deliveryPackageList.clear();
-            deliveryPackageList.add(deliveryPackage);
+
+            if (tempDeliveryPackageList != null) {
+
+                for (DeliveryPackage deliveryPackage : tempDeliveryPackageList) {
+                    deliveryPackageList.add(deliveryPackage);
+                }
+
+            }
+
             deliveryPackageAdapter.notifyDataSetChanged();
         }
     }

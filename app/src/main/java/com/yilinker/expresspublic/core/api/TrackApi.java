@@ -104,7 +104,6 @@ public class TrackApi
 
     /**
      * TODO
-     * @param accessToken
      * @param trackingNumber
      * @param requestCode
      * @param handler
@@ -125,10 +124,24 @@ public class TrackApi
         params.put(ApiKey.TRACKING_NUMBER, trackingNumber);
 
         // Build request
-        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvDeliveryPackageResp.class,
-                new GsonRequest.GsonResponseListener<EvDeliveryPackageResp>() {
+//        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvDeliveryPackageResp.class,
+//                new GsonRequest.GsonResponseListener<EvDeliveryPackageResp>() {
+//                    @Override
+//                    public void onResponse(EvDeliveryPackageResp object) {
+//                        handler.onResponse(requestCode, object);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        handler.onErrorResponse(requestCode, VolleyErrorHelper.getErrorMessage(error));
+//                    }
+//                });
+
+        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvDeliveryPackageListResp.class,
+                new GsonRequest.GsonResponseListener<EvDeliveryPackageListResp>() {
                     @Override
-                    public void onResponse(EvDeliveryPackageResp object) {
+                    public void onResponse(EvDeliveryPackageListResp object) {
                         handler.onResponse(requestCode, object);
                     }
                 },
