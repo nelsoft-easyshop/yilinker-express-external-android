@@ -15,7 +15,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "DOMAIN", '"http://api.express.api.easydeal.ph/app_dev.php/v1"'
+            buildConfigField "String", "DOMAIN", '"http://api.express.api.easydeal.ph/v1"'
             buildConfigField "String", "CLIENT_ID", '"3_6agt57dy15gc0840oogowock00kowcg44cc8os4ggso4o80c80"'
             buildConfigField "String", "CLIENT_SECRET", '"2q7zfaom3hicc40o8soccgcwcs0sksks0swwwocckw0cgs4ck8"'
             buildConfigField "String", "REGISTER_CLIENT_ID", '"6_4fcdq8jjge80gwwkw4coskgscow08wsg808sgogok00s8so440"'
