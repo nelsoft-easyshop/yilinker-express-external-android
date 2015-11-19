@@ -61,7 +61,7 @@ public class InputValidator
         {
             errorMessage = "Contact number should not be empty.";
         }
-        else if (contactNumber.trim().length() == 1)
+        else if (contactNumber.trim().length() != 11)
         {
             errorMessage = "Contact number must be 11 digits.";
         }
