@@ -28,7 +28,11 @@ public class ApiEndpoint
     /*******************************************************************************
      * Branch Endpoint
      ******************************************************************************/
-    public static final String BRANCH_API                               = "branch";
+    // Modified Branch API and added endpoint
+    //public static final String BRANCH_API                               = "branch";
+    public static final String BRANCH_API                               = "branches";
+    public static final String BRANCH_API_GET                           = "get";
+    public static final String M_BRANCH                                 = "m";
     // Method
     public static final String BRANCH_BOOKMARK                          = "bookmark";
     public static final String BRANCH_UNBOOKMARK                        = "unbookmark";

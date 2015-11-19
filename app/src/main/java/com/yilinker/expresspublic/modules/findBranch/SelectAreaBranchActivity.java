@@ -22,8 +22,10 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.BranchApi;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
+import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.interfaces.BranchListener;
 import com.yilinker.expresspublic.core.models.Branch;
+import com.yilinker.expresspublic.core.models.OAuth;
 import com.yilinker.expresspublic.core.responses.EvBranchListResp;
 import com.yilinker.expresspublic.modules.BaseActivity;
 
@@ -73,7 +75,9 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
         else
         {
             // Request by keyword
-            Request request = BranchApi.searchBranchesByKeyword(keyword, RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
+            // Modified and added access token to parameter
+            Request request = BranchApi.searchBranchesByKeyword(keyword, OAuthPrefHelper.getAccessToken(this), RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
+            //Request request = BranchApi.searchBranchesByKeyword(keyword, RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
             BaseApplication.getInstance().getRequestQueue().add(request);
         }
     }
@@ -202,7 +206,9 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
     {
         ((RecyclerView) findViewById(R.id.rv_branchList)).setVisibility(View.GONE);
 
-        Request request = BranchApi.searchBranchesByKeyword(keyword, RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
+        // Modified and added access token to parameter
+        //Request request = BranchApi.searchBranchesByKeyword(keyword, RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
+        Request request = BranchApi.searchBranchesByKeyword(keyword, OAuthPrefHelper.getAccessToken(this), RequestCode.RCR_SEARCH_BRANCHES_BY_KEYWORD, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 

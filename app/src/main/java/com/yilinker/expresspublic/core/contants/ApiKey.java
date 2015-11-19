@@ -9,8 +9,13 @@ public class ApiKey
     public static final String FIRST_NAME                               = "firstName";
     public static final String LAST_NAME                                = "lastName";
     public static final String USERNAME                                 = "username";
-    public static final String EMAIL_ADDRESS                            = "emailAddress";
+    //Modified Email address due to change of response field
+    //public static final String EMAIL_ADDRESS                            = "email_address";
+    //Modified Contact Number due to change of response field and added additional contacts variable for contacts model
+    public static final String CONTACTS                                 = "contacts";
     public static final String CONTACT_NUMBER                           = "contactNumber";
+    //public static final String CONTACT_NUMBER                           = "contact_number";
+    public static final String EMAIL_ADDRESS                            = "emailAddress";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
     public static final String FULL_NAME                                = "fullname";
     public static final String DATE_ADDED                               = "date_added";
@@ -32,8 +37,11 @@ public class ApiKey
     public static final String CITY                                     = "city";
     public static final String PROVINCE_ID                              = "province_id";
     public static final String KEYWORD                                  = "keyword";
-    public static final String OPENING_TIME                             = "opening_time";
-    public static final String CLOSING_TIME                             = "closing_time";
+    //Modified due to change of variable name
+   /* public static final String OPENING_TIME                             = "opening_time";
+    public static final String CLOSING_TIME                             = "closing_time";*/
+    public static final String OPENING_HOUR                              = "openingHour";
+    public static final String CLOSING_HOUR                              = "closingHour";
     public static final String IMAGE                                    = "image";
     public static final String MESSAGE                                  = "message";
     public static final String DATE                                     = "date";
@@ -83,6 +91,8 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    //Added Search Query for Branch Search
+    public static final String QUERY                                    = "query";
     public static final String SENDER_ADDRESS                           = "senderAddress";
     public static final String RECIPIENT_ADDRESS                        = "recipientAddress";
     public static final String PACKAGE_DESCRIPTION                      = "packageDescription";
@@ -90,5 +100,4 @@ public class ApiKey
     public static final String DECLARED_VALUE                           = "declaredValue";
     public static final String PACKAGE_COUNT                            = "packageCount";
     public static final String WAYBILL_NUMBER                           = "waybillNumber";
-
 }
