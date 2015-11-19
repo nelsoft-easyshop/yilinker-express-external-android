@@ -33,6 +33,7 @@ import com.yilinker.expresspublic.BaseApplication;
 import com.yilinker.expresspublic.R;
 import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.LocationApi;
+import com.yilinker.expresspublic.core.contants.ApiKey;
 import com.yilinker.expresspublic.core.contants.BundleKey;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.enums.AddressType;
@@ -59,6 +60,7 @@ import javax.xml.transform.Result;
  * Created by Jeico.
  */
 public class AddAddressLocationActivity extends BaseActivity implements OnMapReadyCallback, ResponseHandler, View.OnClickListener {
+
     private static final Logger logger = Logger.getLogger(AddAddressLocationActivity.class.getSimpleName());
 
     private AddressType addressType;
@@ -83,12 +85,16 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Bundle bundle = getIntent().getExtras();
+        addressType = (AddressType) bundle.getSerializable(BundleKey.ADDRESS_TYPE);
+
         super.onCreate(savedInstanceState);
 
         progressDialog = new ProgressDialog(this);
 
-        Bundle bundle = getIntent().getExtras();
-        addressType = (AddressType) bundle.getSerializable(BundleKey.ADDRESS_TYPE);
+//        Bundle bundle = getIntent().getExtras();
+//        addressType = (AddressType) bundle.getSerializable(BundleKey.ADDRESS_TYPE);
 
         sv_parent = (ScrollView) findViewById(R.id.sv_parent);
 
@@ -126,7 +132,17 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
     @Override
     protected int getToolbarTitle() {
-        return R.string.title_new_sender_detail;
+//        return R.string.title_new_sender_detail;
+
+        switch (addressType){
+
+            case SENDER:
+
+                return R.string.title_new_sender_detail;
+
+            default:
+                return R.string.new_recipient_detail;
+        }
     }
 
     @Override
@@ -152,7 +168,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 barangayArrayAdapter.clear();
 
                 Province province = provinceArrayAdapter.getItem(position);
-                volleyGetCityList(province.getId());
+//                volleyGetCityList(province.getId());
+                volleyGetCityList(Long.valueOf(province.getId()));
             }
 
             @Override
@@ -170,7 +187,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
                 barangayArrayAdapter.clear();
 
                 City city = cityArrayAdapter.getItem(position);
-                volleyGetBarangayList(city.getId());
+//                volleyGetBarangayList(city.getId());
+                volleyGetBarangayList(Long.valueOf(city.getId()));
             }
 
             @Override
@@ -324,7 +342,7 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
             case RequestCode.RCR_ADD_ADDRESS_LOCATION:
                 EvBaseResp evBaseResp = (EvBaseResp) object;
-                Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
+//                Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
                 resultCode = RESULT_OK;
                 finish();
                 break;
@@ -394,7 +412,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         progressDialog.show();
 
         // Request for address group
-        Request request = LocationApi.getProvinceList(RequestCode.RCR_GET_PROVINCE_LIST, this);
+//        Request request = LocationApi.getProvinceList(RequestCode.RCR_GET_PROVINCE_LIST, this);
+        Request request = LocationApi.getProvinceList(OAuthPrefHelper.getAccessToken(this), RequestCode.RCR_GET_PROVINCE_LIST, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
@@ -407,7 +426,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         progressDialog.show();
 
         // Request for address group
-        Request request = LocationApi.getCityList(provinceId, RequestCode.RCR_GET_CITY_LIST, this);
+//        Request request = LocationApi.getCityList(provinceId, RequestCode.RCR_GET_CITY_LIST, this);
+        Request request = LocationApi.getCityList(OAuthPrefHelper.getAccessToken(this), provinceId, RequestCode.RCR_GET_CITY_LIST, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
@@ -420,7 +440,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         progressDialog.show();
 
         // Request for address group
-        Request request = LocationApi.getBarangayList(cityId, RequestCode.RCR_GET_BARANGAY_LIST, this);
+//        Request request = LocationApi.getBarangayList(cityId, RequestCode.RCR_GET_BARANGAY_LIST, this);
+        Request request = LocationApi.getBarangayList(OAuthPrefHelper.getAccessToken(this), cityId, RequestCode.RCR_GET_BARANGAY_LIST, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 
@@ -500,7 +521,8 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
 
         String fullName = ((EditText) findViewById(R.id.et_fullName)).getText().toString().trim();
         String contactNumber = ((EditText) findViewById(R.id.et_contactNumber)).getText().toString().trim();
-        List<Long> addressGroup = addressGroupAdapter.getSelectedIds();
+//        List<Long> addressGroup = addressGroupAdapter.getSelectedIds();
+        String addressGroup = String.valueOf(173);
         String unitNumber = ((EditText) findViewById(R.id.et_unitNumber)).getText().toString().trim();
         String buildingName = ((EditText) findViewById(R.id.et_buildingName)).getText().toString().trim();
         String streetNumber = ((EditText) findViewById(R.id.et_streetNumber)).getText().toString().trim();
@@ -508,11 +530,14 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         String village = ((EditText) findViewById(R.id.et_village)).getText().toString().trim();
 
         Province province = (Province) ((Spinner) findViewById(R.id.sp_province)).getSelectedItem();
-        Long provinceId = province.getId();
+//        Long provinceId = province.getId();
+        Long provinceId = Long.valueOf(province.getId());
         City city = (City) ((Spinner) findViewById(R.id.sp_city)).getSelectedItem();
-        Long cityId = city.getId();
+//        Long cityId = city.getId();
+        Long cityId = Long.valueOf(city.getId());
         Barangay barangay = (Barangay) ((Spinner) findViewById(R.id.sp_barangay)).getSelectedItem();
-        Long barangayId = barangay.getId();
+//        Long barangayId = barangay.getId();
+        Long barangayId = Long.valueOf(barangay.getId());
 
         String zipCode = ((EditText) findViewById(R.id.et_zipCode)).getText().toString().trim();
 
@@ -525,9 +550,29 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         }
 
 
-        Request request = LocationApi.addAddressLocation(OAuthPrefHelper.getAccessToken(this), fullName, contactNumber,
-                addressGroup, unitNumber, buildingName, streetNumber, streetName, village, provinceId,
-                cityId, barangayId, zipCode, latitude, longitude, addressType.getValue(), RequestCode.RCR_ADD_ADDRESS_LOCATION, this);
+//        Request request = LocationApi.addAddressLocation(OAuthPrefHelper.getAccessToken(this), fullName, contactNumber,
+//                addressGroup, unitNumber, buildingName, streetNumber, streetName, village, provinceId,
+//                cityId, barangayId, zipCode, latitude, longitude, addressType.getValue(), RequestCode.RCR_ADD_ADDRESS_LOCATION, this);
+
+        Request request = null;
+
+        switch (addressType) {
+
+            case SENDER:
+
+                request = LocationApi.addAddress(OAuthPrefHelper.getAccessToken(this), fullName, contactNumber,
+                    addressGroup, null, unitNumber, buildingName, streetNumber, streetName, village, provinceId,
+                    cityId, barangayId, zipCode, RequestCode.RCR_ADD_ADDRESS_LOCATION, this);
+                break;
+
+            case RECIPIENT:
+
+                request = LocationApi.addAddress(OAuthPrefHelper.getAccessToken(this), fullName, contactNumber,
+                        null, addressGroup, unitNumber, buildingName, streetNumber, streetName, village, provinceId,
+                        cityId, barangayId, zipCode, RequestCode.RCR_ADD_ADDRESS_LOCATION, this);
+                break;
+        }
+
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
 }

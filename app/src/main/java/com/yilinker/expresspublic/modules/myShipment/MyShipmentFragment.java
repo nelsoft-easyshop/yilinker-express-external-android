@@ -49,6 +49,8 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
 
     private DeliveryPackageAdapter deliveryPackageAdapter;
 
+    private RecyclerView rv_deliveryPackageList;
+
 
     public static MyShipmentFragment newInstance(ShipmentType shipmentType)
     {
@@ -79,10 +81,12 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
 
         deliveryPackageAdapter = new DeliveryPackageAdapter(getActivity(), deliveryPackageList, this);
 
-        RecyclerView rv_deliveryPackageList = (RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList);
-        rv_deliveryPackageList.setHasFixedSize(true);
-        rv_deliveryPackageList.setAdapter(deliveryPackageAdapter);
-        rv_deliveryPackageList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        initViews();
+
+//        RecyclerView rv_deliveryPackageList = (RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList);
+//        rv_deliveryPackageList.setHasFixedSize(true);
+//        rv_deliveryPackageList.setAdapter(deliveryPackageAdapter);
+//        rv_deliveryPackageList.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         String accessToken = OAuthPrefHelper.getAccessToken(getActivity());
 
@@ -97,6 +101,15 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
             Request request = TrackApi.ongoing(accessToken, RequestCode.RCR_TRACK_ONGOING, this);
             BaseApplication.getInstance().getRequestQueue().add(request);
         }
+    }
+
+    private void initViews() {
+
+        rv_deliveryPackageList = (RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList);
+        rv_deliveryPackageList.setHasFixedSize(true);
+        rv_deliveryPackageList.setAdapter(deliveryPackageAdapter);
+        rv_deliveryPackageList.setLayoutManager(new LinearLayoutManager(getActivity()));
+
     }
 
     @Override
@@ -116,7 +129,8 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
 
         if(getView() != null)
         {
-            ((RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
+//            ((RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
+            rv_deliveryPackageList.setVisibility(View.VISIBLE);
         }
     }
 
@@ -136,7 +150,8 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
 
         if(getView() != null)
         {
-            ((RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
+//            ((RecyclerView) getView().findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
+            rv_deliveryPackageList.setVisibility(View.VISIBLE);
         }
     }
 

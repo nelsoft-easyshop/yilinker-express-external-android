@@ -12,9 +12,15 @@ public class AddressGroupModel
     public AddressGroupModel() {
     }
 
-    public AddressGroupModel(boolean isSelected, Long id, String name) {
+//    public AddressGroupModel(boolean isSelected, Long id, String name) {
+//        this.isSelected = isSelected;
+//        this.id = id;
+//        this.name = name;
+//    }
+
+    public AddressGroupModel(boolean isSelected, String id, String name) {
         this.isSelected = isSelected;
-        this.id = id;
+        this.id = Long.valueOf(id);
         this.name = name;
     }
 

@@ -20,6 +20,13 @@ public enum GrantType
                 {
                     return "refresh_token";
                 }
+            },
+    CLIENT_CREDENTIALS
+            {
+                @Override
+                public String getValue() {
+                    return "client_credentials";
+                }
             };
 
     public abstract String getValue();

@@ -51,8 +51,9 @@ public class DeliveryPackageAdapter extends RecyclerView.Adapter<DeliveryPackage
         holder.tv_riderDetails.setText(deliveryPackage.getRiderDetails());
         holder.tv_deliveryDate.setText(DateUtils.displayDateAsReadable(deliveryPackage.getDeliveryDate()));
         holder.tv_packageContainer.setText(deliveryPackage.getPackageContainer());
-        holder.tv_eta.setText("ETA " + deliveryPackage.getEta());
-        holder.tv_status.setText(deliveryPackage.getStatus());
+//        holder.tv_eta.setText("ETA " + deliveryPackage.getEta());
+//        holder.tv_status.setText(deliveryPackage.getStatus());
+        holder.tv_status.setText(deliveryPackage.getStatus().toUpperCase());
     }
 
     @Override

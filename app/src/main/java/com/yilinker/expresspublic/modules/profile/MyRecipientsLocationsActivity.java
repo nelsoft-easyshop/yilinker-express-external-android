@@ -152,7 +152,9 @@ public class MyRecipientsLocationsActivity extends BaseActivity implements View.
 
         findViewById(R.id.elv_recipientLocation).setVisibility(View.GONE);
 
-        Request request = LocationApi.getRecipientLocationsAsGroup(OAuthPrefHelper.getAccessToken(this),
+//        Request request = LocationApi.getRecipientLocationsAsGroup(OAuthPrefHelper.getAccessToken(this),
+//                RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS, this);
+        Request request = LocationApi.getMyRecipientLocations(OAuthPrefHelper.getAccessToken(this),
                 RequestCode.RCR_GET_MY_RECIPIENT_LOCATIONS, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }

@@ -11,36 +11,51 @@ import java.util.Comparator;
 public class Barangay
 {
     @SerializedName(ApiKey.ID)
-    private Long id;
-    @SerializedName(ApiKey.CITY_ID)
-    private Long cityId;
+//    private Long id;
+    private String id;
+//    @SerializedName(ApiKey.CITY_ID)
+//    private Long cityId;
     @SerializedName(ApiKey.NAME)
     private String name;
 
     public Barangay() {
     }
 
-    public Barangay(Long id, Long cityId, String name) {
+//    public Barangay(Long id, Long cityId, String name) {
+//        this.id = id;
+//        this.cityId = cityId;
+//        this.name = name;
+//    }
+
+    public Barangay(String id, String name) {
         this.id = id;
-        this.cityId = cityId;
         this.name = name;
     }
 
-    public Long getId() {
+
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Long getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(Long cityId) {
-        this.cityId = cityId;
-    }
+//    public Long getCityId() {
+//        return cityId;
+//    }
+//
+//    public void setCityId(Long cityId) {
+//        this.cityId = cityId;
+//    }
 
     public String getName() {
         return name;

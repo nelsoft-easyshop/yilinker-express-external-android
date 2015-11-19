@@ -16,9 +16,13 @@ public class RequestCode
     public static final int RCA_UPDATE_MOBILE                       = 2000;
     public static final int RCA_UPDATE_PROFILE                      = 2100;
     public static final int RCA_UPDATE_PASSWORD                     = 2200;
+    public static final int RCA_GALLERY_SELECT                      = 2300;
+    public static final int RCA_PACKAGE_IMAGES                      = 2400;
+
     // OAuth API
     public static final int RCR_TOKEN                               = 5000;
     public static final int RCR_REGISTER                            = 5100;
+    public static final int RCR_REGISTER_TOKEN                      = 5101;
     // Branch API
     public static final int RCR_GET_ALL_BRANCH                      = 5200;
     public static final int RCR_BOOKMARK                            = 5300;
@@ -47,6 +51,7 @@ public class RequestCode
     // Delivery API
     public static final int RCR_GET_PACKAGE_CONTAINER               = 6000;
     public static final int RCR_GET_PICKUP_SCHEDULE_LIST            = 6010;
+    public static final int RCR_BOOK_DELIVERY                       = 6020;
     // User API
     public static final int RCR_GET_USER_PROFILE                    = 6100;
     public static final int RCR_UPDATE_PASSWORD                     = 6200;

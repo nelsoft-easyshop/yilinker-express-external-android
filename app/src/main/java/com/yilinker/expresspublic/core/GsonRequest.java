@@ -34,7 +34,8 @@ public class GsonRequest<T> extends Request<T>
     /**
      * Default timeout in milliseconds
      */
-    private final int TIMEOUT_MS = 3000;
+//    private final int TIMEOUT_MS = 3000;
+    private final int TIMEOUT_MS = 5000;
 
     /**
      * Default max retries

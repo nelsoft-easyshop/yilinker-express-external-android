@@ -11,23 +11,37 @@ import java.util.Comparator;
 public class Province
 {
     @SerializedName(ApiKey.ID)
-    private Long id;
+//    private Long id;
+    private String id;
     @SerializedName(ApiKey.NAME)
     private String name;
 
     public Province() {
     }
 
-    public Province(Long id, String name) {
+//    public Province(Long id, String name) {
+//        this.id = id;
+//        this.name = name;
+//    }
+
+    public Province(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Long getId() {
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

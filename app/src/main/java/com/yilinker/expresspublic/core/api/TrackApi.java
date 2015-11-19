@@ -9,6 +9,7 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.GsonRequest;
 import com.yilinker.expresspublic.core.contants.ApiEndpoint;
 import com.yilinker.expresspublic.core.contants.ApiKey;
+import com.yilinker.expresspublic.core.enums.ShipmentType;
 import com.yilinker.expresspublic.core.helpers.VolleyErrorHelper;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageListResp;
 import com.yilinker.expresspublic.core.responses.EvDeliveryPackageResp;
@@ -36,12 +37,17 @@ public class TrackApi
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.TRACK_API + "/"
-                + ApiEndpoint.TRACK_PACKAGE + "/"
-                + ApiEndpoint.TRACK_ONGOING;
+                + ApiEndpoint.TRACKING_API + "/"
+                + ApiEndpoint.TRACKING_PACKAGES;
+//                + ApiEndpoint.TRACK_PACKAGE + "/"
+//                + ApiEndpoint.TRACK_ONGOING;
+
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.STATUS, ShipmentType.ONGOING.getValue());
 
         // Build request
-        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvDeliveryPackageListResp.class,
+        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint,params, EvDeliveryPackageListResp.class,
                 new GsonRequest.GsonResponseListener<EvDeliveryPackageListResp>() {
                     @Override
                     public void onResponse(EvDeliveryPackageListResp object) {
@@ -69,12 +75,17 @@ public class TrackApi
     {
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
-                + ApiEndpoint.TRACK_API + "/"
-                + ApiEndpoint.TRACK_PACKAGE + "/"
-                + ApiEndpoint.TRACK_DELIVERED;
+                + ApiEndpoint.TRACKING_API + "/"
+                + ApiEndpoint.TRACKING_PACKAGES;
+//                + ApiEndpoint.TRACK_PACKAGE + "/"
+//                + ApiEndpoint.TRACK_DELIVERED;
+
+        Map<String, String> params = new HashMap<>();
+        params.put(ApiKey.ACCESS_TOKEN, accessToken);
+        params.put(ApiKey.STATUS, ShipmentType.DELIVERED.getValue());
 
         // Build request
-        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.GET, accessToken, endpoint, null, EvDeliveryPackageListResp.class,
+        GsonRequest<EvDeliveryPackageListResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvDeliveryPackageListResp.class,
                 new GsonRequest.GsonResponseListener<EvDeliveryPackageListResp>() {
                     @Override
                     public void onResponse(EvDeliveryPackageListResp object) {
@@ -93,6 +104,7 @@ public class TrackApi
 
     /**
      * TODO
+     * @param accessToken
      * @param trackingNumber
      * @param requestCode
      * @param handler
@@ -104,7 +116,7 @@ public class TrackApi
         // Build endpoint
         String endpoint = BuildConfig.DOMAIN + "/"
                 + ApiEndpoint.TRACKING_API + "/"
-                + ApiEndpoint.TRACK_PACKAGES;
+                + ApiEndpoint.TRACKING_PACKAGES;
 //                + ApiEndpoint.TRACK_API + "/"
 //                + trackingNumber;
 
@@ -113,7 +125,7 @@ public class TrackApi
         params.put(ApiKey.TRACKING_NUMBER, trackingNumber);
 
         // Build request
-        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.GET, null, endpoint, null, EvDeliveryPackageResp.class,
+        GsonRequest<EvDeliveryPackageResp> gsonRequest = new GsonRequest<>(Request.Method.POST, accessToken, endpoint, params, EvDeliveryPackageResp.class,
                 new GsonRequest.GsonResponseListener<EvDeliveryPackageResp>() {
                     @Override
                     public void onResponse(EvDeliveryPackageResp object) {
