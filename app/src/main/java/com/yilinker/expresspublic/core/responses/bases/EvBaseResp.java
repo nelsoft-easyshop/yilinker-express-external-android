@@ -6,5 +6,6 @@ package com.yilinker.expresspublic.core.responses.bases;
 public class EvBaseResp
 {
     public boolean success;
+    public boolean isSuccessful;
     public String message;
 }

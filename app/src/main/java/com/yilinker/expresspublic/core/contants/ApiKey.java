@@ -6,13 +6,13 @@ package com.yilinker.expresspublic.core.contants;
 public class ApiKey
 {
     public static final String ID                                       = "id";
-    public static final String FIRST_NAME                               = "first_name";
-    public static final String LAST_NAME                                = "last_name";
+    public static final String FIRST_NAME                               = "firstName";
+    public static final String LAST_NAME                                = "lastName";
     public static final String USERNAME                                 = "username";
-    public static final String EMAIL_ADDRESS                            = "email_address";
-    public static final String CONTACT_NUMBER                           = "contact_number";
+    public static final String EMAIL_ADDRESS                            = "emailAddress";
+    public static final String CONTACT_NUMBER                           = "contactNumber";
     public static final String NEW_CONTACT_NUMBER                       = "new_contact_number";
-    public static final String FULL_NAME                                = "full_name";
+    public static final String FULL_NAME                                = "fullname";
     public static final String DATE_ADDED                               = "date_added";
     public static final String LAST_DATE_MODIFIED                       = "last_date_modified";
     public static final String PASSWORD                                 = "password";
@@ -60,8 +60,9 @@ public class ApiKey
     public static final String HEIGHT                                   = "height";
     public static final String WEIGHT                                   = "weight";
     public static final String PACKAGE_CONTAINER                        = "package_container";
-    public static final String VERIFICATION_CODE                        = "verification_code";
+    public static final String VERIFICATION_CODE                        = "verificationCode";
     public static final String OLD_PASSWORD                             = "old_password";
+    public static final String NEW_PASSWORD                             = "newPassword";
     public static final String PASSWORD_CONFIRMATION                    = "password_confirmation";
     public static final String EMAIL                                    = "email";
     public static final String TIME_FROM                                = "time_from";
@@ -88,4 +89,12 @@ public class ApiKey
     public static final String QR_IMAGE                                 = "qr_image";
     public static final String BIRTHDATE                                = "birthdate";
     public static final String GENDER                                   = "gender";
+    public static final String SENDER_ADDRESS                           = "senderAddress";
+    public static final String RECIPIENT_ADDRESS                        = "recipientAddress";
+    public static final String PACKAGE_DESCRIPTION                      = "packageDescription";
+    public static final String IS_PAID_BY_RECIPIENT                     = "isPaidByRecipient";
+    public static final String DECLARED_VALUE                           = "declaredValue";
+    public static final String PACKAGE_COUNT                            = "packageCount";
+    public static final String WAYBILL_NUMBER                           = "waybillNumber";
+
 }
