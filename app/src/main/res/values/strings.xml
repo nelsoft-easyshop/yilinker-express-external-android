@@ -54,6 +54,7 @@
     <string name="error_invalid_mobile_number">The mobile number should be 11 digits long.</string>
     <string name="error_maximum_photo_upload">Already reached maximum photo upload.</string>
     <string name="error_no_location">Can\'t find location.</string>
+    <string name="error_no_location_services">Turn on your location services.</string>
     <string name="error_invalid_tracking_number">Invalid tracking number.</string>
 
     <!-- Loading messages -->

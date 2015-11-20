@@ -252,7 +252,7 @@ public class SelectAreaBranchActivity extends BaseActivity implements ResponseHa
             intent.putExtras(bundle);
             startActivity(intent);
         }else{
-            Toast.makeText(this, R.string.location_services_error_toast, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_no_location_services, Toast.LENGTH_SHORT).show();
         }
     }
 }
