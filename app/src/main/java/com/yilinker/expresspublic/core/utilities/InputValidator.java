@@ -147,6 +147,18 @@ public class InputValidator
         return errorMessage;
     }
 
+    public static String isContactNumberAtLeastEleven(String contactNumber)
+    {
+        String errorMessage = null;
+
+        if (contactNumber.length() < 8)
+        {
+            errorMessage = "Contact number should be in a form of 11 digits.";
+        }
+
+        return errorMessage;
+    }
+
     public static String isFullnameValid(String fullname)
     {
         String errorMessage = null;

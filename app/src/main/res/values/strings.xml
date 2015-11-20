@@ -38,7 +38,6 @@
     <string name="profile_message_user_details_successful">User details updated successfully!</string>
     <string name="profile_message_mobile_successful">Mobile number changed successfully!</string>
     <string name="profile_message_password_successful">Password changed successfully!</string>
-    <string name="profile_message_password_wrong">Incorrect password!</string>
 
     <!-- Activity Subtitle-->
     <string name="subtitle_package_photos">Photos</string>

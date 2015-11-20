@@ -260,6 +260,13 @@ public class ChangeBindingMobileActivity
             return errorMessage;
         }
 
+        errorMessage = InputValidator.isContactNumberAtLeastEleven(contactNumber);
+
+        if(errorMessage != null)
+        {
+            return errorMessage;
+        }
+
         return errorMessage;
     }
 }

@@ -92,7 +92,7 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
                 if (evBaseResp.isSuccessful)
                     Toast.makeText(this, getString(R.string.profile_message_password_successful), Toast.LENGTH_LONG).show();
                 else
-                    Toast.makeText(this, getString(R.string.profile_message_password_wrong), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
                 finish();
                 break;
 
