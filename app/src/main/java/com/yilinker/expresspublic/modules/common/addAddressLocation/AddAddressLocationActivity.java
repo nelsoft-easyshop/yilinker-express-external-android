@@ -55,6 +55,7 @@ import com.yilinker.expresspublic.modules.common.customviews.SubMapFragment;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.xml.transform.Result;
 
@@ -656,6 +657,9 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         String contactNumber = etContactNo.getText().toString().trim();
         String streetName = etStreetName.getText().toString().trim();
 
+        Pattern mobilePattern = Pattern.compile("^[0-9]{10,11}$");
+
+
         if(fullname.isEmpty()){
 
             Toast.makeText(getApplicationContext(), "Please enter the full name of the contact", Toast.LENGTH_LONG).show();
@@ -665,6 +669,12 @@ public class AddAddressLocationActivity extends BaseActivity implements OnMapRea
         if(contactNumber.isEmpty()){
 
             Toast.makeText(getApplicationContext(), "Please enter a contact number", Toast.LENGTH_LONG).show();
+            return false;
+        }
+
+        if(!mobilePattern.matcher(contactNumber).matches()){
+
+            Toast.makeText(getApplicationContext(), "The contact number should be 11 digits long.", Toast.LENGTH_LONG).show();
             return false;
         }
 
