@@ -52,7 +52,7 @@
     <string name="error">Error</string>
     <string name="error_invalid_address_group_name">Invalid address group name.</string>
     <string name="error_invalid_verification_code">Invalid verification code.</string>
-    <string name="error_invalid_mobile_number">Invalid mobile number.</string>
+    <string name="error_invalid_mobile_number">The mobile number should be 11 digits long.</string>
     <string name="error_maximum_photo_upload">Already reached maximum photo upload.</string>
     <string name="error_no_location">Can\'t find location.</string>
     <string name="error_invalid_tracking_number">Invalid tracking number.</string>

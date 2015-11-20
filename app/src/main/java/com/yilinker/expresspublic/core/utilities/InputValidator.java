@@ -3,6 +3,7 @@ package com.yilinker.expresspublic.core.utilities;
 import android.content.Context;
 
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * Created by Jeico on 4/26/2015.
@@ -55,15 +56,17 @@ public class InputValidator
 
     public static String isContactNumberValid(String contactNumber)
     {
+        Pattern mobilePattern = Pattern.compile("^[0-9]{10,11}$");
+
         String errorMessage = null;
 
         if (contactNumber.trim().isEmpty())
         {
             errorMessage = "Contact number should not be empty.";
         }
-        else if (contactNumber.trim().length() == 1)
+        else if (!mobilePattern.matcher(contactNumber).matches())
         {
-            errorMessage = "Contact number must be 11 digits.";
+            errorMessage = "The contact number should be 11 digits long.";
         }
 
         return errorMessage;
