@@ -219,7 +219,7 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
 
             }
 
-            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
+//            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
 
             deliveryPackageAdapter.notifyDataSetChanged();
         }

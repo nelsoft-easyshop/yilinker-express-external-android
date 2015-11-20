@@ -186,7 +186,7 @@ public class MyShipmentFragment extends Fragment implements ResponseHandler, Del
 
             }
 
-            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
+//            Collections.sort(deliveryPackageList, DeliveryPackage.sortDateDesc);
 
             deliveryPackageAdapter.notifyDataSetChanged();
         }
