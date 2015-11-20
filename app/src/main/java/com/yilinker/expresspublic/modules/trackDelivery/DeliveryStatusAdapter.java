@@ -67,6 +67,31 @@ public class DeliveryStatusAdapter extends RecyclerView.Adapter<DeliveryStatusAd
         {
             holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"));
         }
+
+        /** set icons **/
+        String status = deliveryStatus.getPackageStatus();
+        int half = getItemCount()/2;
+
+        if (position == 0) {
+            if (getItemCount() == 1) {
+                holder.iv_statusIcon.setImageResource(R.drawable.pin_start);
+                return;
+            }
+            if (status.contains("Delivered") || status.contains("Received by Recipient")) {
+                holder.iv_statusIcon.setImageResource(R.drawable.pin_flag);
+            } else {
+                holder.iv_statusIcon.setImageResource(R.drawable.pin_flag_2);
+            }
+        } else if (position == getItemCount() - 1) {
+            holder.iv_statusIcon.setImageResource(R.drawable.pin_start);
+        } else if (position == half) {
+            holder.iv_statusIcon.setImageResource(R.drawable.pin_2);
+        } else if (position > half){
+            holder.iv_statusIcon.setImageResource(R.drawable.pin_3);
+        } else {
+            holder.iv_statusIcon.setImageResource(R.drawable.pin_1);
+        }
+
     }
 
     @Override

@@ -489,7 +489,7 @@ public class SearchBranchesActivity extends BaseFragmentActivity
             }
 
         }else{
-            Toast.makeText(this, R.string.location_services_error_toast, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_no_location_services, Toast.LENGTH_SHORT).show();
         }
     }
 
