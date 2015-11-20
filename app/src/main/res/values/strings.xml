@@ -197,9 +197,7 @@
     <string name="declared_weight">Declared Weight</string>
     <string name="outgoing_list_message">Already added to on-going list. Click "View On-going List" to view.</string>
     <string name="asterisk">*</string>
-
-    <!-- Branch Toast -->
-    <string name="location_services_error_toast">Location services must be turned on.</string>
+    <string name="delivered_remarks">Thank you for using YiLinker Express, hope to serve you soon again.</string>
 
 
 </resources>
