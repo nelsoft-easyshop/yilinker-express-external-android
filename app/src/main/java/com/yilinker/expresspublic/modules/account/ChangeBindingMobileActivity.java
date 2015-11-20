@@ -120,7 +120,12 @@ public class ChangeBindingMobileActivity
         {
             case RequestCode.RCR_UPDATE_MOBILE:
                 EvMeResp evMeResp = (EvMeResp) object;
-                handleUpdateMobileResp(evMeResp.data, getString(R.string.profile_message_mobile_successful));
+
+                if (evMeResp.isSuccessful)
+                    handleUpdateMobileResp(evMeResp.data, getString(R.string.profile_message_mobile_successful));
+                else
+                    Toast.makeText(this, evMeResp.message, Toast.LENGTH_LONG).show();
+
                 break;
 
             case RequestCode.RCR_VERIFY_MOBILE:

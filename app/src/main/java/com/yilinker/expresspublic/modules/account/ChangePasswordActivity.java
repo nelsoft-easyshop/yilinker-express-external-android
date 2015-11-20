@@ -89,11 +89,14 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             case RequestCode.RCR_UPDATE_PASSWORD:
                 EvBaseResp evBaseResp = (EvBaseResp) object;
                 //processUpdatePasswordResp(evMeResp);
-                if (evBaseResp.isSuccessful)
+
+                if (evBaseResp.isSuccessful) {
                     Toast.makeText(this, getString(R.string.profile_message_password_successful), Toast.LENGTH_LONG).show();
+                    finish();
+                }
                 else
                     Toast.makeText(this, evBaseResp.message, Toast.LENGTH_LONG).show();
-                finish();
+
                 break;
 
             default:
