@@ -148,7 +148,7 @@ public class LoginActivity
 
                 OAuth oAuth = (OAuth) object;
 
-                if (oAuth == null) {
+                if (oAuth.getAccessToken() != null) {
                     // Save OAuth data in preferences
                     OAuthPrefHelper.setOAuth(this, oAuth);
                     // Set login status
