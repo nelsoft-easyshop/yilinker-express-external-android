@@ -107,9 +107,8 @@ public class DeliveryApi
 
         // Build request parameters
         Map<String, String> params = new HashMap<>();
-//        params.put(ApiKey.ACCESS_TOKEN, accessToken);
-        params.put(ApiKey.SENDER_ADDRESS, String.valueOf(evBookDeliveryReq.getRecipientAddressId()));
-        params.put(ApiKey.RECIPIENT_ADDRESS, String.valueOf(evBookDeliveryReq.getSenderAddressId()));
+        params.put(ApiKey.SENDER_ADDRESS, String.valueOf(evBookDeliveryReq.getSenderAddressId()));
+        params.put(ApiKey.RECIPIENT_ADDRESS, String.valueOf(evBookDeliveryReq.getRecipientAddressId()));
         params.put(ApiKey.PACKAGE_DESCRIPTION, evBookDeliveryReq.getPackageName());
         params.put(ApiKey.IS_PAID_BY_RECIPIENT, evBookDeliveryReq.getPaidBy());
         params.put(ApiKey.DECLARED_VALUE, evBookDeliveryReq.getDeclaredValue());
