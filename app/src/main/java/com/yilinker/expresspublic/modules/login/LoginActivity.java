@@ -145,14 +145,23 @@ public class LoginActivity
         switch (requestCode)
         {
             case RequestCode.RCR_TOKEN:
+
                 OAuth oAuth = (OAuth) object;
-                // Save OAuth data in preferences
-                OAuthPrefHelper.setOAuth(this, oAuth);
-                // Set login status
-                CommonPrefHelper.setLoginStatus(this, true);
-                // Set resultCode to OK
-                resultCode = RESULT_OK;
-                finish();
+
+                if (oAuth == null) {
+                    // Save OAuth data in preferences
+                    OAuthPrefHelper.setOAuth(this, oAuth);
+                    // Set login status
+                    CommonPrefHelper.setLoginStatus(this, true);
+                    // Set resultCode to OK
+                    resultCode = RESULT_OK;
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(this, getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
             default:
