@@ -107,14 +107,14 @@ public class OAuthApi
      * @param firstName
      * @param lastName
      * @param emailAddress
-     * @param contactNumber
+//     * @param contactNumber
      * @param password
      * @param requestCode
      * @param handler
      * @return
      */
     public static Request register(String firstName, String lastName, String emailAddress,
-                                   String contactNumber, String password, String registrationToken,
+                                   String password, String registrationToken,
                                    final int requestCode, final ResponseHandler handler)
     {
         // Build endpoint
@@ -130,7 +130,7 @@ public class OAuthApi
         params.put(ApiKey.PASSWORD, password);
         params.put(ApiKey.FIRST_NAME, firstName);
         params.put(ApiKey.LAST_NAME, lastName);
-        params.put(ApiKey.CONTACT_NUMBER, contactNumber);
+//        params.put(ApiKey.CONTACT_NUMBER, contactNumber);
 
         // Build request
         GsonRequest<EvBaseResp> gsonRequest = new GsonRequest<>(Request.Method.POST, registrationToken, endpoint, params, EvBaseResp.class,
