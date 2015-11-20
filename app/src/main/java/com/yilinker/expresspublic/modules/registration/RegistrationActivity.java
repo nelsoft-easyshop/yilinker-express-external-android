@@ -175,10 +175,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         String firstName = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
         String lastName = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
         String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
-        String contactNumber = ((EditText) findViewById(R.id.et_contact)).getText().toString().trim();
+//        String contactNumber = ((EditText) findViewById(R.id.et_contact)).getText().toString().trim();
         String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
 
-        String errorMessage = validateUserInput(firstName, lastName, emailAddress, contactNumber, password);
+        String errorMessage = validateUserInput(firstName, lastName, emailAddress, password);
 
         if(errorMessage != null)
         {
@@ -190,7 +190,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
             // Initially hide keyboard
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            volleyRegister(firstName, lastName, emailAddress, contactNumber, password);
+            volleyRegister(firstName, lastName, emailAddress, password);
         }
     }
 
@@ -207,7 +207,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-    private void volleyRegister(String firstName, String lastName, String emailAddress, String contactNumber, String password)
+    private void volleyRegister(String firstName, String lastName, String emailAddress, String password)
     {
         currentEmailAddress = emailAddress;
         currentPassword = password;
@@ -219,7 +219,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         progressDialog.show();
 
         // Make request
-        Request request = OAuthApi.register(firstName, lastName, emailAddress, contactNumber, password,
+        Request request = OAuthApi.register(firstName, lastName, emailAddress, password,
                 registrationToken, RequestCode.RCR_REGISTER, this);
         BaseApplication.getInstance().getRequestQueue().add(request);
     }
@@ -249,7 +249,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-    private String validateUserInput(String firstName, String lastName, String emailAddress, String contactNumber, String password)
+    private String validateUserInput(String firstName, String lastName, String emailAddress, String password)
     {
         // Check firstname
         String errorMessage = InputValidator.isFirstnameValid(firstName);
@@ -275,13 +275,13 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             return errorMessage;
         }
 
-        // Check contact
-        errorMessage = InputValidator.isContactNumberValid(contactNumber);
-
-        if(errorMessage != null)
-        {
-            return errorMessage;
-        }
+//        // Check contact
+//        errorMessage = InputValidator.isContactNumberValid(contactNumber);
+//
+//        if(errorMessage != null)
+//        {
+//            return errorMessage;
+//        }
 
         // Check password
         errorMessage = InputValidator.isPasswordValid(password);

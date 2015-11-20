@@ -99,7 +99,8 @@
         android:layout_marginRight="23dp"
         android:layout_marginLeft="23dp"
         android:layout_marginBottom="18dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
         <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
