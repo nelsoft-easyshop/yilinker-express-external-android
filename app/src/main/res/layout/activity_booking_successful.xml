@@ -132,13 +132,13 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
 
-            <!-- Outgoing list message -->
+            <!-- On-going list message -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
                 android:textSize="14sp"
-                android:id="@+id/tv_outGoingListMessage"
+                android:id="@+id/tv_onGoingListMessage"
                 android:textColor="@color/warm_grey"
                 android:gravity="center"
                 app:fontName="Roboto-Regular.ttf"/>

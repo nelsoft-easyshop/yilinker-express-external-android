@@ -302,7 +302,7 @@ public class InputValidator
 
         if (packageName.trim().isEmpty())
         {
-            errorMessage = "Package Details should not be empty";
+            errorMessage = "Package Description should not be empty";
         }
 
         return errorMessage;
