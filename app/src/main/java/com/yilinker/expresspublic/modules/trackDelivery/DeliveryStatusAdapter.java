@@ -74,7 +74,7 @@ public class DeliveryStatusAdapter extends RecyclerView.Adapter<DeliveryStatusAd
 
         if (position == 0) {
             if (getItemCount() == 1) {
-                holder.iv_statusIcon.setImageResource(R.drawable.pin_start);
+                holder.iv_statusIcon.setImageResource(R.drawable.pin_start_no_tail);
                 return;
             }
             if (status.contains("Delivered") || status.contains("Received by Recipient")) {
