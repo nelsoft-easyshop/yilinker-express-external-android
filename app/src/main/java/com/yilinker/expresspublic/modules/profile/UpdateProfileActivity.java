@@ -162,7 +162,12 @@ public class UpdateProfileActivity
             case RequestCode.RCR_UPDATE_PROFILE:
                 EvMeResp evMeResp = (EvMeResp) object;
                 processUpdateProfileResp(evMeResp);
-                Toast.makeText(this, getString(R.string.profile_message_user_details_successful), Toast.LENGTH_LONG).show();
+
+                if (evMeResp.isSuccessful)
+                    Toast.makeText(this, getString(R.string.profile_message_user_details_successful), Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(this, evMeResp.message, Toast.LENGTH_LONG).show();
+
                 finish();
                 break;
 

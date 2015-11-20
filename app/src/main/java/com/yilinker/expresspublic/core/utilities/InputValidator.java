@@ -151,7 +151,7 @@ public class InputValidator
     {
         String errorMessage = null;
 
-        if (contactNumber.length() < 8)
+        if (contactNumber.length() < 11)
         {
             errorMessage = "Contact number should be in a form of 11 digits.";
         }
