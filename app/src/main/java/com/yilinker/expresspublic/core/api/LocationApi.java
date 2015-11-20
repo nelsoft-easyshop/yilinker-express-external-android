@@ -747,16 +747,16 @@ public class LocationApi
         boolean isRecipient = false;
 
         if(addressGroup == null) {
-            addressGroup = "";
             isRecipient = true;
+            params.put(ApiKey.ADDRESS_TAG, addressTag);
         }
 
 
-        if(addressTag == null)
-            addressTag = "";
+        if(addressTag == null) {
+            params.put(ApiKey.ADDRESS_GROUP, addressGroup);
+        }
 
-        params.put(ApiKey.ADDRESS_TAG, addressTag);
-        params.put(ApiKey.ADDRESS_GROUP, addressGroup);
+
         params.put(ApiKey.PROVINCE_ID, String.valueOf(provinceId));
         params.put(ApiKey.CITY_ID, String.valueOf(cityId));
         params.put(ApiKey.BARANGAY_ID, String.valueOf(barangayId));

@@ -113,6 +113,8 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
 
         addressLocationHolder.tv_address.setText(address.getAddress());
 
+        addressLocationHolder.tv_name.setText(address.getContactPerson());
+
 //        if(address.getIsPrimary() == 1)
 //        {
 //            addressLocationHolder.iv_primary.setImageResource(R.drawable.ic_check);
@@ -149,10 +151,12 @@ public class MyAddressLocationsAdapter extends BaseExpandableListAdapter
     {
         public TextView tv_address;
         public ImageView iv_primary;
+        public TextView tv_name;
 
         public AddressLocationHolder(View view) {
             this.tv_address = (TextView) view.findViewById(R.id.tv_address);
-            this.iv_primary = (ImageView) view.findViewById(R.id.iv_primary);
+//            this.iv_primary = (ImageView) view.findViewById(R.id.iv_primary);
+            this.tv_name = (TextView) view.findViewById(R.id.tv_name);
         }
     }
 }
