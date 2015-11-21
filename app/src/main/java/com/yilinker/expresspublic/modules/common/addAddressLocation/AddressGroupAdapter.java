@@ -1,0 +1,149 @@
+package com.yilinker.expresspublic.modules.common.addAddressLocation;
+
+import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.yilinker.expresspublic.R;
+import com.yilinker.expresspublic.core.models.AddressGroup;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+/**
+ * Created by Jeico.
+ */
+public class AddressGroupAdapter extends RecyclerView.Adapter<AddressGroupAdapter.AddressGroupViewHolder>{
+
+    private static final Logger logger = Logger.getLogger(AddressGroupAdapter.class.getSimpleName());
+
+    public static final int NO_SELECTION = -1;
+
+    private Context context;
+
+    private LayoutInflater layoutInflater;
+
+    private List<AddressGroupModel> addressGroupModelList;
+
+    private int selectedGroup = NO_SELECTION;
+
+
+    public AddressGroupAdapter(Context context, List<AddressGroupModel> addressGroupModelList) {
+        this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
+        this.addressGroupModelList = addressGroupModelList;
+
+        logger.severe("count: " + addressGroupModelList.size());
+    }
+
+    @Override
+    public AddressGroupViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = layoutInflater.inflate(R.layout.holder_address_group, parent, false);
+        return new AddressGroupViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(AddressGroupViewHolder holder, int position) {
+        AddressGroupModel addressGroupModel = addressGroupModelList.get(position);
+
+        holder.tv_addressGroup.setText(addressGroupModel.getName());
+
+        if(addressGroupModel.isSelected())
+        {
+            holder.tv_addressGroup.setBackgroundResource(R.drawable.bg_rounded_orange_red);
+            holder.tv_addressGroup.setTextColor(Color.parseColor("#ffffff"));
+        }
+        else
+        {
+            holder.tv_addressGroup.setBackgroundResource(R.drawable.bg_rounded_white_stroked_marigold);
+            holder.tv_addressGroup.setTextColor(Color.parseColor("#ffc107"));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return addressGroupModelList.size();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public List<Long> getSelectedIds()
+    {
+        List<Long> selectedIds = new ArrayList<>();
+
+        for (AddressGroupModel addressGroupModel : addressGroupModelList )
+        {
+            if(addressGroupModel.isSelected())
+            {
+                selectedIds.add(addressGroupModel.getId());
+            }
+        }
+
+        return selectedIds;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public Long getSelectedId()
+    {
+        long id = NO_SELECTION;
+
+        if(selectedGroup != NO_SELECTION)
+            id = addressGroupModelList.get(selectedGroup).getId();
+
+        return id;
+    }
+
+    class AddressGroupViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public TextView tv_addressGroup;
+
+        public AddressGroupViewHolder(View itemView) {
+            super(itemView);
+
+            tv_addressGroup = (TextView) itemView.findViewById(R.id.tv_addressGroup);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+//            boolean isSelected = addressGroupModelList.get(getAdapterPosition()).isSelected();
+//            addressGroupModelList.get(getAdapterPosition()).setIsSelected(!isSelected);
+//
+//            notifyDataSetChanged();
+
+            int currentPosition = getAdapterPosition();
+
+            boolean isSelected = !addressGroupModelList.get(currentPosition).isSelected();
+
+            addressGroupModelList.get(currentPosition).setIsSelected(isSelected);
+
+            if(isSelected){
+
+                //Get previously selected group then set isSelected to false
+                if(selectedGroup != NO_SELECTION && currentPosition != selectedGroup){
+
+                    addressGroupModelList.get(selectedGroup).setIsSelected(false);
+                }
+
+                selectedGroup = currentPosition;
+            }
+            else{
+
+                selectedGroup = NO_SELECTION;
+            }
+
+            notifyDataSetChanged();
+
+        }
+    }
+}

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <!-- Tracking Code -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_trackingNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="26sp"
+            android:textColor="@color/orange_yellow"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <!-- Origin to Destination -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_originToDestination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Light.ttf"/>
+
+        <!-- Shipping Type -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_shippingType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Light.ttf"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+
+        <!-- Status Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Status -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:id="@+id/tv_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="24sp"
+                    android:textColor="@color/sky_blue"
+                    app:fontName="Roboto-Regular.ttf"/>
+
+                <!-- Status Remarks -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:id="@+id/tv_statusRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delivered_remarks"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!-- Delivered icon -->
+            <ImageView
+                android:id="@+id/iv_checkDelivered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check_delivered"
+                android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Delivery Messages -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_deliveryStatusList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+</LinearLayout>

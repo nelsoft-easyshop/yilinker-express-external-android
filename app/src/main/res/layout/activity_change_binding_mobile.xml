@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/country_code"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Country Code -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_countryCode"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="48dp"
+                    android:inputType="textCapWords"
+                    android:text="@string/philippines_country_code"
+                    android:textSize="18sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    android:enabled="false"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/old_mobile"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- Old Mobile -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_oldMobile"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="48dp"
+                    android:inputType="number"
+                    android:textSize="18sp"
+                    android:textColor="@color/warm_grey"
+                    android:background="@null"
+                    android:enabled="false"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/new_mobile"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!-- New Mobile -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                    android:id="@+id/et_newMobile"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="48dp"
+                    android:inputType="number"
+                    android:textSize="18sp"
+                    android:textColor="@color/warm_grey"
+                    android:hint="@string/hint_enter_your_new_mobile_number"
+                    android:textColorHint="@color/warm_grey"
+                    android:background="@null"
+                    android:maxLength="11"
+                    app:fontName="Roboto-Medium.ttf"/>
+            </LinearLayout>
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider" />
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <!-- Confirm entries -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                    android:id="@+id/btn_confirmEntries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="@string/confirm_entries"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:background="@drawable/bg_rounded_orange_yellow"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:fontName="Roboto-Regular.ttf" />
+
+                <!-- Verification Code -->
+                <LinearLayout
+                    android:id="@+id/ll_enterVerificationCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone" >
+
+                    <!-- Enter Verification Code Label -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:text="@string/enter_verification_code"
+                        android:textSize="16sp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/greyish_brown"
+                        android:gravity="center"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <!-- Enter Verification Code Message -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:text="@string/enter_verification_code_message"
+                        android:textSize="16sp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/warm_grey"
+                        android:gravity="center"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- Verification Code -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                        android:id="@+id/et_verificationCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="22sp"
+                        android:textColor="@color/warm_grey"
+                        android:gravity="center"
+                        app:fontName="Roboto-Regular.ttf"/>
+
+                    <!-- Resend Verification Code -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+                        android:id="@+id/btn_resendVerificationCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/resend_verification_code"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
+                        android:textAllCaps="true"
+                        android:background="@drawable/bg_rounded_orange_yellow"
+                        android:gravity="center"
+                        app:fontName="Roboto-Regular.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Submit and Update -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_submitAndUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/submit_and_update"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+        <!-- android:enabled="false" -->
+
+</LinearLayout>

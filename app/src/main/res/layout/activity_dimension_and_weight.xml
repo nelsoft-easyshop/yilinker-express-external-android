@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <!-- Message -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="@string/dimension_and_weight_message"
+            android:textSize="18sp"
+            android:textColor="@color/warm_grey"
+            android:gravity="center"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <!-- [START] LENGTH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/length"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Input -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                        android:id="@+id/et_length"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:textColor="@color/warm_grey"
+                        android:background="@null"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- cm -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/cm"
+                        android:textSize="14sp"
+                        android:textColor="@color/warm_grey"
+                        app:fontName="Roboto-Medium.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- [END] LENGTH -->
+
+        <!-- [START] HEIGHT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/height"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Input -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                        android:id="@+id/et_height"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:textColor="@color/warm_grey"
+                        android:background="@null"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- cm -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/cm"
+                        android:textSize="14sp"
+                        android:textColor="@color/warm_grey"
+                        app:fontName="Roboto-Medium.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- [END] HEIGHT -->
+
+        <!-- [START] WIDTH -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/width"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Input -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                        android:id="@+id/et_width"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:textColor="@color/warm_grey"
+                        android:background="@null"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- cm -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/cm"
+                        android:textSize="14sp"
+                        android:textColor="@color/warm_grey"
+                        app:fontName="Roboto-Medium.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- [END] WIDTH -->
+
+        <!-- [START] WEIGHT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Label -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textSize="14sp"
+                android:textColor="@color/greyish_brown"
+                app:fontName="Roboto-Medium.ttf"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_white"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Input -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                        android:id="@+id/et_weight"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:textColor="@color/warm_grey"
+                        android:background="@null"
+                        app:fontName="Roboto-Light.ttf"/>
+
+                    <!-- kg -->
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="@string/kg"
+                        android:textSize="14sp"
+                        android:textColor="@color/warm_grey"
+                        app:fontName="Roboto-Medium.ttf"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- [END] WEIGHT -->
+    </LinearLayout>
+
+    <!-- Consume space -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Submit -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/submit"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+</LinearLayout>

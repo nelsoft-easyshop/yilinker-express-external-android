@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/divider">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_rounded_white">
+
+            <!-- Search Field -->
+            <!--changed inputType from number to text-->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
+                android:id="@+id/et_searchField"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:textSize="20sp"
+                android:textColor="@color/greyish_brown"
+                android:inputType="text"
+                android:hint="@string/enter_tracking_code"
+                android:singleLine="true"
+                android:background="@null"
+                app:fontName="Roboto-Regular.ttf"/>
+
+            <!-- Camera Icon -->
+            <ImageView
+                android:id="@+id/iv_scanTrackingCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_camera" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Search Result Label -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="@string/search_results"
+        android:textSize="14sp"
+        android:textColor="@color/greyish_brown"
+        android:background="@drawable/bg_rounded_divider"
+        app:fontName="Roboto-Regular.ttf"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <!-- Delivery Package List -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_deliveryPackageList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</LinearLayout>

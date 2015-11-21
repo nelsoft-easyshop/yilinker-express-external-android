@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
+        <!-- Tracking Number -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_trackingNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/greyish_brown"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <!-- Rider Details -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_riderDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/warm_grey"
+            app:fontName="Roboto-Regular.ttf"
+            android:visibility="gone"/><!--changed from visible to gone-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <!-- Delivery Date -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_deliveryDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="dsadsadsad"
+                android:textSize="14sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Light.ttf"/>
+
+            <!-- Package Container -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_packageContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="dsadsadsad"
+                android:textSize="14sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Light.ttf"/>
+
+            <!-- ETA -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:id="@+id/tv_eta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/warm_grey"
+                app:fontName="Roboto-Light.ttf"
+                android:visibility="gone"/><!--changed from visible to gone-->
+
+        </LinearLayout>
+
+        <!-- Status -->
+        <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/bg_rounded_orange_yellow"
+            app:fontName="Roboto-Regular.ttf"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"/>
+    </LinearLayout>
+</LinearLayout>

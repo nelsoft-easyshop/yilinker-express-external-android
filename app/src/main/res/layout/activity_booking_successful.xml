@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Successful Booking -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/success_booking"
+                    android:textSize="24sp"
+                    android:textColor="@color/sky_blue"
+                    app:fontName="Roboto-Regular.ttf"/>
+
+                <!-- Message -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:id="@+id/tv_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!--Checked Icon -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/ic_check_booking"/>
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/divider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--Booking Number Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_booking_number"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"/>
+
+                <!--Booking Number -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:id="@+id/tv_bookingNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <!--Pickup Schedule Label -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_pickup_schedule"
+                    android:textSize="14sp"
+                    android:textColor="@color/greyish_brown"
+                    android:textAllCaps="true"
+                    app:fontName="Roboto-Medium.ttf"
+                    android:visibility="gone"/>
+
+                <!--Pickup Schedule -->
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:id="@+id/tv_pickUpSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textColor="@color/warm_grey"
+                    app:fontName="Roboto-Regular.ttf"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <!-- QR Image -->
+            <ImageView
+                android:id="@+id/iv_qrImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- On-going list message -->
+            <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:textSize="14sp"
+                android:id="@+id/tv_onGoingListMessage"
+                android:textColor="@color/warm_grey"
+                android:gravity="center"
+                app:fontName="Roboto-Regular.ttf"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- View Ongoing List -->
+    <com.yilinker.expresspublic.modules.common.customviews.CustomButton
+        android:id="@+id/btn_viewOngoingList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp"
+        android:text="@string/view_ongoing_list"
+        android:textSize="22sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/bg_rect_marigold"
+        android:gravity="center"
+        app:fontName="Roboto-Regular.ttf"/>
+</LinearLayout>

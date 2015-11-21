@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ToolBar color -->
+    <color name="colorPrimary">#ffa000</color>
+    <!-- StatusBar color -->
+    <color name="colorPrimaryDark">#512DA8</color>
+    <!-- Accent color -->
+    <color name="colorAccent">#ffc107</color>
+
+    <!-- Common -->
+    <color name="divider">#dedede</color>
+    <color name="greyish_brown">#4a4a4a</color>
+    <color name="marigold">#ffc107</color>
+    <color name="orange_yellow">#ffa000</color>
+    <color name="warm_grey">#9b9b9b</color>
+    <color name="orange_red">#ff5722</color>
+    <color name="sky_blue">#50e3c2</color>
+
+</resources>

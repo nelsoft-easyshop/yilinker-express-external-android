@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <com.yilinker.expresspublic.modules.common.customviews.HomeRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Background Image -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_home"
+            android:scaleType="centerCrop"/>
+
+        <!-- ViewPager -->
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/vp_slider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/abc_action_bar_default_height_material"/>
+
+        <!-- ViewPager Indicator -->
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/cpi_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/abc_action_bar_default_height_material"
+            android:padding="8dp"
+            app:fillColor="@color/orange_red"
+            app:pageColor="@android:color/white"
+            app:strokeColor="@android:color/white"
+            app:strokeWidth="0dp"
+            app:radius="4dp"/>
+
+    </com.yilinker.expresspublic.modules.common.customviews.HomeRelativeLayout>
+
+    <!-- Menu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Track A Delivery -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_trackADelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_track_a_delivery"
+                    app:backgroundTint="@color/orange_yellow"
+                    app:fabSize="normal"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/track_a_delivery"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!-- Consume vertical space -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- Book Delivery -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_bookDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_book_delivery"
+                    app:backgroundTint="@color/orange_yellow"
+                    app:fabSize="normal"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/book_delivery"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!-- Consume vertical space -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Find Branch -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_findBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_find_branch"
+                    app:backgroundTint="@color/marigold"
+                    app:fabSize="normal"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/find_branch"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!-- Consume vertical space -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- My Shipment -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fab_myShipment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_my_shipment"
+                    app:backgroundTint="@color/marigold"
+                    app:fabSize="normal"/>
+                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_shipment"
+                    android:textSize="18sp"
+                    android:textColor="@color/greyish_brown"
+                    app:fontName="Roboto-Regular.ttf"/>
+            </LinearLayout>
+
+            <!-- Consume vertical space -->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <!-- Consume horizontal space -->
+        <Space
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

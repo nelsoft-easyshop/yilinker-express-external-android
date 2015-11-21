@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+        <!-- Set color of the ToolBar -->
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <!-- Set color of the StatusBar -->
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- Set color of the Accent -->
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <!-- Set status bar to translucent -->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+</resources>
