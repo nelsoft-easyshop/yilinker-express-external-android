@@ -21,6 +21,7 @@ import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.helpers.UserPrefHelper;
 import com.yilinker.expresspublic.modules.home.HomeActivity;
 import com.yilinker.expresspublic.modules.login.LoginActivity;
+import com.yilinker.expresspublic.modules.profile.MyProfileActivity;
 
 import java.util.logging.Logger;
 
@@ -87,18 +88,13 @@ public abstract class BaseFragmentActivity extends FragmentActivity
          * Toolbar avatar
          */
         ImageView toolbar_avatar = (ImageView) toolbar.findViewById(R.id.toolbar_avatar);
-        toolbar_avatar.setOnClickListener(new View.OnClickListener()
-        {
+        toolbar_avatar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if(CommonPrefHelper.isUserLoggedIn(BaseFragmentActivity.this))
-                {
+            public void onClick(View v) {
+                if (CommonPrefHelper.isUserLoggedIn(BaseFragmentActivity.this)) {
                     // Open drawer when user is logged in
                     drawerLayout.openDrawer(GravityCompat.END);
-                }
-                else
-                {
+                } else {
                     // Redirect to login page if user is not logged in
                     Intent intent = new Intent(BaseFragmentActivity.this, LoginActivity.class);
                     startActivityForResult(intent, RequestCode.RCA_LOGIN);
@@ -134,19 +130,34 @@ public abstract class BaseFragmentActivity extends FragmentActivity
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
+//                    case R.id.home:
+//                        Toast.makeText(getApplicationContext(), "Inbox Selected", Toast.LENGTH_SHORT).show();
+//                        return true;
+//
+//                    case R.id.profile:
+//                        Toast.makeText(getApplicationContext(), "Stared Selected", Toast.LENGTH_SHORT).show();
+//                        return true;
+//
+//                    default:
+//                        return true;
+
                     case R.id.home:
-                        Toast.makeText(getApplicationContext(), "Inbox Selected", Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(BaseFragmentActivity.this, HomeActivity.class);
+                        homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeIntent);
                         return true;
 
                     case R.id.profile:
-                        Toast.makeText(getApplicationContext(), "Stared Selected", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(BaseFragmentActivity.this, MyProfileActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         return true;
 
                     default:
                         return true;
                 }
-            }
-        });
+        }
+    });
 
         /**
          * Logout

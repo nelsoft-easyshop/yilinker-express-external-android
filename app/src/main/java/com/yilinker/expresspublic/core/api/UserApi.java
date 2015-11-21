@@ -76,7 +76,8 @@ public class UserApi
         params.put(ApiKey.FIRST_NAME, firstname);
         params.put(ApiKey.LAST_NAME, lastname);
         params.put(ApiKey.BIRTHDATE, birthdate);
-        params.put(ApiKey.GENDER, gender.equals("Male") ? "1" : "2");
+//        params.put(ApiKey.GENDER, gender.equals("Male") ? "1" : "2");
+        params.put(ApiKey.GENDER, gender.equals("Male") ? "2" : "1");
         params.put(ApiKey.EMAIL_ADDRESS, email);
 
         // Build request
