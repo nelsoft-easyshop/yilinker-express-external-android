@@ -138,7 +138,10 @@ public class UpdateProfileActivity
             case R.id.et_gender:
                 if(hasFocus)
                 {
-                    displayGenderDialog(R.id.et_gender, userModel.getGender().equals("1") ||
+//                    displayGenderDialog(R.id.et_gender, userModel.getGender().equals("1") ||
+//                            userModel.getGender().equals(genderList[0]) ?
+//                            genderList[0].toString() : genderList[1].toString());
+                    displayGenderDialog(R.id.et_gender, userModel.getGender().equals("2") ||
                             userModel.getGender().equals(genderList[0]) ?
                             genderList[0].toString() : genderList[1].toString());
                 }
@@ -327,9 +330,12 @@ public class UpdateProfileActivity
         ((EditText) findViewById(R.id.et_firstname)).setText(firstname);
         ((EditText) findViewById(R.id.et_lastname)).setText(lastname);
         ((EditText) findViewById(R.id.et_birthdate)).setText(birthdate);
+//        ((EditText) findViewById(R.id.et_gender)).setText(gender.equals("2") ||
+//                gender.equals(genderList[1]) ?
+//                genderList[1] : genderList[0]);
         ((EditText) findViewById(R.id.et_gender)).setText(gender.equals("2") ||
-                gender.equals(genderList[1]) ?
-                genderList[1] : genderList[0]);
+                gender.equals(genderList[0]) ?
+                genderList[0] : genderList[1]);
         ((EditText) findViewById(R.id.et_email)).setText(email);
     }
 
@@ -371,9 +377,12 @@ public class UpdateProfileActivity
             userModel.setBirthdate(c.getTime());
         else
             gender = selectedGender;
+//        userModel.setGender(gender.equals("2") ||
+//                gender.equals(genderList[1]) ?
+//                genderList[1].toString() : genderList[0].toString());
         userModel.setGender(gender.equals("2") ||
-                gender.equals(genderList[1]) ?
-                genderList[1].toString() : genderList[0].toString());
+                gender.equals(genderList[0]) ?
+                genderList[0].toString() : genderList[1].toString());
         userModel.setEmail(email);
     }
 
