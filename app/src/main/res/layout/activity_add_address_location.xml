@@ -29,22 +29,39 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/full_name"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
 
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/full_name"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/full_name"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red"/>
+                </LinearLayout>
 
 
                 <!-- Full name -->
@@ -78,21 +95,41 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/contact_no"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/contact_no"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/contact_no"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red" />
+
+                </LinearLayout>
+
 
                 <!-- Contact Number -->
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
@@ -309,22 +346,42 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
 
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/street_name"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/street_name"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/street_name"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red"/>
+
+                </LinearLayout>
+
 
 
                 <!-- Street Name -->
@@ -400,22 +457,42 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
 
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/provinceWithCity"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
+
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/provinceWithCity"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/provinceWithCity"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red"/>
+
+                </LinearLayout>
 
                 <!-- ProvinceWithCity
                 <com.yilinker.expresspublic.modules.common.customviews.CustomEditText
@@ -455,22 +532,41 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
 
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/city"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/city"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/city"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red"/>
+
+                </LinearLayout>
 
 
                 <!-- City
@@ -510,22 +606,42 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/asterisk"
-                    android:textColor="@color/orange_red" />
 
                 <!-- Label-->
-                <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                <!--<com.yilinker.expresspublic.modules.common.customviews.CustomTextView-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_weight="0.9"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/barangay"-->
+                    <!--android:textSize="14sp"-->
+                    <!--android:textColor="@color/greyish_brown"-->
+                    <!--android:textAllCaps="true"-->
+                    <!--app:fontName="Roboto-Medium.ttf"/>-->
+
+
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="0.9"
                     android:layout_height="wrap_content"
-                    android:text="@string/barangay"
-                    android:textSize="14sp"
-                    android:textColor="@color/greyish_brown"
-                    android:textAllCaps="true"
-                    app:fontName="Roboto-Medium.ttf"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical">
+
+                    <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/barangay"
+                        android:textSize="14sp"
+                        android:textColor="@color/greyish_brown"
+                        android:textAllCaps="true"
+                        app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red"/>
+
+                </LinearLayout>
 
 
                 <!-- Barangay
