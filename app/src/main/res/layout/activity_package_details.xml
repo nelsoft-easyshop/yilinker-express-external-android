@@ -287,14 +287,14 @@
                             android:layout_gravity="center"
                             android:text="SENDER"
                             android:textColor="@color/white"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginStart="14dp"
                             android:textSize="12sp"/>
 
                         <ImageView
                             android:id="@+id/switchPaidBySender"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_marginStart="18dp"
+                            android:layout_marginStart="12dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp"
                             android:layout_marginEnd="5dp"
