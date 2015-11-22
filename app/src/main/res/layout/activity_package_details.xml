@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    android:animateLayoutChanges="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,13 +21,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asterisk"
-                android:textColor="@color/orange_red"
-                android:layout_marginTop="18dp" />
-
             <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,6 +32,14 @@
                 android:textAllCaps="true"
                 android:gravity="left"
                 app:fontName="Roboto-Medium.ttf"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asterisk"
+                android:textColor="@color/orange_red"
+                android:layout_marginTop="18dp" />
+
 
 
         </LinearLayout>
@@ -58,14 +60,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/asterisk"
-                android:textColor="@color/orange_red"
-                android:layout_marginTop="18dp" />
-
-
             <!-- Declared Value Label -->
             <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
                 android:layout_width="match_parent"
@@ -78,6 +72,14 @@
                 android:textAllCaps="true"
                 android:gravity="left"
                 app:fontName="Roboto-Medium.ttf"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/asterisk"
+                android:textColor="@color/orange_red"
+                android:layout_marginTop="18dp" />
+
 
         </LinearLayout>
 
@@ -110,12 +112,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/asterisk"
-                        android:textColor="@color/orange_red" />
-
                     <!-- Quantity Label -->
                     <com.yilinker.expresspublic.modules.common.customviews.CustomTextView
                         android:layout_width="match_parent"
@@ -127,6 +123,12 @@
                         android:textAllCaps="true"
                         android:gravity="left"
                         app:fontName="Roboto-Medium.ttf"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/asterisk"
+                        android:textColor="@color/orange_red" />
 
 
                 </LinearLayout>
@@ -249,12 +251,105 @@
                     android:gravity="left"
                     app:fontName="Roboto-Medium.ttf"/>
 
-                <android.support.v7.widget.SwitchCompat
-                    android:id="@+id/sc_paidBySender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:background="@null"/>
+                <!-- Custom Switch-->
+                <!--<android.support.v7.widget.SwitchCompat-->
+                    <!--android:id="@+id/sc_paidBySender"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:checked="true"-->
+                    <!--android:background="@null"/>-->
+
+                <RelativeLayout
+                    android:id="@+id/rlSwitchPaidBy"
+                    android:layout_width="105dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_semi_rounded_switch_sender">
+
+                    <LinearLayout
+                        android:id="@+id/llPaidBySender"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <!--<ImageView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:layout_margin="5dp"-->
+                            <!--android:src="@drawable/ic_switch_check"/>-->
+
+                        <TextView
+                            android:id="@+id/tv_paidBySender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="SENDER"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="8dp"
+                            android:textSize="12sp"/>
+
+                        <ImageView
+                            android:id="@+id/switchPaidBySender"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/bg_switch_check"/>
+
+                        <TextView
+                            android:id="@+id/tv_paidByRecipient"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="RECIPIENT"
+                            android:textSize="12sp"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llPaidByRecipient"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/switchPaidByRecipient"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/bg_switch_check"/>
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/tv_paidByRecipient"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:text="RECIPIENT"-->
+                            <!--android:textSize="12sp"/>-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/switchPaidBySender"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:layout_marginTop="5dp"-->
+                            <!--android:layout_marginBottom="5dp"-->
+                            <!--android:layout_marginStart="5dp"-->
+                            <!--android:layout_marginEnd="5dp"-->
+                            <!--android:elevation="5dp"/>-->
+
+                    </LinearLayout>
+
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
