@@ -71,7 +71,7 @@ public class HomeActivity
         //temp
         sliderContent();
 
-        checkForUpdates();
+//        checkForUpdates();
     }
 
     @Override
