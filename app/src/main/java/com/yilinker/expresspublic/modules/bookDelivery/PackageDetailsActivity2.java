@@ -8,13 +8,19 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.SwitchCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +53,7 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
     private File photo;
     private String photoFilepath;
     private ArrayList<String> photoFilePathList;
+    private boolean isPaidBy = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +87,9 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
         findViewById(R.id.btn_submit).setOnClickListener(this);
         //Set onclick listener for view image
         findViewById(R.id.tv_imageCount).setOnClickListener(this);
+        //Set onclick listener for custom switch
+        findViewById(R.id.rlSwitchPaidBy).setOnClickListener(this);
+
     }
 
     private void handleIntentData() {
@@ -94,7 +104,9 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
 
             if(bundle.getString(BundleKey.PAID_BY).equals("false"))
             {
-                ((SwitchCompat) findViewById(R.id.sc_paidBySender)).setChecked(false);
+                isPaidBy = true;
+                handlePaidBy();
+//                ((SwitchCompat) findViewById(R.id.sc_paidBySender)).setChecked(false);
             }
 
             photoFilePathList = bundle.getStringArrayList(BundleKey.PHOTO_FILEPATH_LIST);
@@ -103,6 +115,7 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
         }
 
     }
+
 
     @Override
     protected Intent resultIntent() {
@@ -126,8 +139,8 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
             boolean isFragile = ((SwitchCompat) findViewById(R.id.sc_fragile)).isChecked();
             String paidBy;
 
-            boolean isPaidBySender = ((SwitchCompat) findViewById(R.id.sc_paidBySender)).isChecked();
-            if(isPaidBySender)
+//            boolean isPaidBySender = ((SwitchCompat) findViewById(R.id.sc_paidBySender)).isChecked();
+            if(isPaidBy)
             {
                 paidBy = "sender";
             }
@@ -292,8 +305,55 @@ public class PackageDetailsActivity2 extends BaseActivity implements View.OnClic
                 handleImageCount();
                 break;
 
+            case R.id.rlSwitchPaidBy:
+                handlePaidBy();
+                break;
+
             default:
                 break;
+        }
+    }
+
+    private void handlePaidBy() {
+
+        Animation slide;
+
+        int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, getResources().getDisplayMetrics());
+        int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
+        int marginStart = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics());
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.width = size;
+        params.height = size;
+
+        if(isPaidBy)
+        {
+            slide = AnimationUtils.loadAnimation(this, R.anim.anim_slide_in_right);
+            params.setMargins(margin, margin, margin, margin);
+
+            findViewById(R.id.rlSwitchPaidBy).setBackground(ContextCompat.getDrawable(this, R.drawable.bg_semi_rounded_switch_recipient));
+            findViewById(R.id.tv_paidBySender).setVisibility(View.GONE);
+            findViewById(R.id.switchPaidBySender).setLayoutParams(params);
+            findViewById(R.id.switchPaidBySender).startAnimation(slide);
+            findViewById(R.id.tv_paidByRecipient).setVisibility(View.VISIBLE);
+
+            isPaidBy = false;
+        }
+        else
+        {
+            slide = AnimationUtils.loadAnimation(this, R.anim.anim_slide_in_left);
+            params.setMargins(marginStart, margin, margin, margin);
+
+            findViewById(R.id.rlSwitchPaidBy).setBackground(ContextCompat.getDrawable(this, R.drawable.bg_semi_rounded_switch_sender));
+            findViewById(R.id.tv_paidByRecipient).setVisibility(View.GONE);
+            findViewById(R.id.switchPaidBySender).setLayoutParams(params);
+            findViewById(R.id.switchPaidBySender).startAnimation(slide);
+            findViewById(R.id.tv_paidBySender).setVisibility(View.VISIBLE);
+
+            isPaidBy = true;
         }
     }
 

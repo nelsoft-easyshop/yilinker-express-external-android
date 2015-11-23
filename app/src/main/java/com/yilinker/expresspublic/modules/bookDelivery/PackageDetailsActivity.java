@@ -87,7 +87,8 @@ public class PackageDetailsActivity extends BaseActivity implements View.OnClick
             boolean isFragile = ((SwitchCompat) findViewById(R.id.sc_fragile)).isChecked();
             String paidBy;
 
-            boolean isPaidBySender = ((SwitchCompat) findViewById(R.id.sc_paidBySender)).isChecked();
+//            boolean isPaidBySender = ((SwitchCompat) findViewById(R.id.sc_paidBySender)).isChecked();
+            boolean isPaidBySender = true;
             if(isPaidBySender)
             {
                 paidBy = "sender";
