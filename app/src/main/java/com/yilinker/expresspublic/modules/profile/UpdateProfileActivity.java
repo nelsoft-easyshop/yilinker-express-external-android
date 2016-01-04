@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 /**
  * Created by Jeico.
@@ -40,6 +41,7 @@ public class UpdateProfileActivity
     private static final Logger logger = Logger.getLogger(UpdateProfileActivity.class.getSimpleName());
 
     private CharSequence[] genderList = {"Male", "Female"};
+    private Pattern emailPattern;
 
     private ProgressDialog progressDialog;
 
@@ -51,6 +53,8 @@ public class UpdateProfileActivity
         super.onCreate(savedInstanceState);
 
         progressDialog = new ProgressDialog(this);
+        emailPattern = Pattern.compile("^[_+A-Za-z0-9-]+(\\.[_+A-Za-z0-9-]+)*"
+                + "@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
         User user = UserPrefHelper.getUser(this);
 
@@ -345,18 +349,24 @@ public class UpdateProfileActivity
 
     private void volleyUpdateProfile()
     {
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(getString(R.string.loading_changing_user_details));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-
         String firstname = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
         String lastname = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
         String birthdate = ((EditText) findViewById(R.id.et_birthdate)).getText().toString().trim();
         String gender = ((EditText) findViewById(R.id.et_gender)).getText().toString().trim();
         String email = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
 
-        Request request = UserApi.updateProfile(
+        if (!emailPattern.matcher(email).matches()) {
+
+            Toast.makeText(this, R.string.error_invalid_email, Toast.LENGTH_SHORT).show();
+
+        } else {
+
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage(getString(R.string.loading_changing_user_details));
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            Request request = UserApi.updateProfile(
                 OAuthPrefHelper.getAccessToken(this),
                 firstname,
                 lastname,
@@ -366,7 +376,8 @@ public class UpdateProfileActivity
                 RequestCode.RCR_UPDATE_PROFILE,
                 this);
 
-        BaseApplication.getInstance().getRequestQueue().add(request);
+            BaseApplication.getInstance().getRequestQueue().add(request);
+        }
     }
 
     private void setNewUserDetails(Calendar c, String selectedGender, boolean isCalendar) {
