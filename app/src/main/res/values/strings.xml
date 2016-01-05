@@ -5,7 +5,8 @@
     <string name="hockeyapp_app_id">275b3c05f97b2c82b5ff82aeb833d544</string>
 
     <!-- GCM -->
-    <string name="google_api_key">AIzaSyCCi9qLkCOMXo_jylW7tZdEBb4jHXkSjag</string>
+    <!--<string name="google_api_key">AIzaSyCCi9qLkCOMXo_jylW7tZdEBb4jHXkSjag</string>-->
+    <string name="google_api_key">AIzaSyDWx0SeI0Wf4Dd_gkDt0948jJEuFyhPkAY</string>
     <string name="gcm_senderId">1086823731657</string>
 
     <!-- Activity Title -->

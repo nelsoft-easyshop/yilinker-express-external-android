@@ -111,14 +111,14 @@ public class HomeActivity
     protected void onPause()
     {
         super.onPause();
-        UpdateManager.unregister();
+//        UpdateManager.unregister();
     }
 
     @Override
     protected void onResume()
     {
         super.onResume();
-        checkForCrashes();
+//        checkForCrashes();
     }
 
     @Override
