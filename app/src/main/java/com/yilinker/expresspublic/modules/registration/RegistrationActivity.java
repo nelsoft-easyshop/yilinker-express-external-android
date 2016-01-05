@@ -18,6 +18,7 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.OAuthApi;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.helpers.CommonPrefHelper;
+import com.yilinker.expresspublic.core.helpers.DeviceHelper;
 import com.yilinker.expresspublic.core.helpers.DialogHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.OAuth;
@@ -172,25 +173,32 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
 
     private void handleSubmit() {
 
-        String firstName = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
-        String lastName = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
-        String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
-//        String contactNumber = ((EditText) findViewById(R.id.et_contact)).getText().toString().trim();
-        String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
+        if (DeviceHelper.isDeviceConnected(getApplicationContext())) {
+            String firstName = ((EditText) findViewById(R.id.et_firstname)).getText().toString().trim();
+            String lastName = ((EditText) findViewById(R.id.et_lastname)).getText().toString().trim();
+            String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
+    //        String contactNumber = ((EditText) findViewById(R.id.et_contact)).getText().toString().trim();
+            String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
 
-        String errorMessage = validateUserInput(firstName, lastName, emailAddress, password);
+            String errorMessage = validateUserInput(firstName, lastName, emailAddress, password);
 
-        if(errorMessage != null)
-        {
-            AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
-            alertDialog.show();
-        }
-        else
-        {
+            if(errorMessage != null)
+            {
+                AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
+                alertDialog.show();
+            }
+            else
+            {
 
-            // Initially hide keyboard
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            volleyRegister(firstName, lastName, emailAddress, password);
+                // Initially hide keyboard
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                volleyRegister(firstName, lastName, emailAddress, password);
+            }
+        } else {
+
+            Toast.makeText(getApplicationContext(),
+                    R.string.error_no_internet_connection, Toast.LENGTH_SHORT).show();
+
         }
     }
 
