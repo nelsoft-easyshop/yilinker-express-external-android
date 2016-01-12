@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -46,6 +47,8 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
 
     private DeliveryPackageAdapter deliveryPackageAdapter;
 
+    private ProgressBar pbProgress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,8 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
         rv_deliveryPackageList.setHasFixedSize(true);
         rv_deliveryPackageList.setAdapter(deliveryPackageAdapter);
         rv_deliveryPackageList.setLayoutManager(new LinearLayoutManager(this));
+
+        pbProgress = (ProgressBar) findViewById(R.id.pbProgress);
     }
 
     @Override
@@ -132,6 +137,7 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
     }
 
     private void handleScanningQRCode() {
+
         Intent intent = new Intent(this, ScanTrackingCodeActivity.class);
         startActivity(intent);
     }
@@ -167,6 +173,7 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
                 break;
         }
 
+        pbProgress.setVisibility(View.GONE);
         ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
     }
 
@@ -182,13 +189,14 @@ public class TrackDeliveryActivity extends BaseActivity implements DeliveryPacka
             default:
                 break;
         }
-
+        pbProgress.setVisibility(View.GONE);
         ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.VISIBLE);
     }
 
     private void volleySearchTrackingNumber(String trackingNumber)
     {
         ((RecyclerView) findViewById(R.id.rv_deliveryPackageList)).setVisibility(View.GONE);
+        pbProgress.setVisibility(View.VISIBLE);
 
         String accessToken = OAuthPrefHelper.getAccessToken(this);
 
