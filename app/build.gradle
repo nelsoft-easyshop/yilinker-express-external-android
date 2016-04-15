@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        productionConfig {
+            keyAlias 'yilinker-express-public-prod'
+            keyPassword 'Passw0rd'
+            storeFile file('/Users/wagnavu/Documents/yilinker-keystores/yilinker-express-public-prod.jks')
+            storePassword 'Passw0rd'
+        }
+    }
     compileSdkVersion 23
     buildToolsVersion "23.0.0"
-
     defaultConfig {
         applicationId "com.yilinker.expresspublic"
         minSdkVersion 17
@@ -15,18 +22,31 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "DOMAIN", '"http://api.express.api.easydeal.ph/v1"'
-            buildConfigField "String", "CLIENT_ID", '"3_6agt57dy15gc0840oogowock00kowcg44cc8os4ggso4o80c80"'
-            buildConfigField "String", "CLIENT_SECRET", '"2q7zfaom3hicc40o8soccgcwcs0sksks0swwwocckw0cgs4ck8"'
-            buildConfigField "String", "REGISTER_CLIENT_ID", '"6_4fcdq8jjge80gwwkw4coskgscow08wsg808sgogok00s8so440"'
-            buildConfigField "String", "REGISTER_CLIENT_SECRET", '"1bg58v3eu5i8cw4ooksskw00sow4cwk8osc4osk48cookogsck"'
+            buildConfigField "String", "DOMAIN", '"http://sprint.api.express.api.easydeal.ph/v1"'
+            buildConfigField "String", "CLIENT_ID", '"2_591kmzat3zks0okgwo8wkw4k0kcwsc80osko480ockkogcc0sw"'
+            buildConfigField "String", "CLIENT_SECRET", '"3k2cbbnoybswwc0o0goco08gk4wckcoo8wcg0kgc0404cs4cck"'
+            buildConfigField "String", "REGISTER_CLIENT_ID", '"3_2xbdqhr499icwo8ggwosks8wksss0kc8gsw8ko4sck8480o4kk"'
+            buildConfigField "String", "REGISTER_CLIENT_SECRET", '"3ph588gxblicscs4w80084cwwkk4s4s4o4wssoskkg8c8sc0gc"'
         }
         release {
-            buildConfigField "String", "DOMAIN", '"http://express.dautour.com/api/v1"'
-            buildConfigField "String", "CLIENT_ID", '""'
-            buildConfigField "String", "CLIENT_SECRET", '""'
+            buildConfigField "String", "DOMAIN", '"https://api-express.yilinker.com/v1"'
+            buildConfigField "String", "CLIENT_ID", '"2_591kmzat3zks0okgwo8wkw4k0kcwsc80osko480ockkogcc0sw"'
+            buildConfigField "String", "CLIENT_SECRET", '"3k2cbbnoybswwc0o0goco08gk4wckcoo8wcg0kgc0404cs4cck"'
+            buildConfigField "String", "REGISTER_CLIENT_ID", '"3_65jlm9xp4mwwwocg08ookk0o0w0wo4800ko400oco8sgkwkgk8"'
+            buildConfigField "String", "REGISTER_CLIENT_SECRET", '"1mszq14xshk0k0sc444osogowgcos80ogo0w48c8gcswcsskk4"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        production {
+            buildConfigField "String", "DOMAIN", '"https://api-express.yilinker.com/v1"'
+            buildConfigField "String", "CLIENT_ID", '"2_591kmzat3zks0okgwo8wkw4k0kcwsc80osko480ockkogcc0sw"'
+            buildConfigField "String", "CLIENT_SECRET", '"3k2cbbnoybswwc0o0goco08gk4wckcoo8wcg0kgc0404cs4cck"'
+            buildConfigField "String", "REGISTER_CLIENT_ID", '"3_65jlm9xp4mwwwocg08ookk0o0w0wo4800ko400oco8sgkwkgk8"'
+            buildConfigField "String", "REGISTER_CLIENT_SECRET", '"1mszq14xshk0k0sc444osogowgcos80ogo0w48c8gcswcsskk4"'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            signingConfig signingConfigs.productionConfig
         }
     }
     packagingOptions {
@@ -52,7 +72,7 @@ dependencies {
     compile 'com.mcxiaoke.volley:library:1.0.18'
     compile 'de.hdodenhof:circleimageview:1.3.0'
     compile 'com.google.code.gson:gson:2.3.1'
-//    compile 'com.google.android.gms:play-services:7.8.0'
+    //    compile 'com.google.android.gms:play-services:7.8.0'
     compile 'com.google.android.gms:play-services-location:8.1.0'
     compile 'com.google.android.gms:play-services-maps:8.1.0'
     compile 'com.google.android.gms:play-services-gcm:8.1.0'
