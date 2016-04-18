@@ -16,6 +16,7 @@ import com.yilinker.expresspublic.ResponseHandler;
 import com.yilinker.expresspublic.core.api.OAuthApi;
 import com.yilinker.expresspublic.core.contants.RequestCode;
 import com.yilinker.expresspublic.core.helpers.CommonPrefHelper;
+import com.yilinker.expresspublic.core.helpers.DeviceHelper;
 import com.yilinker.expresspublic.core.helpers.DialogHelper;
 import com.yilinker.expresspublic.core.helpers.OAuthPrefHelper;
 import com.yilinker.expresspublic.core.models.OAuth;
@@ -190,20 +191,26 @@ public class LoginActivity
 
     private void handleSignin()
     {
-        String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
-        String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
+        if (DeviceHelper.isDeviceConnected(getApplicationContext())) {
 
-        String errorMessage = validateUserInput(emailAddress, password);
+            String emailAddress = ((EditText) findViewById(R.id.et_email)).getText().toString().trim();
+            String password = ((EditText) findViewById(R.id.et_password)).getText().toString().trim();
 
-        if (errorMessage != null)
-        {
-            AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
-            alertDialog.show();
-        }
-        else
-        {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-            volleyToken(emailAddress, password);
+            String errorMessage = validateUserInput(emailAddress, password);
+
+            if (errorMessage != null) {
+                AlertDialog alertDialog = DialogHelper.createOkDialog(this, true, getString(R.string.error), errorMessage);
+                alertDialog.show();
+            } else {
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                volleyToken(emailAddress, password);
+            }
+
+        } else {
+
+            Toast.makeText(getApplicationContext(),
+                    R.string.error_no_internet_connection, Toast.LENGTH_SHORT).show();
+
         }
     }
 

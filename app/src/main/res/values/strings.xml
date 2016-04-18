@@ -59,6 +59,7 @@
     <string name="error_invalid_tracking_number">Invalid tracking number.</string>
     <string name="error_invalid_credentials">Invalid username and password combination.</string>
     <string name="error_invalid_email">Invalid email</string>
+    <string name="error_no_internet_connection">Please connect to the internet.</string>
 
     <!-- Loading messages -->
     <string name="loading_registration">Registering&#8230;</string>
